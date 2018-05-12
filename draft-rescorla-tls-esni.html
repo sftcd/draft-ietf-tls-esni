@@ -518,6 +518,7 @@ Client &lt;------------------------------------&gt;|                    |
     struct {
         ESNIKeyShareEntry keys&lt;4..2^16-1&gt;;
         CipherSuite cipher_suites&lt;2..2^16-2&gt;;
+        uint16 padded_length;
     } ESNIKeys;
 </pre>
 <p></p>
@@ -529,10 +530,13 @@ Client &lt;------------------------------------&gt;|                    |
 <dd style="margin-left: 8">An (EC)DH key share (attached to the label)</dd>
 <dt>keys</dt>
 <dd style="margin-left: 8">The list of keys which can be used by the client to encrypt the SNI.</dd>
+<dt>padded_length</dt>
+<dd style="margin-left: 8">The length to pad the ServerNameList value to prior to encryption.  This value SHOULD be set to the largest ServerNameList the fronting server expects to support rounded up the nearest multiple of 16.</dd>
 </dl>
-<p id="rfc.section.4.p.3">The semantics of this structure are simple: any of the listed keys may be used to encrypt the SNI for the associated domain name.  The cipher suite list is orthogonal to the list of keys, so each key may be used with any cipher suite.</p>
-<p id="rfc.section.4.p.4">This structure is placed in the RRData section of a TXT record as encoded above. The name of each TXT record MUST match the name composed of &#8220;_esni&#8221; and the query domain name. That is, if a client queries example.com, the ESNI TXT name is _esni.example.com.  Servers SHOULD configure DNS such that, upon querying a domain name with ESNI support, at most one each of A, AAAA, TXT ESNI, and ALTSVC <a href="#I-D.schwartz-httpbis-dns-alt-svc" class="xref">[I-D.schwartz-httpbis-dns-alt-svc]</a> Resource Record is returned. Alt-Svc records may be used to inform the client of the plaintext (fronting) SNI.  Also, servers operating in Fronting Mode SHOULD have DNS configured to return the same A (or AAAA) record for all hidden servers they service.</p>
-<p id="rfc.section.4.p.5">The Resource Record TTL determines the lifetime of the published ESNI keys.  Clients MUST NOT use ESNI keys beyond their published lifetime. Note that the length of this structure MUST NOT exceed 2^16 - 1, as the RDLENGTH is only 16 bits <a href="#RFC1035" class="xref">[RFC1035]</a>.</p>
+<p id="rfc.section.4.p.3">[[OPEN ISSUE: An alternative to padding is to instead send a hash of the server name. This would be fixed-length, but have the disadvantage that the server has to retain a table of all the server names it supports.]]</p>
+<p id="rfc.section.4.p.4">The semantics of this structure are simple: any of the listed keys may be used to encrypt the SNI for the associated domain name.  The cipher suite list is orthogonal to the list of keys, so each key may be used with any cipher suite.</p>
+<p id="rfc.section.4.p.5">This structure is placed in the RRData section of a TXT record as encoded above. The name of each TXT record MUST match the name composed of &#8220;_esni&#8221; and the query domain name. That is, if a client queries example.com, the ESNI TXT name is _esni.example.com.  Servers SHOULD configure DNS such that, upon querying a domain name with ESNI support, at most one each of A, AAAA, TXT ESNI, and ALTSVC <a href="#I-D.schwartz-httpbis-dns-alt-svc" class="xref">[I-D.schwartz-httpbis-dns-alt-svc]</a> Resource Record is returned. Alt-Svc records may be used to inform the client of the plaintext (fronting) SNI.  Also, servers operating in Fronting Mode SHOULD have DNS configured to return the same A (or AAAA) record for all hidden servers they service.</p>
+<p id="rfc.section.4.p.6">The Resource Record TTL determines the lifetime of the published ESNI keys.  Clients MUST NOT use ESNI keys beyond their published lifetime. Note that the length of this structure MUST NOT exceed 2^16 - 1, as the RDLENGTH is only 16 bits <a href="#RFC1035" class="xref">[RFC1035]</a>.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#esni-extension" id="esni-extension">The &#8220;encrypted_server_name&#8221; extension</a>
 </h1>
@@ -552,7 +556,7 @@ Client &lt;------------------------------------&gt;|                    |
 <dt>suite</dt>
 <dd style="margin-left: 8">The cipher suite used to encrypt the SNI.</dd>
 <dt>encrypted_sni</dt>
-<dd style="margin-left: 8">The original ServerNameList from the &#8220;server_name&#8221; extension, AEAD-encrypted using cipher suite &#8220;suite&#8221; and with the key generated as described below.</dd>
+<dd style="margin-left: 8">The original ServerNameList from the &#8220;server_name&#8221; extension, padded and AEAD-encrypted using cipher suite &#8220;suite&#8221; and with the key generated as described below.</dd>
 </dl>
 <h1 id="rfc.section.5.1">
 <a href="#rfc.section.5.1">5.1.</a> <a href="#client-behavior" id="client-behavior">Client Behavior</a>
@@ -570,14 +574,22 @@ Client &lt;------------------------------------&gt;|                    |
    key = HKDF-Expand-Label(Zx, "esni key", ClientHello.Random, key_length)
    iv = HKDF-Expand-Label(Zx, "esni iv", ClientHello.Random, iv_length)
 </pre>
-<p id="rfc.section.5.1.p.4">The EncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
+<p id="rfc.section.5.1.p.4">The client then creates a PaddedServerNameList:</p>
 <pre>
-    encrypted_sni = AEAD-Encrypt(key, iv, "", ServerNameList)
+   struct {
+       ServerNameList sni;
+       opaque zeros[padding_length - length(sni)];
+   } PaddedServerNameList;
 </pre>
-<p id="rfc.section.5.1.p.5">Note: future extensions may end up reusing the server&#8217;s ESNIKeyShare for other purposes within the same message (e.g., encrypting other values). Those usages MUST have their own HKDF labels to avoid reuse.</p>
-<p id="rfc.section.5.1.p.6">[[OPEN ISSUE: If in future you were to reuse these keys for 0-RTT priming, then you would have to worry about potentially expanding twice of Z_extracted. We should think about how to harmonize these to make sure that we maintain key separation.]]</p>
-<p id="rfc.section.5.1.p.7">This value is placed in an &#8220;encrypted_server_name&#8221; extension.</p>
-<p id="rfc.section.5.1.p.8">The client MAY either omit the &#8220;server_name&#8221; extension or provide an innocuous dummy one (this is required for technical conformance with <a href="#RFC7540" class="xref">[RFC7540]</a>; Section 9.2.)</p>
+<p id="rfc.section.5.1.p.5">This value consists of the serialized ServerNameList padded with enough zeroes to make the total structure ESNIKeys.padded_length bytes long. The purpose of the padding is to prevent attackers from using the length of the &#8220;encrypted_server_name&#8221; extension to determine the true SNI. If the serialized ServerNameList is longer than ESNIKeys.padded_length, the client MUST NOT use the &#8220;encrypted_server_name&#8221; extension.</p>
+<p id="rfc.section.5.1.p.6">The EncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
+<pre>
+    encrypted_sni = AEAD-Encrypt(key, iv, "", PaddedServerNameList)
+</pre>
+<p id="rfc.section.5.1.p.7">Note: future extensions may end up reusing the server&#8217;s ESNIKeyShare for other purposes within the same message (e.g., encrypting other values). Those usages MUST have their own HKDF labels to avoid reuse.</p>
+<p id="rfc.section.5.1.p.8">[[OPEN ISSUE: If in future you were to reuse these keys for 0-RTT priming, then you would have to worry about potentially expanding twice of Z_extracted. We should think about how to harmonize these to make sure that we maintain key separation.]]</p>
+<p id="rfc.section.5.1.p.9">This value is placed in an &#8220;encrypted_server_name&#8221; extension.</p>
+<p id="rfc.section.5.1.p.10">The client MAY either omit the &#8220;server_name&#8221; extension or provide an innocuous dummy one (this is required for technical conformance with <a href="#RFC7540" class="xref">[RFC7540]</a>; Section 9.2.)</p>
 <h1 id="rfc.section.5.2">
 <a href="#rfc.section.5.2">5.2.</a> <a href="#fronting-server-behavior" id="fronting-server-behavior">Fronting Server Behavior</a>
 </h1>
@@ -588,9 +600,11 @@ Client &lt;------------------------------------&gt;|                    |
 <li>If it is unable to negotiate TLS 1.3 or greater, it MUST abort the connection with a &#8220;handshake_failure&#8221; alert.</li>
 <li>If the EncryptedSNI.label value does not correspond to any known SNI encryption key, it MUST abort the connection with an &#8220;illegal_parameter&#8221; alert.  [[OPEN ISSUE: We looked at ignoring the extension but concluded this was better.]]</li>
 <li>If more than one KeyShareEntry has been provided, or if that share&#8217;s group does not match that for the SNI encryption key, it MUST abort the connection with an &#8220;illegal_parameter&#8221; alert.</li>
+<li>If the length of the &#8220;encrypted_server_name&#8221; extension is inconsistent with the advertised padding length (plus AEAD expansion) the server MAY abort the connection with an &#8220;illegal_parameter&#8221; alert without attempting to decrypt.</li>
 </ul>
-<p id="rfc.section.5.2.p.3">Assuming that these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert. If decryption succeeds, the server then uses the result as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored.</p>
-<p id="rfc.section.5.2.p.4">Upon determining the true SNI, the fronting server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the hidden server (if in Fronting Mode).</p>
+<p id="rfc.section.5.2.p.3">Assuming that these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
+<p id="rfc.section.5.2.p.4">If the decrypted value&#8217;s length is different from the advertised padding_length or the padding consists of any value other than 0, then the server MUST abort the connection with an illegal_parameter alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored.</p>
+<p id="rfc.section.5.2.p.5">Upon determining the true SNI, the fronting server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the hidden server (if in Fronting Mode).</p>
 <h1 id="rfc.section.5.3">
 <a href="#rfc.section.5.3">5.3.</a> <a href="#hidden-server-behavior" id="hidden-server-behavior">Hidden Server Behavior</a>
 </h1>
