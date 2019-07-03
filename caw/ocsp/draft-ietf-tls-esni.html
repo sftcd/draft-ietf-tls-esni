@@ -929,7 +929,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <h1 id="rfc.section.7.2">
 <a href="#rfc.section.7.2">7.2.</a> <a href="#related-privacy-leaks" id="related-privacy-leaks">Related Privacy Leaks</a>
 </h1>
-<p id="rfc.section.7.2.p.1">ESNI requires encrypted DNS to be an effective privacy protection mechanism.  Similarly, implementations may wish to prohibit cleartext OCSP traffic in the absence of stapled OCSP responses. Failure to do so may lead to inadvertent leakage of otherwise encrypted domain names.</p>
+<p id="rfc.section.7.2.p.1">ESNI requires encrypted DNS to be an effective privacy protection mechanism.  Similarly, implementations SHOULD require OCSP stapling or prohibit generating OCSP or CRL traffic, especially in cleartext. Cleartext OCSP queries and CRL checks may leak otherwise encrypted domain names to the network.</p>
 <h1 id="rfc.section.7.3">
 <a href="#rfc.section.7.3">7.3.</a> <a href="#comparison-against-criteria" id="comparison-against-criteria">Comparison Against Criteria</a>
 </h1>
