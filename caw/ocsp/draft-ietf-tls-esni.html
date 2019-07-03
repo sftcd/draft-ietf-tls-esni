@@ -929,7 +929,8 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <h1 id="rfc.section.7.2">
 <a href="#rfc.section.7.2">7.2.</a> <a href="#related-privacy-leaks" id="related-privacy-leaks">Related Privacy Leaks</a>
 </h1>
-<p id="rfc.section.7.2.p.1">ESNI requires encrypted DNS to be an effective privacy protection mechanism.  Similarly, implementations SHOULD require OCSP stapling or prohibit generating OCSP or CRL traffic, especially in cleartext. Cleartext OCSP queries and CRL checks may leak otherwise encrypted domain names to the network.</p>
+<p id="rfc.section.7.2.p.1">ESNI requires encrypted DNS to be an effective privacy protection mechanism.  However, verifying the server&#8217;s identity from the Certificate message, particularly when using the X509 CertificateType, may result in additional network traffic that may reveal the server identity. Examples of this traffic may include requests for revocation information, such as OCSP or CRL traffic, or requests for repository information, such as authorityInformationAccess. It may also include implementation-specific traffic for additional information sources as part of verification.</p>
+<p id="rfc.section.7.2.p.2">Implementations SHOULD avoid leaking information that may identify the server. Even when sent over an encrypted transport, such requests may result in indirect exposure of the server&#8217;s identity, such as indicating a specific CA or service being used. To mitigate this risk, servers SHOULD deliver such information in-band when possible, such as through the use of OCSP stapling, and clients SHOULD take steps to minimize or protect such requests during certificate validation.</p>
 <h1 id="rfc.section.7.3">
 <a href="#rfc.section.7.3">7.3.</a> <a href="#comparison-against-criteria" id="comparison-against-criteria">Comparison Against Criteria</a>
 </h1>

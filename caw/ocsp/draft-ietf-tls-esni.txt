@@ -91,19 +91,19 @@ Table of Contents
      7.3.  Comparison Against Criteria . . . . . . . . . . . . . . .  21
        7.3.1.  Mitigate against replay attacks . . . . . . . . . . .  21
        7.3.2.  Avoid widely-deployed shared secrets  . . . . . . . .  21
-       7.3.3.  Prevent SNI-based DoS attacks . . . . . . . . . . . .  21
+       7.3.3.  Prevent SNI-based DoS attacks . . . . . . . . . . . .  22
        7.3.4.  Do not stick out  . . . . . . . . . . . . . . . . . .  22
        7.3.5.  Forward secrecy . . . . . . . . . . . . . . . . . . .  22
        7.3.6.  Proper security context . . . . . . . . . . . . . . .  22
        7.3.7.  Split server spoofing . . . . . . . . . . . . . . . .  22
-       7.3.8.  Supporting multiple protocols . . . . . . . . . . . .  22
+       7.3.8.  Supporting multiple protocols . . . . . . . . . . . .  23
      7.4.  Misrouting  . . . . . . . . . . . . . . . . . . . . . . .  23
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
      8.1.  Update of the TLS ExtensionType Registry  . . . . . . . .  23
      8.2.  Update of the TLS Alert Registry  . . . . . . . . . . . .  23
      8.3.  Update of the Resource Record (RR) TYPEs Registry . . . .  23
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  23
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  24
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  25
    Appendix A.  Communicating SNI and Nonce to Backend Server  . . .  25
 
@@ -1128,10 +1128,24 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 7.2.  Related Privacy Leaks
 
    ESNI requires encrypted DNS to be an effective privacy protection
-   mechanism.  Similarly, implementations SHOULD require OCSP stapling
-   or prohibit generating OCSP or CRL traffic, especially in cleartext.
-   Cleartext OCSP queries and CRL checks may leak otherwise encrypted
-   domain names to the network.
+   mechanism.  However, verifying the server's identity from the
+   Certificate message, particularly when using the X509
+   CertificateType, may result in additional network traffic that may
+   reveal the server identity.  Examples of this traffic may include
+   requests for revocation information, such as OCSP or CRL traffic, or
+   requests for repository information, such as
+   authorityInformationAccess.  It may also include implementation-
+   specific traffic for additional information sources as part of
+   verification.
+
+   Implementations SHOULD avoid leaking information that may identify
+   the server.  Even when sent over an encrypted transport, such
+   requests may result in indirect exposure of the server's identity,
+   such as indicating a specific CA or service being used.  To mitigate
+   this risk, servers SHOULD deliver such information in-band when
+   possible, such as through the use of OCSP stapling, and clients
+   SHOULD take steps to minimize or protect such requests during
+   certificate validation.
 
 7.3.  Comparison Against Criteria
 
@@ -1156,6 +1170,14 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    the corresponding private key to decrypt a key.  Thus, when one ESNI
    key is provided, sharing is optimally bound by the number of hosts
    that share an IP address.  Server operators may further limit sharing
+
+
+
+Rescorla, et al.         Expires January 4, 2020               [Page 21]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    by sending different Resource Records containing ESNIRecord and
    ESNIKeys values with different keys using a short TTL.
 
@@ -1166,17 +1188,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    possible for an attacker to force decryption operations on the
    server.  This attack is bound by the number of valid TCP connections
    an attacker can open.
-
-
-
-
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 21]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
 7.3.4.  Do not stick out
 
@@ -1215,17 +1226,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    client validates the server certificate against the public name
    before retrying.
 
-7.3.8.  Supporting multiple protocols
-
-   This design has no impact on application layer protocol negotiation.
-   It may affect connection routing, server certificate selection, and
-   client certificate verification.  Thus, it is compatible with
-   multiple protocols.
-
-
-
-
-
 
 
 
@@ -1233,6 +1233,13 @@ Rescorla, et al.         Expires January 4, 2020               [Page 22]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+7.3.8.  Supporting multiple protocols
+
+   This design has no impact on application layer protocol negotiation.
+   It may affect connection routing, server certificate selection, and
+   client certificate verification.  Thus, it is compatible with
+   multiple protocols.
 
 7.4.  Misrouting
 
@@ -1272,6 +1279,17 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 9.  References
 
+
+
+
+
+
+
+Rescorla, et al.         Expires January 4, 2020               [Page 23]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
 9.1.  Normative References
 
    [I-D.ietf-tls-exported-authenticator]
@@ -1282,13 +1300,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, DOI 10.17487/RFC1035,
               November 1987, <https://www.rfc-editor.org/info/rfc1035>.
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 23]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1328,6 +1339,13 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               DOI 10.17487/RFC7924, July 2016,
               <https://www.rfc-editor.org/info/rfc7924>.
 
+
+
+Rescorla, et al.         Expires January 4, 2020               [Page 24]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
@@ -1336,15 +1354,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               Better Connectivity Using Concurrency", RFC 8305,
               DOI 10.17487/RFC8305, December 2017,
               <https://www.rfc-editor.org/info/rfc8305>.
-
-
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 24]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
@@ -1386,6 +1395,13 @@ Appendix A.  Communicating SNI and Nonce to Backend Server
    PaddedServerNameList.sni or ClientESNIInner.nonce without access to
    the ESNI keys or a way to decrypt ClientEncryptedSNI.encrypted_sni.
 
+
+
+Rescorla, et al.         Expires January 4, 2020               [Page 25]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    One way to address this for a single connection, at the cost of
    having communication not be unmodified TLS 1.3, is as follows.
    Assume there is a shared (symmetric) key between the client-facing
@@ -1393,14 +1409,6 @@ Appendix A.  Communicating SNI and Nonce to Backend Server
    the encrypted blob at the beginning of the connection before the
    ClientHello.  The backend server can then decrypt ESNI to recover the
    true SNI and nonce.
-
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 25]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
    Another way for backend servers to access the true SNI and nonce is
    by the client-facing server sharing the ESNI keys.
@@ -1442,14 +1450,6 @@ B.1.2.  Combined Tickets
    produce "combined tickets" that are consumable by both.  Clients
    offer combined tickets to client-facing servers.  The latter parse
    them to determine the correct backend server to which the Client
-   Hello should be forwarded.  This approach is problematic due to non-
-   trivial coordination between client-facing and backend servers for
-   ticket construction and consumption.  Moreover, it requires a
-   bootstrapping step similar to that of the previous variant.  In
-   contrast, encrypted SNI requires no such coordination.
-
-
-
 
 
 
@@ -1457,6 +1457,12 @@ Rescorla, et al.         Expires January 4, 2020               [Page 26]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+   Hello should be forwarded.  This approach is problematic due to non-
+   trivial coordination between client-facing and backend servers for
+   ticket construction and consumption.  Moreover, it requires a
+   bootstrapping step similar to that of the previous variant.  In
+   contrast, encrypted SNI requires no such coordination.
 
 B.2.  Application-layer
 
@@ -1501,18 +1507,16 @@ Appendix C.  Total Client Hello Encryption
       Appendix A and thus cannot be used with an unmodified backend
       server.
 
-   o  A conformant middlebox will strip every extension, which might
-      result in a ClientHello which is just unacceptable to the server
-      (more analysis needed).
-
-
-
 
 
 Rescorla, et al.         Expires January 4, 2020               [Page 27]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+   o  A conformant middlebox will strip every extension, which might
+      result in a ClientHello which is just unacceptable to the server
+      (more analysis needed).
 
 Appendix D.  Acknowledgements
 
@@ -1547,10 +1551,6 @@ Authors' Addresses
    Apple, Inc.
 
    Email: cawood@apple.com
-
-
-
-
 
 
 
