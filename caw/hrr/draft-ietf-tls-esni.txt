@@ -974,7 +974,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    If the decrypted value's length is different from the advertised
    ESNIKeys.padded_length or the padding consists of any value other
    than 0, then the server MUST abort the connection with an
-   illegal_parameter alert.  Otherwise, the server uses the
+   "illegal_parameter" alert.  Otherwise, the server uses the
    PaddedServerNameList.sni value as if it were the "server_name"
    extension.  Any actual "server_name" extension is ignored, which also
    means the server MUST NOT send the "server_name" extension to the
@@ -988,9 +988,9 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    blindly forwards them.
 
    If the ClientHello is the result of a HelloRetryRequest, servers MUST
-   abort the connection with an illegal_parameter alert if the decrypted
-   ClientESNIInner from the second ClientHello does not match that of
-   the first ClientHello.
+   abort the connection with an "illegal_parameter" alert if the
+   decrypted ClientESNIInner from the second ClientHello does not match
+   that of the first ClientHello.
 
 5.3.  Shared Mode Server Behavior
 
