@@ -793,7 +793,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <p id="rfc.section.5.1.1.p.5">The client then creates a ClientESNIInner structure:</p>
 <pre>
    struct {
-       ServerNameList sni;
+       opaque dns_name&lt;1..2^16-1&gt;;
        opaque zeros[ESNIKeys.padded_length - length(sni)];
    } PaddedServerNameList;
 
@@ -807,8 +807,8 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <dl>
 <dt>nonce</dt>
 <dd style="margin-left: 8">A random 16-octet value to be echoed by the server in the &#8220;encrypted_server_name&#8221; extension.</dd>
-<dt>sni</dt>
-<dd style="margin-left: 8">The true SNI, that is, the ServerNameList that would have been sent in the plaintext &#8220;server_name&#8221; extension.</dd>
+<dt>dns_name</dt>
+<dd style="margin-left: 8">The true SNI DNS name, that is, the HostName value that would have been sent in the plaintext &#8220;server_name&#8221; extension. (NameType values other than &#8220;host_name&#8221; are unsupported since SNI extensibility failed <a href="#SNIExtensibilityFailed" class="xref">[SNIExtensibilityFailed]</a>).</dd>
 <dt>zeros</dt>
 <dd style="margin-left: 8">Zero padding whose length makes the serialized PaddedServerNameList struct have a length equal to ESNIKeys.padded_length.</dd>
 </dl>
@@ -1084,6 +1084,10 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <td class="reference"><b id="RFC8094">[RFC8094]</b></td>
 <td class="top">
 <a>Reddy, T.</a>, <a>Wing, D.</a> and <a>P. Patil</a>, "<a href="https://tools.ietf.org/html/rfc8094">DNS over Datagram Transport Layer Security (DTLS)</a>", RFC 8094, DOI 10.17487/RFC8094, February 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="SNIExtensibilityFailed">[SNIExtensibilityFailed]</b></td>
+<td class="top">"<a href="https://mailarchive.ietf.org/arch/msg/tls/1t79gzNItZd71DwwoaqcQQ_4Yxc">Accepting that other SNI name types will never work</a>", n.d..</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">

@@ -105,7 +105,7 @@ Table of Contents
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  23
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  24
    Appendix A.  Communicating SNI and Nonce to Backend Server  . . .  25
-   Appendix B.  Alternative SNI Protection Designs . . . . . . . . .  25
+   Appendix B.  Alternative SNI Protection Designs . . . . . . . . .  26
 
 
 
@@ -118,9 +118,9 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
        B.1.1.  TLS in Early Data . . . . . . . . . . . . . . . . . .  26
        B.1.2.  Combined Tickets  . . . . . . . . . . . . . . . . . .  26
      B.2.  Application-layer . . . . . . . . . . . . . . . . . . . .  26
-       B.2.1.  HTTP/2 CERTIFICATE Frames . . . . . . . . . . . . . .  26
+       B.2.1.  HTTP/2 CERTIFICATE Frames . . . . . . . . . . . . . .  27
    Appendix C.  Total Client Hello Encryption  . . . . . . . . . . .  27
-   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  27
+   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  28
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
 
 1.  Introduction
@@ -655,7 +655,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    The client then creates a ClientESNIInner structure:
 
       struct {
-          ServerNameList sni;
+          opaque dns_name<1..2^16-1>;
           opaque zeros[ESNIKeys.padded_length - length(sni)];
       } PaddedServerNameList;
 
@@ -674,8 +674,10 @@ Rescorla, et al.         Expires January 4, 2020               [Page 12]
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
-   sni  The true SNI, that is, the ServerNameList that would have been
-      sent in the plaintext "server_name" extension.
+   dns_name  The true SNI DNS name, that is, the HostName value that
+      would have been sent in the plaintext "server_name" extension.
+      (NameType values other than "host_name" are unsupported since SNI
+      extensibility failed [SNIExtensibilityFailed]).
 
    zeros  Zero padding whose length makes the serialized
       PaddedServerNameList struct have a length equal to
@@ -717,8 +719,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    with [RFC7540]; Section 9.2.)  The client MUST NOT send a
    "cached_info" extension [RFC7924] with a CachedObject entry whose
    CachedInformationType is "cert".
-
-
 
 
 
@@ -1369,6 +1369,11 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               DOI 10.17487/RFC8094, February 2017,
               <https://www.rfc-editor.org/info/rfc8094>.
 
+   [SNIExtensibilityFailed]
+              "Accepting that other SNI name types will never work",
+              n.d., <https://mailarchive.ietf.org/arch/msg/
+              tls/1t79gzNItZd71DwwoaqcQQ_4Yxc>.
+
 Appendix A.  Communicating SNI and Nonce to Backend Server
 
    When operating in Split Mode, backend servers will not have access to
@@ -1386,12 +1391,7 @@ Appendix A.  Communicating SNI and Nonce to Backend Server
    Another way for backend servers to access the true SNI and nonce is
    by the client-facing server sharing the ESNI keys.
 
-Appendix B.  Alternative SNI Protection Designs
 
-   Alternative approaches to encrypted SNI may be implemented at the TLS
-   or application layer.  In this section we describe several
-   alternatives and discuss drawbacks in comparison to the design in
-   this document.
 
 
 
@@ -1401,6 +1401,13 @@ Rescorla, et al.         Expires January 4, 2020               [Page 25]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+Appendix B.  Alternative SNI Protection Designs
+
+   Alternative approaches to encrypted SNI may be implemented at the TLS
+   or application layer.  In this section we describe several
+   alternatives and discuss drawbacks in comparison to the design in
+   this document.
 
 B.1.  TLS-layer
 
@@ -1440,6 +1447,17 @@ B.1.2.  Combined Tickets
 
 B.2.  Application-layer
 
+
+
+
+
+
+
+Rescorla, et al.         Expires January 4, 2020               [Page 26]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
 B.2.1.  HTTP/2 CERTIFICATE Frames
 
    In this variant, clients request secondary certificates with
@@ -1450,14 +1468,6 @@ B.2.1.  HTTP/2 CERTIFICATE Frames
    server TLS connection.  Problems with this approach include: (1) one
    additional round trip before peer authentication, (2) non-trivial
    application-layer dependencies and interaction, and (3) obtaining the
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 26]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
-
    generic SNI to bootstrap the connection.  In contrast, encrypted SNI
    induces no additional round trip and operates below the application
    layer.
@@ -1493,16 +1503,6 @@ Appendix C.  Total Client Hello Encryption
       result in a ClientHello which is just unacceptable to the server
       (more analysis needed).
 
-Appendix D.  Acknowledgements
-
-   This document draws extensively from ideas in
-   [I-D.kazuho-protected-sni], but is a much more limited mechanism
-   because it depends on the DNS for the protection of the ESNI key.
-   Richard Barnes, Christian Huitema, Patrick McManus, Matthew Prince,
-   Nick Sullivan, Martin Thomson, and David Benjamin also provided
-   important ideas and contributions.
-
-
 
 
 
@@ -1513,6 +1513,15 @@ Rescorla, et al.         Expires January 4, 2020               [Page 27]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+Appendix D.  Acknowledgements
+
+   This document draws extensively from ideas in
+   [I-D.kazuho-protected-sni], but is a much more limited mechanism
+   because it depends on the DNS for the protection of the ESNI key.
+   Richard Barnes, Christian Huitema, Patrick McManus, Matthew Prince,
+   Nick Sullivan, Martin Thomson, and David Benjamin also provided
+   important ideas and contributions.
 
 Authors' Addresses
 
@@ -1538,15 +1547,6 @@ Authors' Addresses
    Apple, Inc.
 
    Email: cawood@apple.com
-
-
-
-
-
-
-
-
-
 
 
 
