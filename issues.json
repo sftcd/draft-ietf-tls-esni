@@ -1,6 +1,114 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/167",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/167/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/167/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/167/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/167",
+    "id": 463533444,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkzOTkzNDAx",
+    "number": 167,
+    "title": "Add note about cleartext OCSP.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-03T04:05:10Z",
+    "updated_at": "2019-07-03T06:00:10Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/167",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/167",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/167.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/167.patch"
+    },
+    "body": "Fixes #156."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/166",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/166/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/166/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/166/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/166",
+    "id": 463530371,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkzOTkxMjE1",
+    "number": 166,
+    "title": "Add note about optional record_digest and trial decryption alternative.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2019-07-03T03:50:04Z",
+    "updated_at": "2019-07-03T15:51:28Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/166",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/166",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/166.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/166.patch"
+    },
+    "body": "Addresses #138."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/165",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/165/labels{/name}",
@@ -43,7 +151,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-07-03T01:15:09Z",
-    "updated_at": "2019-07-03T01:28:30Z",
+    "updated_at": "2019-07-03T02:02:50Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -559,9 +667,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-05-14T18:51:20Z",
-    "updated_at": "2019-05-14T18:51:20Z",
+    "updated_at": "2019-07-03T04:04:57Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Since OCSP is [leaking](https://bugzilla.mozilla.org/show_bug.cgi?id=1535235#c3) the server name, ESNI should probably enforce OCSP stapling (similar to [RFC 7633](https://tools.ietf.org/html/rfc7633)) or any other way of encrypted OCSP checks.\r\nIgnoring OCSP status checks entirely makes it hard to revoke a certificate, even if it's only valid for a few months.\r\n\r\n"
@@ -1344,17 +1452,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-03-02T00:24:43Z",
-    "updated_at": "2019-03-02T00:24:43Z",
-    "closed_at": null,
+    "updated_at": "2019-07-03T01:33:53Z",
+    "closed_at": "2019-07-03T01:33:53Z",
     "author_association": "NONE",
     "body": "The Editor's Copy link leads to a version of the document from July 4, 2018, and there have been no commits to the gh-pages branch since then.  The document is obviously in active development, which suggests that CI is broken / not configured on this repo."
   },
@@ -1671,7 +1779,10 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "I am looking at using ESNI for local private discovery. It would work as follow:\r\n\r\n1) Authorized clients know the ESNI public key of the private server, which is otherwise kept secret.\r\n\r\n2) Client initiates a DTLS session or a QUIC connection by broadcasting a message containing ESNI extension targeting the specific server.\r\n\r\n3) Servers only respond if the recognize their key and name in the extension.\r\n\r\nESNI almost works as is for that, but not quite. First, the \"record_digest\" component allows identification and tracking of the server. In the private discovery mode, we would want to either not use it at all, or incorporate a nonce in the digest.\r\n\r\nSecond, ALPN. But you know that."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/137",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1779,10 +1890,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/136.patch"
     },
     "body": "This change does the following:\r\n\r\n1. Add support for mandatory extensions, which are those that clients must process else reject the ESNIKeys record.\r\n2. Add a mandatory extension carrying a set of v4/v6 addresses, which is effectively the combined record mode. \r\n3. Add text describing how clients ought to resolve ESNI and A/AAAA records, and use the results to initiate TLS connections."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/135",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -2444,9 +2552,9 @@
 
     ],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2018-12-13T19:38:59Z",
-    "updated_at": "2019-03-08T02:44:07Z",
+    "updated_at": "2019-07-03T03:52:36Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Would you consider a PR for encrypting the ClientESNIInner nonce?\r\n\r\nWhat I have in mind is the following:\r\n`struct {\r\n       EncryptedNonce enc_nonce;\r\n       PaddedServerNameList realSNI;\r\n   } ClientESNIInner;`\r\n.. where:\r\n`nonceAAD = ClientHello.KeyShareClientHello || realSNI`\r\n`EncryptedNonce = AEAD-Encrypt(nonce_key, nonce_iv, nonceAAD, nonce)`\r\n.. and:\r\n`nonce_key = HKDF-Expand-Label(Zx, \"nonce key\", Hash(ESNIContents), key_length)`\r\n`nonce_iv = HKDF-Expand-Label(Zx, \"nonce iv\", Hash(ESNIContents), iv_length)`\r\n\r\nThe use case is an escrow system where the client wants to allow **read-only** visibility of the real SNI value by only sharing {key,iv} and keeping {nonce_key,nonce_iv} and Zx secret.   Only the real server would be able to acknowledge 'nonce' in EncryptedExtensions."
@@ -2715,17 +2823,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2018-11-23T14:27:47Z",
-    "updated_at": "2019-07-03T01:16:34Z",
-    "closed_at": null,
+    "updated_at": "2019-07-03T03:51:26Z",
+    "closed_at": "2019-07-03T03:51:26Z",
     "author_association": "NONE",
     "body": "The I-D says: \"record_digest : A cryptographic hash of the ESNIKeys structure from which the ESNI key was obtained, i.e., from the first byte of \"checksum\" to the end of the structure. This hash is computed using the hash function associated with suite.\"\r\n\r\nFrom looking at the NSS code it appears that the record_digest input is actually the entire ESNIKeys (after base64 decode) including the version and checksum. Is that correct?\r\n\r\nIOW, does the following also produce the right value (for CF and sha256)?\r\n\r\n``dig +short txt _esni.www.cloudflare.com  | sed -e 's/\"//g' | base64 -d | openssl sha256``"
   },
@@ -3293,7 +3401,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/108.patch"
     },
     "body": "allow synchronization of both Key-Info and A/AAAA via the traditional single CNAME.\r\n\r\nfixes #105 amd #79\r\nessentially requires #73 otherwise there is namespace conflict\r\n\r\ntext conflicts a bit with #104 so if both were landed the slower one would need an update"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/107",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3395,10 +3506,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/106.patch"
     },
     "body": "There were two minor typos. This PR fixes them.\n\nWhile I was at it, I ran `aspell` over it, most seemed fine."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/105",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3542,9 +3650,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2018-10-23T13:54:25Z",
-    "updated_at": "2018-10-23T13:54:25Z",
+    "updated_at": "2019-07-03T03:52:22Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Please consider changing the ESNI client extension to a vector of ESNI values.  This could be used for server-side redundancy and key rollover.  I understand that only one of the entries would be ack'd in EE, and that we would have to think through the possible attacks on the mechanism due to the change.\r\n"
@@ -4992,7 +5100,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/78.patch"
     },
     "body": "Add versioning to the ESNI domain entry and the extension.\r\nAs this ID evolves, it will permit interoperability.\r\n\r\nAlso fix a minor type"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/77",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5100,10 +5211,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/76.patch"
     },
     "body": "closes #75 "
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/75",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6697,7 +6805,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/48.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/47",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6799,10 +6910,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/46.patch"
     },
     "body": "Just a trivial fix 😄 "
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/45",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8362,7 +8470,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/18.patch"
     },
     "body": "… deal with TXT string limits.\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/17",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8464,10 +8575,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/16.patch"
     },
     "body": "A few fixes made while reading through."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/15",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
