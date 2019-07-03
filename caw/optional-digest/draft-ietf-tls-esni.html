@@ -306,16 +306,17 @@ ul.toc li {
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 Middleboxes">
 <link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations">
 <link href="#rfc.section.7.1" rel="Chapter" title="7.1 Why is cleartext DNS OK?">
-<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Comparison Against Criteria">
-<link href="#rfc.section.7.2.1" rel="Chapter" title="7.2.1 Mitigate against replay attacks">
-<link href="#rfc.section.7.2.2" rel="Chapter" title="7.2.2 Avoid widely-deployed shared secrets">
-<link href="#rfc.section.7.2.3" rel="Chapter" title="7.2.3 Prevent SNI-based DoS attacks">
-<link href="#rfc.section.7.2.4" rel="Chapter" title="7.2.4 Do not stick out">
-<link href="#rfc.section.7.2.5" rel="Chapter" title="7.2.5 Forward secrecy">
-<link href="#rfc.section.7.2.6" rel="Chapter" title="7.2.6 Proper security context">
-<link href="#rfc.section.7.2.7" rel="Chapter" title="7.2.7 Split server spoofing">
-<link href="#rfc.section.7.2.8" rel="Chapter" title="7.2.8 Supporting multiple protocols">
-<link href="#rfc.section.7.3" rel="Chapter" title="7.3 Misrouting">
+<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Optional Record Digests and Trial Decryption">
+<link href="#rfc.section.7.3" rel="Chapter" title="7.3 Comparison Against Criteria">
+<link href="#rfc.section.7.3.1" rel="Chapter" title="7.3.1 Mitigate against replay attacks">
+<link href="#rfc.section.7.3.2" rel="Chapter" title="7.3.2 Avoid widely-deployed shared secrets">
+<link href="#rfc.section.7.3.3" rel="Chapter" title="7.3.3 Prevent SNI-based DoS attacks">
+<link href="#rfc.section.7.3.4" rel="Chapter" title="7.3.4 Do not stick out">
+<link href="#rfc.section.7.3.5" rel="Chapter" title="7.3.5 Forward secrecy">
+<link href="#rfc.section.7.3.6" rel="Chapter" title="7.3.6 Proper security context">
+<link href="#rfc.section.7.3.7" rel="Chapter" title="7.3.7 Split server spoofing">
+<link href="#rfc.section.7.3.8" rel="Chapter" title="7.3.8 Supporting multiple protocols">
+<link href="#rfc.section.7.4" rel="Chapter" title="7.4 Misrouting">
 <link href="#rfc.section.8" rel="Chapter" title="8 IANA Considerations">
 <link href="#rfc.section.8.1" rel="Chapter" title="8.1 Update of the TLS ExtensionType Registry">
 <link href="#rfc.section.8.2" rel="Chapter" title="8.2 Update of the TLS Alert Registry">
@@ -459,25 +460,27 @@ ul.toc li {
 </li>
 <ul><li>7.1.   <a href="#rfc.section.7.1">Why is cleartext DNS OK?</a>
 </li>
-<li>7.2.   <a href="#rfc.section.7.2">Comparison Against Criteria</a>
+<li>7.2.   <a href="#rfc.section.7.2">Optional Record Digests and Trial Decryption</a>
 </li>
-<ul><li>7.2.1.   <a href="#rfc.section.7.2.1">Mitigate against replay attacks</a>
+<li>7.3.   <a href="#rfc.section.7.3">Comparison Against Criteria</a>
 </li>
-<li>7.2.2.   <a href="#rfc.section.7.2.2">Avoid widely-deployed shared secrets</a>
+<ul><li>7.3.1.   <a href="#rfc.section.7.3.1">Mitigate against replay attacks</a>
 </li>
-<li>7.2.3.   <a href="#rfc.section.7.2.3">Prevent SNI-based DoS attacks</a>
+<li>7.3.2.   <a href="#rfc.section.7.3.2">Avoid widely-deployed shared secrets</a>
 </li>
-<li>7.2.4.   <a href="#rfc.section.7.2.4">Do not stick out</a>
+<li>7.3.3.   <a href="#rfc.section.7.3.3">Prevent SNI-based DoS attacks</a>
 </li>
-<li>7.2.5.   <a href="#rfc.section.7.2.5">Forward secrecy</a>
+<li>7.3.4.   <a href="#rfc.section.7.3.4">Do not stick out</a>
 </li>
-<li>7.2.6.   <a href="#rfc.section.7.2.6">Proper security context</a>
+<li>7.3.5.   <a href="#rfc.section.7.3.5">Forward secrecy</a>
 </li>
-<li>7.2.7.   <a href="#rfc.section.7.2.7">Split server spoofing</a>
+<li>7.3.6.   <a href="#rfc.section.7.3.6">Proper security context</a>
 </li>
-<li>7.2.8.   <a href="#rfc.section.7.2.8">Supporting multiple protocols</a>
+<li>7.3.7.   <a href="#rfc.section.7.3.7">Split server spoofing</a>
 </li>
-</ul><li>7.3.   <a href="#rfc.section.7.3">Misrouting</a>
+<li>7.3.8.   <a href="#rfc.section.7.3.8">Supporting multiple protocols</a>
+</li>
+</ul><li>7.4.   <a href="#rfc.section.7.4">Misrouting</a>
 </li>
 </ul><li>8.   <a href="#rfc.section.8">IANA Considerations</a>
 </li>
@@ -869,24 +872,25 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <a href="#rfc.section.5.2">5.2.</a> <a href="#server-behavior" id="server-behavior">Client-Facing Server Behavior</a>
 </h1>
 <p id="rfc.section.5.2.p.1">Upon receiving an &#8220;encrypted_server_name&#8221; extension, the client-facing server MUST check that it is able to negotiate TLS 1.3 or greater. If not, it MUST abort the connection with a &#8220;handshake_failure&#8221; alert.</p>
-<p id="rfc.section.5.2.p.2">If the ClientEncryptedSNI.record_digest value does not match the cryptographic hash of any known ESNIKeys structure, it MUST ignore the extension and proceed with the connection, with the following added behavior:</p>
+<p id="rfc.section.5.2.p.2">The ClientEncryptedSNI value is said to match a known ESNIKeys if there exists an ESNIKeys that can be used to successfully decrypt ClientEncryptedSNI.encrypted_sni.  This matching procedure should be performed as follows. If ClientEncryptedSNI.record_digest is non-empty, servers SHOULD compare it against cryptographic hashes of known ESNIKeys and choose the one that matches. Otherwise, if ClientEncryptedSNI.record_digest is empty, servers MAY use trial decryption to match to a known ESNIKeys. If both checks fail, there is no matching ESNIKeys.</p>
+<p id="rfc.section.5.2.p.3">If the ClientEncryptedSNI value does not match any known ESNIKeys structure, it MUST ignore the extension and proceed with the connection, with the following added behavior:</p>
 <p></p>
 
 <ul>
 <li>It MUST include the &#8220;encrypted_server_name&#8221; extension in EncryptedExtensions message with the &#8220;response_type&#8221; field set to &#8220;esni_retry_requested&#8221; and the &#8220;retry_keys&#8221; field set to one or more ESNIKeys structures with up-to-date keys. Servers MAY supply multiple ESNIKeys values of different versions. This allows a server to support multiple versions at once.</li>
 <li>The server MUST ignore all PSK identities in the ClientHello which correspond to ESNI PSKs. ESNI PSKs offered by the client are associated with the ESNI name. The server was unable to decrypt then ESNI name, so it should not resume them when using the cleartext SNI name. This restriction allows a client to reject resumptions in <a href="#auth-public-name" class="xref">Section 5.1.3</a>.</li>
 </ul>
-<p id="rfc.section.5.2.p.4">Note that an unrecognized ClientEncryptedSNI.record_digest value may be a GREASE ESNI extension (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), so it is necessary for servers to proceed with the connection and rely on the client to abort if ESNI was required. In particular, the unrecognized value alone does not indicate a misconfigured ESNI advertisement (<a href="#misconfiguration" class="xref">Section 6.1</a>). Instead, servers can measure occurrences of the &#8220;esni_required&#8221; alert to detect this case. An empty ClientEncryptedSNI.record_digest value MAY be used in environments wherein trial decryption is a viable approach for matching ClientEncryptedSNI contents to a known ESNIKeys. (Some uses of ESNI, such as local discovery mode, may opt to omit the ClientEncryptedSNI.record_digest since it can be used as a tracking vector.)</p>
-<p id="rfc.section.5.2.p.5">If the ClientEncryptedSNI.record_digest value does match a known ESNIKeys, either by comparing against a known cryptographic hash or by trial decryption, the server performs the following checks:</p>
+<p id="rfc.section.5.2.p.5">Note that an unrecognized ClientEncryptedSNI.record_digest value may be a GREASE ESNI extension (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), so it is necessary for servers to proceed with the connection and rely on the client to abort if ESNI was required. In particular, the unrecognized value alone does not indicate a misconfigured ESNI advertisement (<a href="#misconfiguration" class="xref">Section 6.1</a>). Instead, servers can measure occurrences of the &#8220;esni_required&#8221; alert to detect this case. An empty ClientEncryptedSNI.record_digest value MAY be used in environments wherein trial decryption is a viable approach for matching ClientEncryptedSNI contents to a known ESNIKeys. (Some uses of ESNI, such as local discovery mode, may opt to omit the ClientEncryptedSNI.record_digest since it can be used as a tracking vector.)</p>
+<p id="rfc.section.5.2.p.6">If the ClientEncryptedSNI value does match a known ESNIKeys, the server performs the following checks:</p>
 <p></p>
 
 <ul>
 <li>If the ClientEncryptedSNI.key_share group does not match one in the ESNIKeys.keys, it MUST abort the connection with an &#8220;illegal_parameter&#8221; alert.</li>
 <li>If the length of the &#8220;encrypted_server_name&#8221; extension is inconsistent with the advertised padding length (plus AEAD expansion) the server MAY abort the connection with an &#8220;illegal_parameter&#8221; alert without attempting to decrypt.</li>
 </ul>
-<p id="rfc.section.5.2.p.7">Assuming these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
-<p id="rfc.section.5.2.p.8">If the decrypted value&#8217;s length is different from the advertised ESNIKeys.padded_length or the padding consists of any value other than 0, then the server MUST abort the connection with an illegal_parameter alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored, which also means the server MUST NOT send the &#8220;server_name&#8221; extension to the client.</p>
-<p id="rfc.section.5.2.p.9">Upon determining the true SNI, the client-facing server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the backend server (if in Split Mode). In the latter case, it does not make any changes to the TLS messages, but just blindly forwards them.</p>
+<p id="rfc.section.5.2.p.8">Assuming these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
+<p id="rfc.section.5.2.p.9">If the decrypted value&#8217;s length is different from the advertised ESNIKeys.padded_length or the padding consists of any value other than 0, then the server MUST abort the connection with an illegal_parameter alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored, which also means the server MUST NOT send the &#8220;server_name&#8221; extension to the client.</p>
+<p id="rfc.section.5.2.p.10">Upon determining the true SNI, the client-facing server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the backend server (if in Split Mode). In the latter case, it does not make any changes to the TLS messages, but just blindly forwards them.</p>
 <h1 id="rfc.section.5.3">
 <a href="#rfc.section.5.3">5.3.</a> <a href="#shared-mode-server-behavior" id="shared-mode-server-behavior">Shared Mode Server Behavior</a>
 </h1>
@@ -924,48 +928,52 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <p id="rfc.section.7.1.p.1">In comparison to <a href="#I-D.kazuho-protected-sni" class="xref">[I-D.kazuho-protected-sni]</a>, wherein DNS Resource Records are signed via a server private key, ESNI records have no authenticity or provenance information. This means that any attacker which can inject DNS responses or poison DNS caches, which is a common scenario in client access networks, can supply clients with fake ESNI records (so that the client encrypts SNI to them) or strip the ESNI record from the response. However, in the face of an attacker that controls DNS, no SNI encryption scheme can work because the attacker can replace the IP address, thus blocking client connections, or substituting a unique IP address which is 1:1 with the DNS name that was looked up (modulo DNS wildcards). Thus, allowing the ESNI records in the clear does not make the situation significantly worse.</p>
 <p id="rfc.section.7.1.p.2">Clearly, DNSSEC (if the client validates and hard fails) is a defense against this form of attack, but DoH/DPRIVE are also defenses against DNS attacks by attackers on the local network, which is a common case where SNI is desired.  Moreover, as noted in the introduction, SNI encryption is less useful without encryption of DNS queries in transit via DoH or DPRIVE mechanisms.</p>
 <h1 id="rfc.section.7.2">
-<a href="#rfc.section.7.2">7.2.</a> <a href="#comparison-against-criteria" id="comparison-against-criteria">Comparison Against Criteria</a>
+<a href="#rfc.section.7.2">7.2.</a> <a href="#optional-record-digests-and-trial-decryption" id="optional-record-digests-and-trial-decryption">Optional Record Digests and Trial Decryption</a>
+</h1>
+<p id="rfc.section.7.2.p.1">Supporting optional record digests and trial decryption opens oneself up to DoS attacks. Specifically, an adversary may send malicious ClientHello messages, i.e., those which will not decrypt with any known ESNI key, in order to force decryption. Servers that support this feature should, for example, implement some form of rate limiting mechanism to limit the damage caused by such attacks.</p>
+<h1 id="rfc.section.7.3">
+<a href="#rfc.section.7.3">7.3.</a> <a href="#comparison-against-criteria" id="comparison-against-criteria">Comparison Against Criteria</a>
 </h1>
 <p><a href="#I-D.ietf-tls-sni-encryption" class="xref">[I-D.ietf-tls-sni-encryption]</a> lists several requirements for SNI encryption. In this section, we re-iterate these requirements and assess the ESNI design against them.</p>
-<h1 id="rfc.section.7.2.1">
-<a href="#rfc.section.7.2.1">7.2.1.</a> <a href="#mitigate-against-replay-attacks" id="mitigate-against-replay-attacks">Mitigate against replay attacks</a>
+<h1 id="rfc.section.7.3.1">
+<a href="#rfc.section.7.3.1">7.3.1.</a> <a href="#mitigate-against-replay-attacks" id="mitigate-against-replay-attacks">Mitigate against replay attacks</a>
 </h1>
-<p id="rfc.section.7.2.1.p.1">Since the SNI encryption key is derived from a (EC)DH operation between the client&#8217;s ephemeral and server&#8217;s semi-static ESNI key, the ESNI encryption is bound to the Client Hello. It is not possible for an attacker to &#8220;cut and paste&#8221; the ESNI value in a different Client Hello, with a different ephemeral key share, as the terminating server will fail to decrypt and verify the ESNI value.</p>
-<h1 id="rfc.section.7.2.2">
-<a href="#rfc.section.7.2.2">7.2.2.</a> <a href="#avoid-widely-deployed-shared-secrets" id="avoid-widely-deployed-shared-secrets">Avoid widely-deployed shared secrets</a>
+<p id="rfc.section.7.3.1.p.1">Since the SNI encryption key is derived from a (EC)DH operation between the client&#8217;s ephemeral and server&#8217;s semi-static ESNI key, the ESNI encryption is bound to the Client Hello. It is not possible for an attacker to &#8220;cut and paste&#8221; the ESNI value in a different Client Hello, with a different ephemeral key share, as the terminating server will fail to decrypt and verify the ESNI value.</p>
+<h1 id="rfc.section.7.3.2">
+<a href="#rfc.section.7.3.2">7.3.2.</a> <a href="#avoid-widely-deployed-shared-secrets" id="avoid-widely-deployed-shared-secrets">Avoid widely-deployed shared secrets</a>
 </h1>
-<p id="rfc.section.7.2.2.p.1">This design depends upon DNS as a vehicle for semi-static public key distribution.  Server operators may partition their private keys however they see fit provided each server behind an IP address has the corresponding private key to decrypt a key. Thus, when one ESNI key is provided, sharing is optimally bound by the number of hosts that share an IP address. Server operators may further limit sharing by sending different Resource Records containing ESNIRecord and ESNIKeys values with different keys using a short TTL.</p>
-<h1 id="rfc.section.7.2.3">
-<a href="#rfc.section.7.2.3">7.2.3.</a> <a href="#prevent-sni-based-dos-attacks" id="prevent-sni-based-dos-attacks">Prevent SNI-based DoS attacks</a>
+<p id="rfc.section.7.3.2.p.1">This design depends upon DNS as a vehicle for semi-static public key distribution.  Server operators may partition their private keys however they see fit provided each server behind an IP address has the corresponding private key to decrypt a key. Thus, when one ESNI key is provided, sharing is optimally bound by the number of hosts that share an IP address. Server operators may further limit sharing by sending different Resource Records containing ESNIRecord and ESNIKeys values with different keys using a short TTL.</p>
+<h1 id="rfc.section.7.3.3">
+<a href="#rfc.section.7.3.3">7.3.3.</a> <a href="#prevent-sni-based-dos-attacks" id="prevent-sni-based-dos-attacks">Prevent SNI-based DoS attacks</a>
 </h1>
-<p id="rfc.section.7.2.3.p.1">This design requires servers to decrypt ClientHello messages with ClientEncryptedSNI extensions carrying valid digests. Thus, it is possible for an attacker to force decryption operations on the server. This attack is bound by the number of valid TCP connections an attacker can open.</p>
-<h1 id="rfc.section.7.2.4">
-<a href="#rfc.section.7.2.4">7.2.4.</a> <a href="#do-not-stick-out" id="do-not-stick-out">Do not stick out</a>
+<p id="rfc.section.7.3.3.p.1">This design requires servers to decrypt ClientHello messages with ClientEncryptedSNI extensions carrying valid digests. Thus, it is possible for an attacker to force decryption operations on the server. This attack is bound by the number of valid TCP connections an attacker can open.</p>
+<h1 id="rfc.section.7.3.4">
+<a href="#rfc.section.7.3.4">7.3.4.</a> <a href="#do-not-stick-out" id="do-not-stick-out">Do not stick out</a>
 </h1>
-<p id="rfc.section.7.2.4.p.1">As more clients enable ESNI support, e.g., as normal part of Web browser functionality, with keys supplied by shared hosting providers, the presence of ESNI extensions becomes less suspicious and part of common or predictable client behavior. In other words, if all Web browsers start using ESNI, the presence of this value does not signal suspicious behavior to passive eavesdroppers.</p>
-<p id="rfc.section.7.2.4.p.2">Additionally, this specification allows for clients to send GREASE ESNI extensions (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), which helps ensure the ecosystem handles the values correctly.</p>
-<h1 id="rfc.section.7.2.5">
-<a href="#rfc.section.7.2.5">7.2.5.</a> <a href="#forward-secrecy" id="forward-secrecy">Forward secrecy</a>
+<p id="rfc.section.7.3.4.p.1">As more clients enable ESNI support, e.g., as normal part of Web browser functionality, with keys supplied by shared hosting providers, the presence of ESNI extensions becomes less suspicious and part of common or predictable client behavior. In other words, if all Web browsers start using ESNI, the presence of this value does not signal suspicious behavior to passive eavesdroppers.</p>
+<p id="rfc.section.7.3.4.p.2">Additionally, this specification allows for clients to send GREASE ESNI extensions (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), which helps ensure the ecosystem handles the values correctly.</p>
+<h1 id="rfc.section.7.3.5">
+<a href="#rfc.section.7.3.5">7.3.5.</a> <a href="#forward-secrecy" id="forward-secrecy">Forward secrecy</a>
 </h1>
-<p id="rfc.section.7.2.5.p.1">This design is not forward secret because the server&#8217;s ESNI key is static.  However, the window of exposure is bound by the key lifetime. It is RECOMMENDED that servers rotate keys frequently.</p>
-<h1 id="rfc.section.7.2.6">
-<a href="#rfc.section.7.2.6">7.2.6.</a> <a href="#proper-security-context" id="proper-security-context">Proper security context</a>
+<p id="rfc.section.7.3.5.p.1">This design is not forward secret because the server&#8217;s ESNI key is static.  However, the window of exposure is bound by the key lifetime. It is RECOMMENDED that servers rotate keys frequently.</p>
+<h1 id="rfc.section.7.3.6">
+<a href="#rfc.section.7.3.6">7.3.6.</a> <a href="#proper-security-context" id="proper-security-context">Proper security context</a>
 </h1>
-<p id="rfc.section.7.2.6.p.1">This design permits servers operating in Split Mode to forward connections directly to backend origin servers, thereby avoiding unnecessary MiTM attacks.</p>
-<h1 id="rfc.section.7.2.7">
-<a href="#rfc.section.7.2.7">7.2.7.</a> <a href="#split-server-spoofing" id="split-server-spoofing">Split server spoofing</a>
+<p id="rfc.section.7.3.6.p.1">This design permits servers operating in Split Mode to forward connections directly to backend origin servers, thereby avoiding unnecessary MiTM attacks.</p>
+<h1 id="rfc.section.7.3.7">
+<a href="#rfc.section.7.3.7">7.3.7.</a> <a href="#split-server-spoofing" id="split-server-spoofing">Split server spoofing</a>
 </h1>
-<p id="rfc.section.7.2.7.p.1">Assuming ESNI records retrieved from DNS are validated, e.g., via DNSSEC or fetched from a trusted Recursive Resolver, spoofing a server operating in Split Mode is not possible. See <a href="#cleartext-dns" class="xref">Section 7.1</a> for more details regarding cleartext DNS.</p>
-<p id="rfc.section.7.2.7.p.2">Validating the ESNIKeys structure additionally validates the public name. This validates any retry signals from the server because the client validates the server certificate against the public name before retrying.</p>
-<h1 id="rfc.section.7.2.8">
-<a href="#rfc.section.7.2.8">7.2.8.</a> <a href="#supporting-multiple-protocols" id="supporting-multiple-protocols">Supporting multiple protocols</a>
+<p id="rfc.section.7.3.7.p.1">Assuming ESNI records retrieved from DNS are validated, e.g., via DNSSEC or fetched from a trusted Recursive Resolver, spoofing a server operating in Split Mode is not possible. See <a href="#cleartext-dns" class="xref">Section 7.1</a> for more details regarding cleartext DNS.</p>
+<p id="rfc.section.7.3.7.p.2">Validating the ESNIKeys structure additionally validates the public name. This validates any retry signals from the server because the client validates the server certificate against the public name before retrying.</p>
+<h1 id="rfc.section.7.3.8">
+<a href="#rfc.section.7.3.8">7.3.8.</a> <a href="#supporting-multiple-protocols" id="supporting-multiple-protocols">Supporting multiple protocols</a>
 </h1>
-<p id="rfc.section.7.2.8.p.1">This design has no impact on application layer protocol negotiation. It may affect connection routing, server certificate selection, and client certificate verification.  Thus, it is compatible with multiple protocols.</p>
-<h1 id="rfc.section.7.3">
-<a href="#rfc.section.7.3">7.3.</a> <a href="#misrouting" id="misrouting">Misrouting</a>
+<p id="rfc.section.7.3.8.p.1">This design has no impact on application layer protocol negotiation. It may affect connection routing, server certificate selection, and client certificate verification.  Thus, it is compatible with multiple protocols.</p>
+<h1 id="rfc.section.7.4">
+<a href="#rfc.section.7.4">7.4.</a> <a href="#misrouting" id="misrouting">Misrouting</a>
 </h1>
-<p id="rfc.section.7.3.p.1">Note that the backend server has no way of knowing what the SNI was, but that does not lead to additional privacy exposure because the backend server also only has one identity. This does, however, change the situation slightly in that the backend server might previously have checked SNI and now cannot (and an attacker can route a connection with an encrypted SNI to any backend server and the TLS connection will still complete).  However, the client is still responsible for verifying the server&#8217;s identity in its certificate.</p>
-<p id="rfc.section.7.3.p.2">[[TODO: Some more analysis needed in this case, as it is a little odd, and probably some precise rules about handling ESNI and no SNI uniformly?]]</p>
+<p id="rfc.section.7.4.p.1">Note that the backend server has no way of knowing what the SNI was, but that does not lead to additional privacy exposure because the backend server also only has one identity. This does, however, change the situation slightly in that the backend server might previously have checked SNI and now cannot (and an attacker can route a connection with an encrypted SNI to any backend server and the TLS connection will still complete).  However, the client is still responsible for verifying the server&#8217;s identity in its certificate.</p>
+<p id="rfc.section.7.4.p.2">[[TODO: Some more analysis needed in this case, as it is a little odd, and probably some precise rules about handling ESNI and no SNI uniformly?]]</p>
 <h1 id="rfc.section.8">
 <a href="#rfc.section.8">8.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
