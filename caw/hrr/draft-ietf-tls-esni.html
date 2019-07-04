@@ -340,7 +340,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Rescorla, E., Oku, K., Sullivan, N., and C. Wood" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-tls-esni-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-07-03" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-07-04" />
   <meta name="dct.abstract" content="This document defines a simple mechanism for encrypting the Server Name Indication for TLS 1.3." />
   <meta name="description" content="This document defines a simple mechanism for encrypting the Server Name Indication for TLS 1.3." />
 
@@ -364,7 +364,7 @@ ul.toc li {
 <td class="right">K. Oku</td>
 </tr>
 <tr>
-<td class="left">Expires: January 4, 2020</td>
+<td class="left">Expires: January 5, 2020</td>
 <td class="right">Fastly</td>
 </tr>
 <tr>
@@ -385,7 +385,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">July 03, 2019</td>
+<td class="right">July 04, 2019</td>
 </tr>
 
     	
@@ -401,7 +401,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 4, 2020.</p>
+<p>This Internet-Draft will expire on January 5, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -837,7 +837,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <p id="rfc.section.5.1.2.p.4">Otherwise, when the handshake completes successfully with the public name authenticated, the client MUST abort the connection with an &#8220;esni_required&#8221; alert. The client can then regard ESNI as securely disabled by the server. It SHOULD retry the handshake with a new transport connection and ESNI disabled.</p>
 <p id="rfc.section.5.1.2.p.5">[[TODO: Key replacement is significantly less scary than saying that ESNI-naive servers bounce ESNI off. Is it worth defining a strict mode toggle in the ESNI keys, for a deployment to indicate it is ready for that? ]]</p>
 <p id="rfc.section.5.1.2.p.6">Clients SHOULD implement a limit on retries caused by &#8220;esni_retry_request&#8221; or servers which do not acknowledge the &#8220;encrypted_server_name&#8221; extension. If the client does not retry in either scenario, it MUST report an error to the calling application.</p>
-<p id="rfc.section.5.1.2.p.7">If the server sends a HelloRetryRequest in response to the ClientHello and the client can send a second updated ClientHello per the rules in <a href="#RFC8446" class="xref">[RFC8446]</a>, the &#8220;encrypted_server_name&#8221; extension values which do not depend on the (possibly updated) KeyShareClientHello, i.e,, ClientEncryptedSNI.suite, ClientEncryptedSNI.key_share, and ClientEncryptedSNI.record_digest, MUST NOT change across ClientHello messages.  Moreover, ClientESNIInner.nonce and ClientESNIInner.realSNI MUST not change across ClientHello messages. Informally, the values of all unencrypted extension information, as well as the inner extension plaintext, must be consistent between the first and second ClientHello messages.</p>
+<p id="rfc.section.5.1.2.p.7">If the server sends a HelloRetryRequest in response to the ClientHello and the client can send a second updated ClientHello per the rules in <a href="#RFC8446" class="xref">[RFC8446]</a>, the &#8220;encrypted_server_name&#8221; extension values which do not depend on the (possibly updated) KeyShareClientHello, i.e,, ClientEncryptedSNI.suite, ClientEncryptedSNI.key_share, and ClientEncryptedSNI.record_digest, MUST NOT change across ClientHello messages.  Moreover, ClientESNIInner MUST not change across ClientHello messages.  Informally, the values of all unencrypted extension information, as well as the inner extension plaintext, must be consistent between the first and second ClientHello messages.</p>
 <h1 id="rfc.section.5.1.3">
 <a href="#rfc.section.5.1.3">5.1.3.</a> <a href="#auth-public-name" id="auth-public-name">Authenticating for the public name</a>
 </h1>
@@ -887,7 +887,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <p id="rfc.section.5.2.p.7">Assuming these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
 <p id="rfc.section.5.2.p.8">If the decrypted value&#8217;s length is different from the advertised ESNIKeys.padded_length or the padding consists of any value other than 0, then the server MUST abort the connection with an &#8220;illegal_parameter&#8221; alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored, which also means the server MUST NOT send the &#8220;server_name&#8221; extension to the client.</p>
 <p id="rfc.section.5.2.p.9">Upon determining the true SNI, the client-facing server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the backend server (if in Split Mode). In the latter case, it does not make any changes to the TLS messages, but just blindly forwards them.</p>
-<p id="rfc.section.5.2.p.10">If the ClientHello is the result of a HelloRetryRequest, servers MUST abort the connection with an &#8220;illegal_parameter&#8221; alert if the decrypted ClientESNIInner from the second ClientHello does not match that of the first ClientHello.</p>
+<p id="rfc.section.5.2.p.10">If the ClientHello is the result of a HelloRetryRequest, servers MUST abort the connection with an &#8220;illegal_parameter&#8221; alert if any of the ClientEncryptedSNI.suite, ClientEncryptedSNI.key_share, ClientEncryptedSNI.record_digest, or decrypted ClientESNIInner values from the second ClientHello do not match that of the first ClientHello.</p>
 <h1 id="rfc.section.5.3">
 <a href="#rfc.section.5.3">5.3.</a> <a href="#shared-mode-server-behavior" id="shared-mode-server-behavior">Shared Mode Server Behavior</a>
 </h1>

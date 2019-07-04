@@ -5,12 +5,12 @@
 tls                                                          E. Rescorla
 Internet-Draft                                                RTFM, Inc.
 Intended status: Experimental                                     K. Oku
-Expires: January 4, 2020                                          Fastly
+Expires: January 5, 2020                                          Fastly
                                                              N. Sullivan
                                                               Cloudflare
                                                                  C. Wood
                                                              Apple, Inc.
-                                                           July 03, 2019
+                                                           July 04, 2019
 
 
               Encrypted Server Name Indication for TLS 1.3
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 4, 2020.
+   This Internet-Draft will expire on January 5, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 1]
+Rescorla, et al.         Expires January 5, 2020                [Page 1]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 2]
+Rescorla, et al.         Expires January 5, 2020                [Page 2]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -165,7 +165,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 3]
+Rescorla, et al.         Expires January 5, 2020                [Page 3]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -221,7 +221,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 4]
+Rescorla, et al.         Expires January 5, 2020                [Page 4]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -277,7 +277,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 5]
+Rescorla, et al.         Expires January 5, 2020                [Page 5]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -333,7 +333,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 6]
+Rescorla, et al.         Expires January 5, 2020                [Page 6]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -389,7 +389,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 7]
+Rescorla, et al.         Expires January 5, 2020                [Page 7]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -445,7 +445,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 8]
+Rescorla, et al.         Expires January 5, 2020                [Page 8]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -501,7 +501,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020                [Page 9]
+Rescorla, et al.         Expires January 5, 2020                [Page 9]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -557,7 +557,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 10]
+Rescorla, et al.         Expires January 5, 2020               [Page 10]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -613,7 +613,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 11]
+Rescorla, et al.         Expires January 5, 2020               [Page 11]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -669,7 +669,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 12]
+Rescorla, et al.         Expires January 5, 2020               [Page 12]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -725,7 +725,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 13]
+Rescorla, et al.         Expires January 5, 2020               [Page 13]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -781,7 +781,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 14]
+Rescorla, et al.         Expires January 5, 2020               [Page 14]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -818,11 +818,10 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    which do not depend on the (possibly updated) KeyShareClientHello,
    i.e,, ClientEncryptedSNI.suite, ClientEncryptedSNI.key_share, and
    ClientEncryptedSNI.record_digest, MUST NOT change across ClientHello
-   messages.  Moreover, ClientESNIInner.nonce and
-   ClientESNIInner.realSNI MUST not change across ClientHello messages.
-   Informally, the values of all unencrypted extension information, as
-   well as the inner extension plaintext, must be consistent between the
-   first and second ClientHello messages.
+   messages.  Moreover, ClientESNIInner MUST not change across
+   ClientHello messages.  Informally, the values of all unencrypted
+   extension information, as well as the inner extension plaintext, must
+   be consistent between the first and second ClientHello messages.
 
 5.1.3.  Authenticating for the public name
 
@@ -834,15 +833,15 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
    o  If the server resumed a session or negotiated a session that did
       not use a certificate for authentication, the client MUST abort
+      the connection with an "illegal_parameter" alert.  This case is
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 15]
+Rescorla, et al.         Expires January 5, 2020               [Page 15]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
-      the connection with an "illegal_parameter" alert.  This case is
       invalid because Section 5.1.1 requires the client to only offer
       ESNI-established sessions, and Section 5.2 requires the server to
       decline ESNI-established sessions if it did not accept ESNI.
@@ -893,7 +892,8 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 16]
+
+Rescorla, et al.         Expires January 5, 2020               [Page 16]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -949,7 +949,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 17]
+Rescorla, et al.         Expires January 5, 2020               [Page 17]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -988,9 +988,11 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    blindly forwards them.
 
    If the ClientHello is the result of a HelloRetryRequest, servers MUST
-   abort the connection with an "illegal_parameter" alert if the
-   decrypted ClientESNIInner from the second ClientHello does not match
-   that of the first ClientHello.
+   abort the connection with an "illegal_parameter" alert if any of the
+   ClientEncryptedSNI.suite, ClientEncryptedSNI.key_share,
+   ClientEncryptedSNI.record_digest, or decrypted ClientESNIInner values
+   from the second ClientHello do not match that of the first
+   ClientHello.
 
 5.3.  Shared Mode Server Behavior
 
@@ -1000,16 +1002,16 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    such that its length equals the size of the largest possible
    Certificate (message) covered by the same ESNI key.  Moreover, the
    server MUST include the "encrypted_server_name" extension in
-   EncryptedExtensions with the "response_type" field set to
-   "esni_accept" and the "nonce" field set to the decrypted
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 18]
+Rescorla, et al.         Expires January 5, 2020               [Page 18]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
+   EncryptedExtensions with the "response_type" field set to
+   "esni_accept" and the "nonce" field set to the decrypted
    PaddedServerNameList.nonce value from the client
    "encrypted_server_name" extension.
 
@@ -1055,16 +1057,17 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    inconsistent.  This may occur, for instance, from DNS
    misconfiguration, caching issues, or an incomplete rollout in a
    multi-server deployment.  This may also occur if a server loses its
-   ESNI keys, or if a deployment of ESNI must be rolled back on the
-   server.
 
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 19]
+Rescorla, et al.         Expires January 5, 2020               [Page 19]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
+
+   ESNI keys, or if a deployment of ESNI must be rolled back on the
+   server.
 
    The retry mechanism repairs inconsistencies, provided the server is
    authoritative for the public name.  If server and advertised keys
@@ -1111,17 +1114,17 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    which can inject DNS responses or poison DNS caches, which is a
    common scenario in client access networks, can supply clients with
    fake ESNI records (so that the client encrypts SNI to them) or strip
-   the ESNI record from the response.  However, in the face of an
-   attacker that controls DNS, no SNI encryption scheme can work because
-   the attacker can replace the IP address, thus blocking client
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 20]
+Rescorla, et al.         Expires January 5, 2020               [Page 20]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
+   the ESNI record from the response.  However, in the face of an
+   attacker that controls DNS, no SNI encryption scheme can work because
+   the attacker can replace the IP address, thus blocking client
    connections, or substituting a unique IP address which is 1:1 with
    the DNS name that was looked up (modulo DNS wildcards).  Thus,
    allowing the ESNI records in the clear does not make the situation
@@ -1170,10 +1173,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-
-
-
-Rescorla, et al.         Expires January 4, 2020               [Page 21]
+Rescorla, et al.         Expires January 5, 2020               [Page 21]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1229,7 +1229,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 22]
+Rescorla, et al.         Expires January 5, 2020               [Page 22]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 23]
+Rescorla, et al.         Expires January 5, 2020               [Page 23]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 24]
+Rescorla, et al.         Expires January 5, 2020               [Page 24]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1397,7 +1397,7 @@ Appendix A.  Communicating SNI and Nonce to Backend Server
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 25]
+Rescorla, et al.         Expires January 5, 2020               [Page 25]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1453,7 +1453,7 @@ B.1.2.  Combined Tickets
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 26]
+Rescorla, et al.         Expires January 5, 2020               [Page 26]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1509,7 +1509,7 @@ Appendix C.  Total Client Hello Encryption
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 27]
+Rescorla, et al.         Expires January 5, 2020               [Page 27]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1565,4 +1565,4 @@ Authors' Addresses
 
 
 
-Rescorla, et al.         Expires January 4, 2020               [Page 28]
+Rescorla, et al.         Expires January 5, 2020               [Page 28]
