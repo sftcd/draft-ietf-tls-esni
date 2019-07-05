@@ -41,9 +41,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-03T20:47:58Z",
-    "updated_at": "2019-07-04T14:17:36Z",
+    "updated_at": "2019-07-04T16:12:39Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -149,9 +149,9 @@
 
     ],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2019-07-03T03:50:04Z",
-    "updated_at": "2019-07-03T16:39:42Z",
+    "updated_at": "2019-07-04T14:18:42Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1221,18 +1221,18 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-03-07T23:15:49Z",
-    "updated_at": "2019-03-07T23:15:49Z",
-    "closed_at": null,
-    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "updated_at": "2019-07-04T15:52:58Z",
+    "closed_at": "2019-07-04T15:52:58Z",
+    "author_association": "NONE",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/147",
       "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/147",
@@ -6810,6 +6810,60 @@
 ,
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49",
+    "id": 331409568,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MTk0MTQ2ODg5",
+    "number": 49,
+    "title": "Briefly discuss pros and cons of alternative designs",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2018-06-12T01:56:08Z",
+    "updated_at": "2018-06-20T22:53:19Z",
+    "closed_at": "2018-06-20T22:50:19Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/49",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/48",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/48/labels{/name}",
@@ -8384,7 +8438,10 @@
     "closed_at": "2018-05-14T16:04:43Z",
     "author_association": "COLLABORATOR",
     "body": "The biggest concern from web-site operators will be the possibility of out-of-sync or broken ESNIKeys leading to service disruption.\r\n\r\nConsidering that, I propose having two attributes being added:\r\n* validity - we can borrow `notBefore` and `notAfter` from PKIX\r\n* checksum - something like 32-bits would be enough\r\n\r\nSeeing wired ESNIKeys will become a big issue especially if the clients accept ESNIKeys sent from low-quality resolvers / proxies (e.g. those in home routers).\r\n\r\nPS. One alternative approach would be to use HTTP (.well-known URI) as a transport of the semi-static key between the TLS server and the resolver. Then, we can use the vocabulary of HTTP to implement client-side verification."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/19",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8470,10 +8527,7 @@
     "closed_at": "2018-05-22T14:49:12Z",
     "author_association": "NONE",
     "body": "The text in section 4, Publishing the SNI Encryption Key, specifies that _if a client queries example.com, the ESNI TXT name is _esni.example.com_. That's fine, but suppose that the client queries \"hidden.example.com\". The client needs to learn that \"hidden.example.com\" is fronted by \"fronting.example.com\" -- per PR #18, the client will do that by obtaining an ALT-SVC record. Should the client get the ESNI key from \"_esni.hidden.example.com\", or from \"_esni.fronting.example.com\" ?"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/18",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
