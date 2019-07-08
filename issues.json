@@ -41,9 +41,9 @@
 
     ],
     "milestone": null,
-    "comments": 9,
+    "comments": 12,
     "created_at": "2019-07-05T04:33:31Z",
-    "updated_at": "2019-07-08T00:17:11Z",
+    "updated_at": "2019-07-08T21:53:20Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -142,17 +142,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": "2019-07-03T20:47:58Z",
-    "updated_at": "2019-07-08T00:24:10Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T21:55:51Z",
+    "closed_at": "2019-07-08T21:55:51Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/168",
@@ -250,17 +250,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 5,
+    "comments": 7,
     "created_at": "2019-07-03T03:50:04Z",
-    "updated_at": "2019-07-04T14:18:42Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T17:25:21Z",
+    "closed_at": "2019-07-08T17:25:21Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/166",
@@ -1381,7 +1381,14 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 929281846,
+        "node_id": "MDU6TGFiZWw5MjkyODE4NDY=",
+        "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/labels/help%20wanted",
+        "name": "help wanted",
+        "color": "008672",
+        "default": true
+      }
     ],
     "state": "open",
     "locked": false,
@@ -1456,17 +1463,17 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
     "comments": 6,
     "created_at": "2019-03-05T14:18:34Z",
-    "updated_at": "2019-06-25T20:43:07Z",
+    "updated_at": "2019-07-08T21:56:14Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "If each client receives a unique ESNI key from a DNS provider, it is possible to link every usage of this key to the same client. It seems feasible that online services, as well as passive observers of the network traffic, can exploit such a practice for user tracking.\r\n\r\nTo enhance the privacy protections of this draft, we should describe these privacy risks in the draft. Furthermore, I recommend a clear restriction on the clients’ caching durations of ESNI keys. For example, clients MUST NOT cache ESNI keys longer than 24 hours and as privacy protection, it is RECOMMENDED to cache ESNI keys only for 10 minutes."
@@ -1807,7 +1814,14 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 929281846,
+        "node_id": "MDU6TGFiZWw5MjkyODE4NDY=",
+        "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/labels/help%20wanted",
+        "name": "help wanted",
+        "color": "008672",
+        "default": true
+      }
     ],
     "state": "open",
     "locked": false,
@@ -1818,7 +1832,7 @@
     "milestone": null,
     "comments": 5,
     "created_at": "2019-03-01T18:35:45Z",
-    "updated_at": "2019-03-07T17:34:19Z",
+    "updated_at": "2019-07-08T21:56:14Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "To maximize the cover range for clients and simplify management of the ESNI records, it is more useful to associate the ESNI records with the server rather than the query domain name.  This has the additional benefit of allowing different client-facing servers to use different rotating private DH keys.\r\n\r\nThis eliminates the issues with CNAMEs, individual query domain holders having to make changes, DNS namespace issues etc.\r\n\r\nFor example a large hoster wishing to provide cover for some clients by having their primary / CDN front ends offer ESNI for all requests can then simply enable the code on their server then add the ESNI records.  They can even do this gradually over a large pool of servers, thus having some servers with different (or no) ESNI support during each careful rollout of ESNI software upgrades.\r\n\r\nIn practice the following conventions would be used:\r\n\r\n1. Any ESNI server IP must have exactly one PTR record (typically pointing to the hoster domain, such as a typical systematic CDN node DNS name).  Lets call this name ptrnam.dom\r\n\r\n2. The ESNI records would be under _esni.ptrnam.dom\r\n\r\n3. As with most PTR records ptrnam.dom is expected to have exactly one AAAA or A record pointing back at the same IP (if the starting IP is IPv6 only AAAA need to satisfy this, if IPv4 only A, the same ptrnam.dom can be used for one IPv4 and one IPv6 address if the ESNI records would be the same).\r\n\r\n4. For address-less server types such as tor hidden services, the ESNI records would be published via whatever DNS or DNS-like mechanism is used for that transport, or queried by sending a DNS query for the record to the target, allowing the target to respond within that transport.\r\n\r\nBenefits:\r\n\r\n- B1. Large client-facing servers such as CDNs and shared IP hosters can deploy ESNI without having to negotiate DNS changes with all their customers (in fact with any of their customers).\r\n\r\n- B2. Operators of large pools of client-facing servers such as CDNs can roll out ESNI support and ESNI implementation upgrades in a piecemeal and controlled manner similar to how other system updates are rolled out.  Simply because each IP address will have its own ESNI records.\r\n\r\n- B3. ESNI key rotation becomes much simpler as there is no need to synchronize it between different servers in a pool (except where a pure layer 1/2/3 load balancer shares a single IP among multiple physical/virtual servers, such as the layer 2 HALinux scheme).\r\n\r\n- B4. ESNI private key protection can be much stronger when it is not shared among all the servers.  The private key may be kept in protected hardware and/or in volatile RAM.  The latter case would require clients to fall back to a different A or AAAA record until the DNS entries for now forgotten keys to have expired, but only in case of a server crash or similar event.\r\n\r\n- B5. Client queries for ESNI records do not reveal the actual query domain that will be encrypted, only the IP address to which the ESNI extension will be sent.\r\n\r\n- B6. The whole discussion about _esni prefix or no _esni prefix becomes a lot simpler when there is no need to put ESNI records in every end query domain, only domains of the client-facing servers, allowing to keep the unprefixed TXT name space clean for existing uses such as SPF.\r\n\r\nDownsides:\r\n\r\n- P1: Clients will have to postpone the _esni DNS query until after receiving the answer to the A or AAAA query, thus adding an extra DNS roundtrip before the first connection to a name.  The usual DNS caching hierarchy should mitigate this.  In particular for popular CDNs, a client will typically use the same handful of IPs for lots of unrelated traffic, thus getting the ESNI records in its local cache.\r\n\r\n- P2: VM hosting/Physical hosting/connectivity providers not granting PTR name assignment control to IP address customers will cause the same problems as for other protocols (such as mail) and should thus be under the same or greater pressure to add that service.  However since the greatest ESNI benefit is with IPs shared among many unrelated domains, and the operators of such IPs typically have full IP space ownership or the leverage to get PTR records where normal customers cannnot, the effect on ESNI deployment should be limited.\r\n\r\n- P3: This may or may not make it easier to do spoofing attacks, as an MitM attacker can spoof DNS responses either for the A/AAAA records of a target query domain (pointing to servers entirely under the attackers control, including legitimate ESNI records for that server) OR spoof the ESNI records of a server address for which the attacker has obtained traffic intercept ability.  However these can be secured with the same DNS countermeasures already applicable to those DNS domains.\r\n\r\n- P4: query domains wishing to remain available in massively blocking markets (the kind that would not hesitate to block an entire CDN to stop access to a single web page) may have more difficulty opting out of ESNI so such blocking filters can recognize them as a permitted service.\r\n"
@@ -1857,7 +1871,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "chris-wood",
@@ -1930,18 +1944,18 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
-    "comments": 5,
+    "comments": 6,
     "created_at": "2019-02-28T01:50:14Z",
-    "updated_at": "2019-06-25T20:43:01Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T17:26:02Z",
+    "closed_at": "2019-07-08T17:26:01Z",
     "author_association": "NONE",
     "body": "I am looking at using ESNI for local private discovery. It would work as follow:\r\n\r\n1) Authorized clients know the ESNI public key of the private server, which is otherwise kept secret.\r\n\r\n2) Client initiates a DTLS session or a QUIC connection by broadcasting a message containing ESNI extension targeting the specific server.\r\n\r\n3) Servers only respond if the recognize their key and name in the extension.\r\n\r\nESNI almost works as is for that, but not quite. First, the \"record_digest\" component allows identification and tracking of the server. In the private discovery mode, we would want to either not use it at all, or incorporate a nonce in the digest.\r\n\r\nSecond, ALPN. But you know that."
   },
@@ -2807,7 +2821,14 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1422908367,
+        "node_id": "MDU6TGFiZWwxNDIyOTA4MzY3",
+        "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/labels/needs%20WG%20discussion",
+        "name": "needs WG discussion",
+        "color": "c5def5",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -2882,17 +2903,17 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
     "comments": 3,
     "created_at": "2018-12-10T16:28:25Z",
-    "updated_at": "2019-06-25T20:41:22Z",
+    "updated_at": "2019-07-08T21:56:01Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "RFC 8446 requires us to specify if the contents of ESNI can change upon a HRR.\r\n\r\nIn case of ESNI, the payload of the extension obviously can change, because the AAD (i.e. ClientHello.KeyShareClientHello) can change. However, we haven't specified if other values (e.g., ClientESNIInner.nonce) can.\r\n\r\nIMO, we should prohibit needless changes.\r\n\r\nTo clarify, all the non-encrypted portion and the encrypted payload of ESNI MUST be consistent between the first ClientHello and the second one."
@@ -3449,7 +3470,14 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1422908367,
+        "node_id": "MDU6TGFiZWwxNDIyOTA4MzY3",
+        "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/labels/needs%20WG%20discussion",
+        "name": "needs WG discussion",
+        "color": "c5def5",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -3460,7 +3488,7 @@
     "milestone": null,
     "comments": 3,
     "created_at": "2018-10-26T16:13:11Z",
-    "updated_at": "2019-06-28T15:13:00Z",
+    "updated_at": "2019-07-08T20:22:26Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "issues #105 and #79 advocate for the removal of the _esni prefix.\r\n\r\nA significant side effect of that is that it becomes impossible to use a CNAME at the apex of a zone in order to refer to ESNIKeys of a server operated elsewhere. Inlining keys, as is often done with A/AAAA at the apex, is not plausible due to key rotation.\r\n\r\nThe issue can largely be mitigated with the introduction of an inclusion mechanism directly in the TXT/ESNI record.\r\n"
@@ -4880,11 +4908,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -5149,11 +5177,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -5841,11 +5869,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -6107,11 +6135,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -7317,7 +7345,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "chris-wood",
@@ -7390,18 +7418,18 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 4,
-      "closed_issues": 4,
+      "open_issues": 2,
+      "closed_issues": 6,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-03T20:30:29Z",
+      "updated_at": "2019-07-08T17:26:24Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
-    "comments": 6,
+    "comments": 8,
     "created_at": "2018-05-16T06:56:12Z",
-    "updated_at": "2019-06-25T20:41:22Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T18:18:13Z",
+    "closed_at": "2019-07-08T17:26:24Z",
     "author_association": "CONTRIBUTOR",
     "body": "This seems to be somewhat discussed in the draft and in issues, but I fail to see the motivation behind not using the ESNI key to encrypt other extensions such as ALPN. The main concern seems to be around entities seeing the value of decrypted ALPN, but that's still better than ALPN being the clear. Another concern is a middlebox blocking this extension, but if the client decides to fail hard, blocking is better than leaking; and if a client falls back to unencrypted then the connection works regardless. If I'm missing something, can that be clarified in the draft?"
   },
