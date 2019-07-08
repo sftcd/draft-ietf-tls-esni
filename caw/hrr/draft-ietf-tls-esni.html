@@ -783,6 +783,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
    iv = HKDF-Expand-Label(Zx, IVLabel, Hash(ESNIContents), iv_length)
 </pre>
 <p id="rfc.section.5.1.1.p.4">where ESNIContents is as specified below and Hash is the hash function associated with the HKDF instantiation. The salt argument for HKDF-Extract is a string consisting of Hash.length bytes set to zeros. For a client&#8217;s first ClientHello, KeyLabel = &#8220;esni key&#8221; and IVLabel = &#8220;esni iv&#8221;, whereas for a client&#8217;s second ClientHello, sent in response to a HelloRetryRequest, KeyLabel = &#8220;hrr esni key&#8221; and IVLabel = &#8220;hrr esni iv&#8221;. (This label variance is done to prevent nonce re-use since the client&#8217;s ESNI key share, and thus the value of Zx, does not change across ClientHello retries.)</p>
+<p id="rfc.section.5.1.1.p.5">[[TODO: label swapping fixes a bug in the spec, though this may not be the best way to deal with HRR. See https://github.com/tlswg/draft-ietf-tls-esni/issues/121 and https://github.com/tlswg/draft-ietf-tls-esni/pull/170 for more details.]]</p>
 <pre>
    struct {
        opaque record_digest&lt;0..2^16-1&gt;;
@@ -790,7 +791,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
        Random client_hello_random;
    } ESNIContents;
 </pre>
-<p id="rfc.section.5.1.1.p.5">The client then creates a ClientESNIInner structure:</p>
+<p id="rfc.section.5.1.1.p.6">The client then creates a ClientESNIInner structure:</p>
 <pre>
    struct {
        ServerNameList sni;
@@ -812,16 +813,16 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <dt>zeros</dt>
 <dd style="margin-left: 8">Zero padding whose length makes the serialized PaddedServerNameList struct have a length equal to ESNIKeys.padded_length.</dd>
 </dl>
-<p id="rfc.section.5.1.1.p.7">This value consists of the serialized ServerNameList from the &#8220;server_name&#8221; extension, padded with enough zeroes to make the total structure ESNIKeys.padded_length bytes long. The purpose of the padding is to prevent attackers from using the length of the &#8220;encrypted_server_name&#8221; extension to determine the true SNI. If the serialized ServerNameList is longer than ESNIKeys.padded_length, the client MUST NOT use the &#8220;encrypted_server_name&#8221; extension.</p>
-<p id="rfc.section.5.1.1.p.8">The ClientEncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
+<p id="rfc.section.5.1.1.p.8">This value consists of the serialized ServerNameList from the &#8220;server_name&#8221; extension, padded with enough zeroes to make the total structure ESNIKeys.padded_length bytes long. The purpose of the padding is to prevent attackers from using the length of the &#8220;encrypted_server_name&#8221; extension to determine the true SNI. If the serialized ServerNameList is longer than ESNIKeys.padded_length, the client MUST NOT use the &#8220;encrypted_server_name&#8221; extension.</p>
+<p id="rfc.section.5.1.1.p.9">The ClientEncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
 <pre>
     encrypted_sni = AEAD-Encrypt(key, iv, KeyShareClientHello, ClientESNIInner)
 </pre>
-<p id="rfc.section.5.1.1.p.9">Where KeyShareClientHello is the &#8220;extension_data&#8221; field of the &#8220;key_share&#8221; extension in a Client Hello (Section 4.2.8 of <a href="#RFC8446" class="xref">[RFC8446]</a>)). Including KeyShareClientHello in the AAD of AEAD-Encrypt binds the ClientEncryptedSNI value to the ClientHello and prevents cut-and-paste attacks.</p>
-<p id="rfc.section.5.1.1.p.10">Note: future extensions may end up reusing the server&#8217;s ESNIKeyShareEntry for other purposes within the same message (e.g., encrypting other values). Those usages MUST have their own HKDF labels to avoid reuse.</p>
-<p id="rfc.section.5.1.1.p.11">[[OPEN ISSUE: If in the future you were to reuse these keys for 0-RTT priming, then you would have to worry about potentially expanding twice of Z_extracted. We should think about how to harmonize these to make sure that we maintain key separation.]]</p>
-<p id="rfc.section.5.1.1.p.12">This value is placed in an &#8220;encrypted_server_name&#8221; extension.</p>
-<p id="rfc.section.5.1.1.p.13">The client MUST place the value of ESNIKeys.public_name in the &#8220;server_name&#8221; extension. (This is required for technical conformance with <a href="#RFC7540" class="xref">[RFC7540]</a>; Section 9.2.) The client MUST NOT send a &#8220;cached_info&#8221; extension <a href="#RFC7924" class="xref">[RFC7924]</a> with a CachedObject entry whose CachedInformationType is &#8220;cert&#8221;.</p>
+<p id="rfc.section.5.1.1.p.10">Where KeyShareClientHello is the &#8220;extension_data&#8221; field of the &#8220;key_share&#8221; extension in a Client Hello (Section 4.2.8 of <a href="#RFC8446" class="xref">[RFC8446]</a>)). Including KeyShareClientHello in the AAD of AEAD-Encrypt binds the ClientEncryptedSNI value to the ClientHello and prevents cut-and-paste attacks.</p>
+<p id="rfc.section.5.1.1.p.11">Note: future extensions may end up reusing the server&#8217;s ESNIKeyShareEntry for other purposes within the same message (e.g., encrypting other values). Those usages MUST have their own HKDF labels to avoid reuse.</p>
+<p id="rfc.section.5.1.1.p.12">[[OPEN ISSUE: If in the future you were to reuse these keys for 0-RTT priming, then you would have to worry about potentially expanding twice of Z_extracted. We should think about how to harmonize these to make sure that we maintain key separation.]]</p>
+<p id="rfc.section.5.1.1.p.13">This value is placed in an &#8220;encrypted_server_name&#8221; extension.</p>
+<p id="rfc.section.5.1.1.p.14">The client MUST place the value of ESNIKeys.public_name in the &#8220;server_name&#8221; extension. (This is required for technical conformance with <a href="#RFC7540" class="xref">[RFC7540]</a>; Section 9.2.) The client MUST NOT send a &#8220;cached_info&#8221; extension <a href="#RFC7924" class="xref">[RFC7924]</a> with a CachedObject entry whose CachedInformationType is &#8220;cert&#8221;.</p>
 <h1 id="rfc.section.5.1.2">
 <a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#handle-server-response" id="handle-server-response">Handling the server response</a>
 </h1>
