@@ -1,6 +1,114 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/170",
+    "id": 464457181,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk0NzMxMDE2",
+    "number": 170,
+    "title": "Drop fixed key_share requirement to avoid nonce reuse and better align with HPKE",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 9,
+    "created_at": "2019-07-05T04:33:31Z",
+    "updated_at": "2019-07-08T00:17:11Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/170",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/170",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/170.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/170.patch"
+    },
+    "body": "This is an alternative to #168, wherein we use fresh DH keys each time and avoid changing the key/iv derivation labels across CH messages."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/169",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/169/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/169/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/169/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/169",
+    "id": 464455287,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk0NzI5NTA3",
+    "number": 169,
+    "title": "Add note about SNI-only encryption key design.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-05T04:24:05Z",
+    "updated_at": "2019-07-08T13:45:26Z",
+    "closed_at": "2019-07-08T13:45:25Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/169",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/169",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/169.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/169.patch"
+    },
+    "body": "Addresses #41."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/168",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/168/labels{/name}",
@@ -41,9 +149,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-07-03T20:47:58Z",
-    "updated_at": "2019-07-04T16:12:39Z",
+    "updated_at": "2019-07-08T00:24:10Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1615,7 +1723,10 @@
     "closed_at": "2019-06-17T18:21:16Z",
     "author_association": "NONE",
     "body": "Since the 32 bit checksum in ESNI records does not server a cryptographic purpose, only error detection, and since the chosen suite for the exchange does not necessarily use the SHA-256 algorithm, it would be more efficient to use a dedicated fast error detecting checksum.  The CRC32 algorithm used in RFC1952 (gzip), ISO 3309 and ITU-T V.42 is optimized for this task, widely available in software and hardware, and likely to already be implemented in ESNI using systems for other purposes.\r\n\r\nThis would also remove the only part of the draft that requires a specific single cryptographic algorithm, thereby making the specification algorithm agile without introducing any new algorithm registries for IANA to maintain."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/140",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1711,10 +1822,7 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "To maximize the cover range for clients and simplify management of the ESNI records, it is more useful to associate the ESNI records with the server rather than the query domain name.  This has the additional benefit of allowing different client-facing servers to use different rotating private DH keys.\r\n\r\nThis eliminates the issues with CNAMEs, individual query domain holders having to make changes, DNS namespace issues etc.\r\n\r\nFor example a large hoster wishing to provide cover for some clients by having their primary / CDN front ends offer ESNI for all requests can then simply enable the code on their server then add the ESNI records.  They can even do this gradually over a large pool of servers, thus having some servers with different (or no) ESNI support during each careful rollout of ESNI software upgrades.\r\n\r\nIn practice the following conventions would be used:\r\n\r\n1. Any ESNI server IP must have exactly one PTR record (typically pointing to the hoster domain, such as a typical systematic CDN node DNS name).  Lets call this name ptrnam.dom\r\n\r\n2. The ESNI records would be under _esni.ptrnam.dom\r\n\r\n3. As with most PTR records ptrnam.dom is expected to have exactly one AAAA or A record pointing back at the same IP (if the starting IP is IPv6 only AAAA need to satisfy this, if IPv4 only A, the same ptrnam.dom can be used for one IPv4 and one IPv6 address if the ESNI records would be the same).\r\n\r\n4. For address-less server types such as tor hidden services, the ESNI records would be published via whatever DNS or DNS-like mechanism is used for that transport, or queried by sending a DNS query for the record to the target, allowing the target to respond within that transport.\r\n\r\nBenefits:\r\n\r\n- B1. Large client-facing servers such as CDNs and shared IP hosters can deploy ESNI without having to negotiate DNS changes with all their customers (in fact with any of their customers).\r\n\r\n- B2. Operators of large pools of client-facing servers such as CDNs can roll out ESNI support and ESNI implementation upgrades in a piecemeal and controlled manner similar to how other system updates are rolled out.  Simply because each IP address will have its own ESNI records.\r\n\r\n- B3. ESNI key rotation becomes much simpler as there is no need to synchronize it between different servers in a pool (except where a pure layer 1/2/3 load balancer shares a single IP among multiple physical/virtual servers, such as the layer 2 HALinux scheme).\r\n\r\n- B4. ESNI private key protection can be much stronger when it is not shared among all the servers.  The private key may be kept in protected hardware and/or in volatile RAM.  The latter case would require clients to fall back to a different A or AAAA record until the DNS entries for now forgotten keys to have expired, but only in case of a server crash or similar event.\r\n\r\n- B5. Client queries for ESNI records do not reveal the actual query domain that will be encrypted, only the IP address to which the ESNI extension will be sent.\r\n\r\n- B6. The whole discussion about _esni prefix or no _esni prefix becomes a lot simpler when there is no need to put ESNI records in every end query domain, only domains of the client-facing servers, allowing to keep the unprefixed TXT name space clean for existing uses such as SPF.\r\n\r\nDownsides:\r\n\r\n- P1: Clients will have to postpone the _esni DNS query until after receiving the answer to the A or AAAA query, thus adding an extra DNS roundtrip before the first connection to a name.  The usual DNS caching hierarchy should mitigate this.  In particular for popular CDNs, a client will typically use the same handful of IPs for lots of unrelated traffic, thus getting the ESNI records in its local cache.\r\n\r\n- P2: VM hosting/Physical hosting/connectivity providers not granting PTR name assignment control to IP address customers will cause the same problems as for other protocols (such as mail) and should thus be under the same or greater pressure to add that service.  However since the greatest ESNI benefit is with IPs shared among many unrelated domains, and the operators of such IPs typically have full IP space ownership or the leverage to get PTR records where normal customers cannnot, the effect on ESNI deployment should be limited.\r\n\r\n- P3: This may or may not make it easier to do spoofing attacks, as an MitM attacker can spoof DNS responses either for the A/AAAA records of a target query domain (pointing to servers entirely under the attackers control, including legitimate ESNI records for that server) OR spoof the ESNI records of a server address for which the attacker has obtained traffic intercept ability.  However these can be secured with the same DNS countermeasures already applicable to those DNS domains.\r\n\r\n- P4: query domains wishing to remain available in massively blocking markets (the kind that would not hesitate to block an entire CDN to stop access to a single web page) may have more difficulty opting out of ESNI so such blocking filters can recognize them as a permitted service.\r\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/138",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3305,7 +3413,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/111.patch"
     },
     "body": "fixes #110"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/110",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3401,10 +3512,7 @@
     "closed_at": "2019-03-06T00:55:27Z",
     "author_association": "CONTRIBUTOR",
     "body": "PR #73 from @ghedo implements the ESNI RRType, but there doesn't seem to be another issue currently open to track discussion of it.\r\n\r\n* a new RRType allows the removal of the _esni prefix (#105 and #79)\r\n* reusing TXT has the potential for conflicts with other uses even with the prefix. (imagine the definition of a TXT record that simply applied to all DNS entries)\r\n* while both TXT and ESNI are 8 bit clean, some people are surprised to learn that about TXT so using a new type may be more robust. Some generic tools processing TXT records would benefit from this.\r\n* TXT is a set of  <= 255 byte strings, defining a new type removes that complexity and reduces overhead\r\n* There was initially concern about the viability of new RRTypes, but I believe people are more comfortable with that now than when the text was drafted."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/108",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -4930,7 +5038,10 @@
     "closed_at": "2018-10-21T20:34:11Z",
     "author_association": "COLLABORATOR",
     "body": "See \r\nhttps://mailarchive.ietf.org/arch/msg/tls/rc_tgkgVIeB4yeNCgPcyPzRnrBI"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/80",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5100,10 +5211,7 @@
     "closed_at": "2019-03-06T22:43:23Z",
     "author_association": "CONTRIBUTOR",
     "body": "if you dynamically syntehsize a whole bunch of names in example.com you would probably use a *.example.com a/aaaa configuration to do so and give them all the same addresses.\r\n\r\nbut you can't do the same things for TXT records with the _esni prefix..  basically _esni.*.example.com doesn't do the trick (rfc 4592).\r\n\r\ninitially I viewed this as a configuration and implementation issue because queries and responses do not carry the * at all - the records are synthesized on demand from this config.\r\n\r\nhowever, the wildcard is part of AXFR which forms an open interface between resolvers so its syntax and meaning is quite reasonably standardized and should be considered.\r\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/78",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6697,7 +6805,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/51.patch"
     },
     "body": "Please do not merge yet!"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/50",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6752,63 +6863,6 @@
     },
     "body": ""
   },
-  {
-    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49",
-    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
-    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/labels{/name}",
-    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/comments",
-    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49/events",
-    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49",
-    "id": 331409568,
-    "node_id": "MDExOlB1bGxSZXF1ZXN0MTk0MTQ2ODg5",
-    "number": 49,
-    "title": "Briefly discuss pros and cons of alternative designs",
-    "user": {
-      "login": "chris-wood",
-      "id": 2172048,
-      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/chris-wood",
-      "html_url": "https://github.com/chris-wood",
-      "followers_url": "https://api.github.com/users/chris-wood/followers",
-      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
-      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
-      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
-      "repos_url": "https://api.github.com/users/chris-wood/repos",
-      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
-      "type": "User",
-      "site_admin": false
-    },
-    "labels": [
-
-    ],
-    "state": "closed",
-    "locked": false,
-    "assignee": null,
-    "assignees": [
-
-    ],
-    "milestone": null,
-    "comments": 1,
-    "created_at": "2018-06-12T01:56:08Z",
-    "updated_at": "2018-06-20T22:53:19Z",
-    "closed_at": "2018-06-20T22:50:19Z",
-    "author_association": "COLLABORATOR",
-    "pull_request": {
-      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/49",
-      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49",
-      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49.diff",
-      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/49.patch"
-    },
-    "body": ""
-  }
-
-,
-
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/49",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8390,7 +8444,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/21.patch"
     },
     "body": "@kazuho: please double check"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/20",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8438,10 +8495,7 @@
     "closed_at": "2018-05-14T16:04:43Z",
     "author_association": "COLLABORATOR",
     "body": "The biggest concern from web-site operators will be the possibility of out-of-sync or broken ESNIKeys leading to service disruption.\r\n\r\nConsidering that, I propose having two attributes being added:\r\n* validity - we can borrow `notBefore` and `notAfter` from PKIX\r\n* checksum - something like 32-bits would be enough\r\n\r\nSeeing wired ESNIKeys will become a big issue especially if the clients accept ESNIKeys sent from low-quality resolvers / proxies (e.g. those in home routers).\r\n\r\nPS. One alternative approach would be to use HTTP (.well-known URI) as a transport of the semi-static key between the TLS server and the resolver. Then, we can use the vocabulary of HTTP to implement client-side verification."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/19",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
