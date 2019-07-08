@@ -878,25 +878,32 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 <a href="#rfc.section.5.2">5.2.</a> <a href="#server-behavior" id="server-behavior">Client-Facing Server Behavior</a>
 </h1>
 <p id="rfc.section.5.2.p.1">Upon receiving an &#8220;encrypted_server_name&#8221; extension, the client-facing server MUST check that it is able to negotiate TLS 1.3 or greater. If not, it MUST abort the connection with a &#8220;handshake_failure&#8221; alert.</p>
-<p id="rfc.section.5.2.p.2">The ClientEncryptedSNI value is said to match a known ESNIKeys if there exists an ESNIKeys that can be used to successfully decrypt ClientEncryptedSNI.encrypted_sni.  This matching procedure should be performed as follows. If ClientEncryptedSNI.record_digest is non-empty, servers SHOULD compare it against cryptographic hashes of known ESNIKeys and choose the one that matches. If ClientEncryptedSNI.record_digest is empty, servers MAY use trial decryption to match to a known ESNIKeys. If both checks fail, there is no matching ESNIKeys.</p>
-<p id="rfc.section.5.2.p.3">If the ClientEncryptedSNI value does not match any known ESNIKeys structure, it MUST ignore the extension and proceed with the connection, with the following added behavior:</p>
+<p id="rfc.section.5.2.p.2">The ClientEncryptedSNI value is said to match a known ESNIKeys if there exists an ESNIKeys that can be used to successfully decrypt ClientEncryptedSNI.encrypted_sni.  This matching procedure should be done using one of the following two checks:</p>
+<p></p>
+
+<ol>
+<li>Compare ClientEncryptedSNI.record_digest against cryptographic hashes of known ESNIKeys and choose the one that matches.</li>
+<li>Use trial decryption of ClientEncryptedSNI.encrypted_sni with known ESNIKeys and choose the one that succeeds.</li>
+</ol>
+<p id="rfc.section.5.2.p.4">Which check to use must be configured externally. Some uses of ESNI, such as local discovery mode, may omit the ClientEncryptedSNI.record_digest since it can be used as a tracking vector. In such cases, trial decryption should be used for matching ClientEncryptedSNI to known ESNIKeys.</p>
+<p id="rfc.section.5.2.p.5">If the ClientEncryptedSNI value does not match any known ESNIKeys structure, it MUST ignore the extension and proceed with the connection, with the following added behavior:</p>
 <p></p>
 
 <ul>
 <li>It MUST include the &#8220;encrypted_server_name&#8221; extension in EncryptedExtensions message with the &#8220;response_type&#8221; field set to &#8220;esni_retry_requested&#8221; and the &#8220;retry_keys&#8221; field set to one or more ESNIKeys structures with up-to-date keys. Servers MAY supply multiple ESNIKeys values of different versions. This allows a server to support multiple versions at once.</li>
 <li>The server MUST ignore all PSK identities in the ClientHello which correspond to ESNI PSKs. ESNI PSKs offered by the client are associated with the ESNI name. The server was unable to decrypt then ESNI name, so it should not resume them when using the cleartext SNI name. This restriction allows a client to reject resumptions in <a href="#auth-public-name" class="xref">Section 5.1.3</a>.</li>
 </ul>
-<p id="rfc.section.5.2.p.5">Note that an unrecognized ClientEncryptedSNI.record_digest value may be a GREASE ESNI extension (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), so it is necessary for servers to proceed with the connection and rely on the client to abort if ESNI was required. In particular, the unrecognized value alone does not indicate a misconfigured ESNI advertisement (<a href="#misconfiguration" class="xref">Section 6.1</a>). Instead, servers can measure occurrences of the &#8220;esni_required&#8221; alert to detect this case. An empty ClientEncryptedSNI.record_digest value MAY be used in environments wherein trial decryption is a viable approach for matching ClientEncryptedSNI contents to a known ESNIKeys. (Some uses of ESNI, such as local discovery mode, may opt to omit the ClientEncryptedSNI.record_digest since it can be used as a tracking vector.)</p>
-<p id="rfc.section.5.2.p.6">If the ClientEncryptedSNI value does match a known ESNIKeys, the server performs the following checks:</p>
+<p id="rfc.section.5.2.p.7">Note that an unrecognized ClientEncryptedSNI.record_digest value may be a GREASE ESNI extension (see <a href="#grease-extensions" class="xref">Section 5.1.4</a>), so it is necessary for servers to proceed with the connection and rely on the client to abort if ESNI was required. In particular, the unrecognized value alone does not indicate a misconfigured ESNI advertisement (<a href="#misconfiguration" class="xref">Section 6.1</a>). Instead, servers can measure occurrences of the &#8220;esni_required&#8221; alert to detect this case.</p>
+<p id="rfc.section.5.2.p.8">If the ClientEncryptedSNI value does match a known ESNIKeys, the server performs the following checks:</p>
 <p></p>
 
 <ul>
 <li>If the ClientEncryptedSNI.key_share group does not match one in the ESNIKeys.keys, it MUST abort the connection with an &#8220;illegal_parameter&#8221; alert.</li>
 <li>If the length of the &#8220;encrypted_server_name&#8221; extension is inconsistent with the advertised padding length (plus AEAD expansion) the server MAY abort the connection with an &#8220;illegal_parameter&#8221; alert without attempting to decrypt.</li>
 </ul>
-<p id="rfc.section.5.2.p.8">Assuming these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
-<p id="rfc.section.5.2.p.9">If the decrypted value&#8217;s length is different from the advertised ESNIKeys.padded_length or the padding consists of any value other than 0, then the server MUST abort the connection with an illegal_parameter alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored, which also means the server MUST NOT send the &#8220;server_name&#8221; extension to the client.</p>
-<p id="rfc.section.5.2.p.10">Upon determining the true SNI, the client-facing server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the backend server (if in Split Mode). In the latter case, it does not make any changes to the TLS messages, but just blindly forwards them.</p>
+<p id="rfc.section.5.2.p.10">Assuming these checks succeed, the server then computes K_sni and decrypts the ServerName value. If decryption fails, the server MUST abort the connection with a &#8220;decrypt_error&#8221; alert.</p>
+<p id="rfc.section.5.2.p.11">If the decrypted value&#8217;s length is different from the advertised ESNIKeys.padded_length or the padding consists of any value other than 0, then the server MUST abort the connection with an illegal_parameter alert. Otherwise, the server uses the PaddedServerNameList.sni value as if it were the &#8220;server_name&#8221; extension. Any actual &#8220;server_name&#8221; extension is ignored, which also means the server MUST NOT send the &#8220;server_name&#8221; extension to the client.</p>
+<p id="rfc.section.5.2.p.12">Upon determining the true SNI, the client-facing server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the backend server (if in Split Mode). In the latter case, it does not make any changes to the TLS messages, but just blindly forwards them.</p>
 <h1 id="rfc.section.5.3">
 <a href="#rfc.section.5.3">5.3.</a> <a href="#shared-mode-server-behavior" id="shared-mode-server-behavior">Shared Mode Server Behavior</a>
 </h1>

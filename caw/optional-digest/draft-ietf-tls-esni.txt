@@ -915,12 +915,19 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    The ClientEncryptedSNI value is said to match a known ESNIKeys if
    there exists an ESNIKeys that can be used to successfully decrypt
    ClientEncryptedSNI.encrypted_sni.  This matching procedure should be
-   performed as follows.  If ClientEncryptedSNI.record_digest is non-
-   empty, servers SHOULD compare it against cryptographic hashes of
-   known ESNIKeys and choose the one that matches.  If
-   ClientEncryptedSNI.record_digest is empty, servers MAY use trial
-   decryption to match to a known ESNIKeys.  If both checks fail, there
-   is no matching ESNIKeys.
+   done using one of the following two checks:
+
+   1.  Compare ClientEncryptedSNI.record_digest against cryptographic
+       hashes of known ESNIKeys and choose the one that matches.
+
+   2.  Use trial decryption of ClientEncryptedSNI.encrypted_sni with
+       known ESNIKeys and choose the one that succeeds.
+
+   Which check to use must be configured externally.  Some uses of ESNI,
+   such as local discovery mode, may omit the
+   ClientEncryptedSNI.record_digest since it can be used as a tracking
+   vector.  In such cases, trial decryption should be used for matching
+   ClientEncryptedSNI to known ESNIKeys.
 
    If the ClientEncryptedSNI value does not match any known ESNIKeys
    structure, it MUST ignore the extension and proceed with the
@@ -940,13 +947,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
       cleartext SNI name.  This restriction allows a client to reject
       resumptions in Section 5.1.3.
 
-   Note that an unrecognized ClientEncryptedSNI.record_digest value may
-   be a GREASE ESNI extension (see Section 5.1.4), so it is necessary
-   for servers to proceed with the connection and rely on the client to
-   abort if ESNI was required.  In particular, the unrecognized value
-   alone does not indicate a misconfigured ESNI advertisement
-   (Section 6.1).  Instead, servers can measure occurrences of the
-
 
 
 Rescorla, et al.         Expires January 9, 2020               [Page 17]
@@ -954,13 +954,13 @@ Rescorla, et al.         Expires January 9, 2020               [Page 17]
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
-   "esni_required" alert to detect this case.  An empty
-   ClientEncryptedSNI.record_digest value MAY be used in environments
-   wherein trial decryption is a viable approach for matching
-   ClientEncryptedSNI contents to a known ESNIKeys.  (Some uses of ESNI,
-   such as local discovery mode, may opt to omit the
-   ClientEncryptedSNI.record_digest since it can be used as a tracking
-   vector.)
+   Note that an unrecognized ClientEncryptedSNI.record_digest value may
+   be a GREASE ESNI extension (see Section 5.1.4), so it is necessary
+   for servers to proceed with the connection and rely on the client to
+   abort if ESNI was required.  In particular, the unrecognized value
+   alone does not indicate a misconfigured ESNI advertisement
+   (Section 6.1).  Instead, servers can measure occurrences of the
+   "esni_required" alert to detect this case.
 
    If the ClientEncryptedSNI value does match a known ESNIKeys, the
    server performs the following checks:
