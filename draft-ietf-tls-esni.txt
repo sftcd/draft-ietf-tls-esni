@@ -5,12 +5,12 @@
 tls                                                          E. Rescorla
 Internet-Draft                                                RTFM, Inc.
 Intended status: Experimental                                     K. Oku
-Expires: January 5, 2020                                          Fastly
+Expires: January 9, 2020                                          Fastly
                                                              N. Sullivan
                                                               Cloudflare
                                                                  C. Wood
                                                              Apple, Inc.
-                                                           July 04, 2019
+                                                           July 08, 2019
 
 
               Encrypted Server Name Indication for TLS 1.3
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 5, 2020.
+   This Internet-Draft will expire on January 9, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 1]
+Rescorla, et al.         Expires January 9, 2020                [Page 1]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -87,33 +87,34 @@ Table of Contents
      6.2.  Middleboxes . . . . . . . . . . . . . . . . . . . . . . .  20
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  20
      7.1.  Why is cleartext DNS OK?  . . . . . . . . . . . . . . . .  20
-     7.2.  Related Privacy Leaks . . . . . . . . . . . . . . . . . .  21
-     7.3.  Comparison Against Criteria . . . . . . . . . . . . . . .  21
-       7.3.1.  Mitigate against replay attacks . . . . . . . . . . .  21
-       7.3.2.  Avoid widely-deployed shared secrets  . . . . . . . .  21
-       7.3.3.  Prevent SNI-based DoS attacks . . . . . . . . . . . .  22
-       7.3.4.  Do not stick out  . . . . . . . . . . . . . . . . . .  22
-       7.3.5.  Forward secrecy . . . . . . . . . . . . . . . . . . .  22
-       7.3.6.  Proper security context . . . . . . . . . . . . . . .  22
-       7.3.7.  Split server spoofing . . . . . . . . . . . . . . . .  22
-       7.3.8.  Supporting multiple protocols . . . . . . . . . . . .  23
-     7.4.  Misrouting  . . . . . . . . . . . . . . . . . . . . . . .  23
+     7.2.  Encrypting other Extensions . . . . . . . . . . . . . . .  21
+     7.3.  Related Privacy Leaks . . . . . . . . . . . . . . . . . .  21
+     7.4.  Comparison Against Criteria . . . . . . . . . . . . . . .  21
+       7.4.1.  Mitigate against replay attacks . . . . . . . . . . .  21
+       7.4.2.  Avoid widely-deployed shared secrets  . . . . . . . .  22
+       7.4.3.  Prevent SNI-based DoS attacks . . . . . . . . . . . .  22
+       7.4.4.  Do not stick out  . . . . . . . . . . . . . . . . . .  22
+       7.4.5.  Forward secrecy . . . . . . . . . . . . . . . . . . .  22
+       7.4.6.  Proper security context . . . . . . . . . . . . . . .  22
+       7.4.7.  Split server spoofing . . . . . . . . . . . . . . . .  23
+       7.4.8.  Supporting multiple protocols . . . . . . . . . . . .  23
+     7.5.  Misrouting  . . . . . . . . . . . . . . . . . . . . . . .  23
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
      8.1.  Update of the TLS ExtensionType Registry  . . . . . . . .  23
      8.2.  Update of the TLS Alert Registry  . . . . . . . . . . . .  23
-     8.3.  Update of the Resource Record (RR) TYPEs Registry . . . .  23
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
+     8.3.  Update of the Resource Record (RR) TYPEs Registry . . . .  24
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  24
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  25
-   Appendix A.  Communicating SNI and Nonce to Backend Server  . . .  26
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 2]
+Rescorla, et al.         Expires January 9, 2020                [Page 2]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
+   Appendix A.  Communicating SNI and Nonce to Backend Server  . . .  26
    Appendix B.  Alternative SNI Protection Designs . . . . . . . . .  26
      B.1.  TLS-layer . . . . . . . . . . . . . . . . . . . . . . . .  26
        B.1.1.  TLS in Early Data . . . . . . . . . . . . . . . . . .  26
@@ -164,8 +165,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-
-Rescorla, et al.         Expires January 5, 2020                [Page 3]
+Rescorla, et al.         Expires January 9, 2020                [Page 3]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -221,7 +221,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 4]
+Rescorla, et al.         Expires January 9, 2020                [Page 4]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -277,7 +277,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 5]
+Rescorla, et al.         Expires January 9, 2020                [Page 5]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -333,7 +333,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 6]
+Rescorla, et al.         Expires January 9, 2020                [Page 6]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -389,7 +389,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 7]
+Rescorla, et al.         Expires January 9, 2020                [Page 7]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -445,7 +445,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 8]
+Rescorla, et al.         Expires January 9, 2020                [Page 8]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -501,7 +501,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020                [Page 9]
+Rescorla, et al.         Expires January 9, 2020                [Page 9]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -557,7 +557,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 10]
+Rescorla, et al.         Expires January 9, 2020               [Page 10]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -613,7 +613,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 11]
+Rescorla, et al.         Expires January 9, 2020               [Page 11]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -669,7 +669,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 12]
+Rescorla, et al.         Expires January 9, 2020               [Page 12]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -725,7 +725,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 13]
+Rescorla, et al.         Expires January 9, 2020               [Page 13]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -781,7 +781,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 14]
+Rescorla, et al.         Expires January 9, 2020               [Page 14]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -837,7 +837,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 15]
+Rescorla, et al.         Expires January 9, 2020               [Page 15]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -893,7 +893,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 16]
+Rescorla, et al.         Expires January 9, 2020               [Page 16]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -949,7 +949,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 17]
+Rescorla, et al.         Expires January 9, 2020               [Page 17]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 18]
+Rescorla, et al.         Expires January 9, 2020               [Page 18]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 19]
+Rescorla, et al.         Expires January 9, 2020               [Page 19]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1117,7 +1117,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 20]
+Rescorla, et al.         Expires January 9, 2020               [Page 20]
 
 Internet-Draft           TLS 1.3 SNI Encryption                July 2019
 
@@ -1125,7 +1125,19 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    encryption is less useful without encryption of DNS queries in
    transit via DoH or DPRIVE mechanisms.
 
-7.2.  Related Privacy Leaks
+7.2.  Encrypting other Extensions
+
+   ESNI protects only the SNI in transit.  Other ClientHello extensions,
+   such as ALPN, might also reveal privacy-sensitive information to the
+   network.  As such, it might be desirable to encrypt other extensions
+   alongside the SNI.  However, the SNI extension is unique in that non-
+   TLS-terminating servers or load balancers may act on its contents.
+   Thus, using keys specifically for SNI encryption promotes key
+   separation between client-facing servers and endpoints party to TLS
+   connections.  Moreover, the ESNI design described herein does not
+   preclude a mechanism for generic ClientHello extension encryption.
+
+7.3.  Related Privacy Leaks
 
    ESNI requires encrypted DNS to be an effective privacy protection
    mechanism.  However, verifying the server's identity from the
@@ -1147,22 +1159,30 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    SHOULD take steps to minimize or protect such requests during
    certificate validation.
 
-7.3.  Comparison Against Criteria
+7.4.  Comparison Against Criteria
 
    [I-D.ietf-tls-sni-encryption] lists several requirements for SNI
    encryption.  In this section, we re-iterate these requirements and
    assess the ESNI design against them.
 
-7.3.1.  Mitigate against replay attacks
+7.4.1.  Mitigate against replay attacks
 
    Since the SNI encryption key is derived from a (EC)DH operation
    between the client's ephemeral and server's semi-static ESNI key, the
    ESNI encryption is bound to the Client Hello.  It is not possible for
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 21]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    an attacker to "cut and paste" the ESNI value in a different Client
    Hello, with a different ephemeral key share, as the terminating
    server will fail to decrypt and verify the ESNI value.
 
-7.3.2.  Avoid widely-deployed shared secrets
+7.4.2.  Avoid widely-deployed shared secrets
 
    This design depends upon DNS as a vehicle for semi-static public key
    distribution.  Server operators may partition their private keys
@@ -1170,18 +1190,10 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    the corresponding private key to decrypt a key.  Thus, when one ESNI
    key is provided, sharing is optimally bound by the number of hosts
    that share an IP address.  Server operators may further limit sharing
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 21]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
-
    by sending different Resource Records containing ESNIRecord and
    ESNIKeys values with different keys using a short TTL.
 
-7.3.3.  Prevent SNI-based DoS attacks
+7.4.3.  Prevent SNI-based DoS attacks
 
    This design requires servers to decrypt ClientHello messages with
    ClientEncryptedSNI extensions carrying valid digests.  Thus, it is
@@ -1189,7 +1201,7 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    server.  This attack is bound by the number of valid TCP connections
    an attacker can open.
 
-7.3.4.  Do not stick out
+7.4.4.  Do not stick out
 
    As more clients enable ESNI support, e.g., as normal part of Web
    browser functionality, with keys supplied by shared hosting
@@ -1202,19 +1214,27 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    ESNI extensions (see Section 5.1.4), which helps ensure the ecosystem
    handles the values correctly.
 
-7.3.5.  Forward secrecy
+7.4.5.  Forward secrecy
 
    This design is not forward secret because the server's ESNI key is
    static.  However, the window of exposure is bound by the key
    lifetime.  It is RECOMMENDED that servers rotate keys frequently.
 
-7.3.6.  Proper security context
+7.4.6.  Proper security context
 
    This design permits servers operating in Split Mode to forward
    connections directly to backend origin servers, thereby avoiding
    unnecessary MiTM attacks.
 
-7.3.7.  Split server spoofing
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 22]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
+7.4.7.  Split server spoofing
 
    Assuming ESNI records retrieved from DNS are validated, e.g., via
    DNSSEC or fetched from a trusted Recursive Resolver, spoofing a
@@ -1226,22 +1246,14 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    client validates the server certificate against the public name
    before retrying.
 
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 22]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
-
-7.3.8.  Supporting multiple protocols
+7.4.8.  Supporting multiple protocols
 
    This design has no impact on application layer protocol negotiation.
    It may affect connection routing, server certificate selection, and
    client certificate verification.  Thus, it is compatible with
    multiple protocols.
 
-7.4.  Misrouting
+7.5.  Misrouting
 
    Note that the backend server has no way of knowing what the SNI was,
    but that does not lead to additional privacy exposure because the
@@ -1271,6 +1283,13 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    existing registry for Alerts (defined in [RFC8446]), with the "DTLS-
    OK" column being set to "Y".
 
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 23]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
 8.3.  Update of the Resource Record (RR) TYPEs Registry
 
    IANA is requested to create an entry, ESNI(0xff9f), in the existing
@@ -1278,17 +1297,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
    "Meaning" column value being set to "Encrypted SNI".
 
 9.  References
-
-
-
-
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 23]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
 9.1.  Normative References
 
@@ -1329,6 +1337,15 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
+
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 24]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    [RFC7918]  Langley, A., Modadugu, N., and B. Moeller, "Transport
               Layer Security (TLS) False Start", RFC 7918,
               DOI 10.17487/RFC7918, August 2016,
@@ -1338,13 +1355,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               (TLS) Cached Information Extension", RFC 7924,
               DOI 10.17487/RFC7924, July 2016,
               <https://www.rfc-editor.org/info/rfc7924>.
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 24]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -1384,6 +1394,14 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
               2016, <https://www.rfc-editor.org/info/rfc7858>.
 
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 25]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    [RFC8094]  Reddy, T., Wing, D., and P. Patil, "DNS over Datagram
               Transport Layer Security (DTLS)", RFC 8094,
               DOI 10.17487/RFC8094, February 2017,
@@ -1393,14 +1411,6 @@ Internet-Draft           TLS 1.3 SNI Encryption                July 2019
               "Accepting that other SNI name types will never work",
               n.d., <https://mailarchive.ietf.org/arch/msg/
               tls/1t79gzNItZd71DwwoaqcQQ_4Yxc>.
-
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 25]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
 Appendix A.  Communicating SNI and Nonce to Backend Server
 
@@ -1440,6 +1450,14 @@ B.1.1.  TLS in Early Data
    forwarded by the client-facing server - unmodified.  This avoids
    double encryption of TLS records.
 
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 26]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    Problems with this approach are: (1) servers may not always be able
    to distinguish inner Client Hellos from legitimate application data,
    (2) nested 0-RTT data may not function correctly, (3) 0-RTT data may
@@ -1449,14 +1467,6 @@ B.1.1.  TLS in Early Data
    initial connection.  In contrast, encrypted SNI protects the SNI in a
    distinct Client Hello extension and neither abuses early data nor
    requires a bootstrapping connection.
-
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 26]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
 
 B.1.2.  Combined Tickets
 
@@ -1496,6 +1506,14 @@ Appendix C.  Total Client Hello Encryption
 
    o  It protects all the extensions from ordinary eavesdroppers
 
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 27]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    o  If the encrypted block has its own KeyShare, it does not
       necessarily require the client to use a single KeyShare, because
       the client's share is bound to the SNI by the AEAD (analysis
@@ -1505,15 +1523,6 @@ Appendix C.  Total Client Hello Encryption
 
    o  The client-facing server can still see the other extensions.  By
       contrast we could introduce another EncryptedExtensions block that
-
-
-
-
-Rescorla, et al.         Expires January 5, 2020               [Page 27]
-
-Internet-Draft           TLS 1.3 SNI Encryption                July 2019
-
-
       was encrypted to the backend server and not the client-facing
       server.
 
@@ -1555,6 +1564,12 @@ Authors' Addresses
    Email: nick@cloudflare.com
 
 
+
+Rescorla, et al.         Expires January 9, 2020               [Page 28]
+
+Internet-Draft           TLS 1.3 SNI Encryption                July 2019
+
+
    Christopher A. Wood
    Apple, Inc.
 
@@ -1565,4 +1580,45 @@ Authors' Addresses
 
 
 
-Rescorla, et al.         Expires January 5, 2020               [Page 28]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Rescorla, et al.         Expires January 9, 2020               [Page 29]
