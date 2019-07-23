@@ -543,7 +543,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
    suite  The cipher suite used to encrypt the SNI.
 
    key_share  The KeyShareEntry carrying the client's public ephemeral
-      key shared used to derive the ESNI key.
+      key share used to derive the ESNI key.
 
    record_digest  A cryptographic hash of the ESNIKeys structure from
       which the ESNI key was obtained, i.e., from the first byte of
