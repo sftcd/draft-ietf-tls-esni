@@ -1,6 +1,264 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/175",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/175/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/175/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/175/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/175",
+    "id": 471459512,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzAwMTA3MTU3",
+    "number": 175,
+    "title": "refer GREASE extension in resolution algorithm & formatting fix",
+    "user": {
+      "login": "gsamat",
+      "id": 705006,
+      "node_id": "MDQ6VXNlcjcwNTAwNg==",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/705006?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/gsamat",
+      "html_url": "https://github.com/gsamat",
+      "followers_url": "https://api.github.com/users/gsamat/followers",
+      "following_url": "https://api.github.com/users/gsamat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/gsamat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/gsamat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/gsamat/subscriptions",
+      "organizations_url": "https://api.github.com/users/gsamat/orgs",
+      "repos_url": "https://api.github.com/users/gsamat/repos",
+      "events_url": "https://api.github.com/users/gsamat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/gsamat/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-23T02:45:29Z",
+    "updated_at": "2019-07-23T02:45:29Z",
+    "closed_at": null,
+    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/175",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/175",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/175.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/175.patch"
+    },
+    "body": "I referred GREASE extensions in 4.2.2 Resolution algorithm to make it in line with 5.1.4. GREASE extensions\r\n\r\nalso fixed 4.2.2. Resolution algorithm formatting issue: line width > 72 resulted in ugly PDF"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/174",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/174/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/174/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/174/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/174",
+    "id": 471417900,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzAwMDg0NTI2",
+    "number": 174,
+    "title": "Remove `sni` reference from padded server name list",
+    "user": {
+      "login": "mrsylerpowers",
+      "id": 7625284,
+      "node_id": "MDQ6VXNlcjc2MjUyODQ=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7625284?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mrsylerpowers",
+      "html_url": "https://github.com/mrsylerpowers",
+      "followers_url": "https://api.github.com/users/mrsylerpowers/followers",
+      "following_url": "https://api.github.com/users/mrsylerpowers/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mrsylerpowers/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mrsylerpowers/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mrsylerpowers/subscriptions",
+      "organizations_url": "https://api.github.com/users/mrsylerpowers/orgs",
+      "repos_url": "https://api.github.com/users/mrsylerpowers/repos",
+      "events_url": "https://api.github.com/users/mrsylerpowers/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mrsylerpowers/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-23T00:18:57Z",
+    "updated_at": "2019-07-23T19:42:54Z",
+    "closed_at": "2019-07-23T19:42:54Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/174",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/174",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/174.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/174.patch"
+    },
+    "body": "#173 "
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/173",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/173/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/173/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/173/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/173",
+    "id": 471217963,
+    "node_id": "MDU6SXNzdWU0NzEyMTc5NjM=",
+    "number": 173,
+    "title": "Lingering references to `sni` instead of `dns_name`",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-22T17:39:28Z",
+    "updated_at": "2019-07-22T17:39:28Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "From Stephen Farrell on the TLS WG list:\r\n\r\nJust spotted that:\r\n\r\n   opaque zeros[ESNIKeys.padded_length - length(sni)];\r\n\r\nshould I guess now be:\r\n\r\n   opaque zeros[ESNIKeys.padded_length - length(dns_name)];\r\n\r\nAnd maybe s/PaddedServerNameList/PaddedDNSName/ would also make sense."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/172",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/172/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/172/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/172/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/172",
+    "id": 470695441,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk5NTc4MDQ0",
+    "number": 172,
+    "title": "Fix typo in text for ClientEncryptedSNI.key_share",
+    "user": {
+      "login": "dmcardle",
+      "id": 183652,
+      "node_id": "MDQ6VXNlcjE4MzY1Mg==",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/183652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dmcardle",
+      "html_url": "https://github.com/dmcardle",
+      "followers_url": "https://api.github.com/users/dmcardle/followers",
+      "following_url": "https://api.github.com/users/dmcardle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dmcardle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dmcardle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dmcardle/subscriptions",
+      "organizations_url": "https://api.github.com/users/dmcardle/orgs",
+      "repos_url": "https://api.github.com/users/dmcardle/repos",
+      "events_url": "https://api.github.com/users/dmcardle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dmcardle/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-07-20T17:11:49Z",
+    "updated_at": "2019-07-23T19:43:18Z",
+    "closed_at": null,
+    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/172",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/172",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/172.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/172.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/171",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/171/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/171/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/171/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/171",
+    "id": 466623385,
+    "node_id": "MDU6SXNzdWU0NjY2MjMzODU=",
+    "number": 171,
+    "title": "Formal analysis",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2019-07-11T02:25:38Z",
+    "updated_at": "2019-07-16T16:55:06Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We need some form of analysis before we ship this. Filing an issue to track that task."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/170/labels{/name}",
@@ -623,7 +881,7 @@
     "created_at": "2019-06-12T18:44:41Z",
     "updated_at": "2019-07-03T01:09:00Z",
     "closed_at": "2019-07-03T01:09:00Z",
-    "author_association": "NONE",
+    "author_association": "CONTRIBUTOR",
     "body": "I believe it will be helpful to understanding this document to either add \"Presentation Language\" to this document or link to Presentation Language elsewhere. The TLS/1.3 document has something similar in [RFC8446 Section 3](https://tools.ietf.org/html/rfc8446#section-3)"
   },
   {
@@ -1477,7 +1735,10 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "If each client receives a unique ESNI key from a DNS provider, it is possible to link every usage of this key to the same client. It seems feasible that online services, as well as passive observers of the network traffic, can exploit such a practice for user tracking.\r\n\r\nTo enhance the privacy protections of this draft, we should describe these privacy risks in the draft. Furthermore, I recommend a clear restriction on the clients’ caching durations of ESNI keys. For example, clients MUST NOT cache ESNI keys longer than 24 hours and as privacy protection, it is RECOMMENDED to cache ESNI keys only for 10 minutes."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/145",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1730,10 +1991,7 @@
     "closed_at": "2019-06-17T18:21:16Z",
     "author_association": "NONE",
     "body": "Since the 32 bit checksum in ESNI records does not server a cryptographic purpose, only error detection, and since the chosen suite for the exchange does not necessarily use the SHA-256 algorithm, it would be more efficient to use a dedicated fast error detecting checksum.  The CRC32 algorithm used in RFC1952 (gzip), ISO 3309 and ITU-T V.42 is optimized for this task, widely available in software and hardware, and likely to already be implemented in ESNI using systems for other purposes.\r\n\r\nThis would also remove the only part of the draft that requires a specific single cryptographic algorithm, thereby making the specification algorithm agile without introducing any new algorithm registries for IANA to maintain."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/140",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3170,7 +3428,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "In a large-scale server deployment that benefits the most from ESNI (due to the size of the umbrella under which you would hide the domain names), it is often the case that the largest length of the server name to be supported is *unknown*. That leads such server deployments to use a padded_length of 260 because the longest valid DNS name is 253 characters, bloating the ClientHello.\r\n\r\nIt is beneficial to apply a lightweight compression algorithm to the server name to reduce the overhead.\r\n\r\nSome points to consider:\r\n* We cannot use a pre-learnt dictionary, because what we care is the longest possible length. Compression algorithm using a pre-learnt dictionary assigns longer symbols for rarely used patterns, which means that the worst case is longer than the non-compressed string.\r\n* We can use an adaptive compression algorithm (e.g. lz77, brotli), however they also would not compress well if the server-name is a random-looking string."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/115",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3434,10 +3695,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/111.patch"
     },
     "body": "fixes #110"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/110",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -4746,7 +5004,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/86.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/85",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5066,10 +5327,7 @@
     "closed_at": "2018-10-21T20:34:11Z",
     "author_association": "COLLABORATOR",
     "body": "See \r\nhttps://mailarchive.ietf.org/arch/msg/tls/rc_tgkgVIeB4yeNCgPcyPzRnrBI"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/80",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6563,7 +6821,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/56.patch"
     },
     "body": "**NOTE**, this depends on https://github.com/ekr/draft-rescorla-tls-esni/pull/55 and if we decide that we don't want to send the empty extension in EE, then it needs to be removed from this PR too."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/55",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6833,10 +7094,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/51.patch"
     },
     "body": "Please do not merge yet!"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/50",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8208,7 +8466,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/26.patch"
     },
     "body": "The approach does not work if the mapping between the fronting server and the hidden server contains a wildcard."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/25",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8472,10 +8733,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/21.patch"
     },
     "body": "@kazuho: please double check"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/20",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
