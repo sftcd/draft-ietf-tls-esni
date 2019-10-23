@@ -1,6 +1,302 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/186",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/186/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/186/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/186/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/186",
+    "id": 511427051,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzMxNjI3MjA3",
+    "number": 186,
+    "title": "Proposal: Use a hash instead of padding",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2019-10-23T16:05:42Z",
+    "updated_at": "2019-10-23T20:22:36Z",
+    "closed_at": "2019-10-23T20:22:35Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/186",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/186",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/186.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/186.patch"
+    },
+    "body": "This is (almost) entirely compatible with wildcard names\r\nand avoids the need for padding."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/185",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/185/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/185/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/185/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/185",
+    "id": 508023163,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzI4ODk3MzAw",
+    "number": 185,
+    "title": "Remove partial split mode",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-16T18:30:25Z",
+    "updated_at": "2019-10-16T18:30:25Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/185",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/185",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/185.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/185.patch"
+    },
+    "body": "Based on comments in Montreal, I believe that the authors\r\nno longer intend to document the partial-split configuration."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/184",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/184/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/184/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/184/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/184",
+    "id": 505262583,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzI2NzI5MDAx",
+    "number": 184,
+    "title": "Add description about \"cipher suites\" via an ESNIKeys extension",
+    "user": {
+      "login": "pengin7384",
+      "id": 32831939,
+      "node_id": "MDQ6VXNlcjMyODMxOTM5",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/32831939?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pengin7384",
+      "html_url": "https://github.com/pengin7384",
+      "followers_url": "https://api.github.com/users/pengin7384/followers",
+      "following_url": "https://api.github.com/users/pengin7384/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pengin7384/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pengin7384/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pengin7384/subscriptions",
+      "organizations_url": "https://api.github.com/users/pengin7384/orgs",
+      "repos_url": "https://api.github.com/users/pengin7384/repos",
+      "events_url": "https://api.github.com/users/pengin7384/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pengin7384/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-10T13:12:22Z",
+    "updated_at": "2019-10-10T13:12:22Z",
+    "closed_at": null,
+    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/184",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/184",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/184.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/184.patch"
+    },
+    "body": "Add missing description for cipher_suites and add colon symbol to padded_length"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/183",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/183/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/183/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/183/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/183",
+    "id": 500977567,
+    "node_id": "MDU6SXNzdWU1MDA5Nzc1Njc=",
+    "number": 183,
+    "title": "Clarification on repeated extensions in ESNIRecord and ESNIKeys",
+    "user": {
+      "login": "dmcardle",
+      "id": 183652,
+      "node_id": "MDQ6VXNlcjE4MzY1Mg==",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/183652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dmcardle",
+      "html_url": "https://github.com/dmcardle",
+      "followers_url": "https://api.github.com/users/dmcardle/followers",
+      "following_url": "https://api.github.com/users/dmcardle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dmcardle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dmcardle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dmcardle/subscriptions",
+      "organizations_url": "https://api.github.com/users/dmcardle/orgs",
+      "repos_url": "https://api.github.com/users/dmcardle/repos",
+      "events_url": "https://api.github.com/users/dmcardle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dmcardle/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-01T15:34:05Z",
+    "updated_at": "2019-10-01T15:34:05Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "[RFC8446 section 4.2](https://tools.ietf.org/html/rfc8446#section-4.2) states:\r\n\r\n> There MUST NOT be more than one extension of the\r\n   same type in a given extension block.\r\n\r\nThe ESNI draft should probably explicitly restate this for both `ESNIRecord.dns_extensions` and `ESNIKeys.extensions`.  I'd be happy to make a PR if need be. Thanks!"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/182",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/182/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/182/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/182/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/182",
+    "id": 498434893,
+    "node_id": "MDU6SXNzdWU0OTg0MzQ4OTM=",
+    "number": 182,
+    "title": "Consider disabling server tickets if tickets are not uniform across the ESNI anonymity set",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "chris-wood",
+        "id": 2172048,
+        "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/chris-wood",
+        "html_url": "https://github.com/chris-wood",
+        "followers_url": "https://api.github.com/users/chris-wood/followers",
+        "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+        "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+        "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+        "repos_url": "https://api.github.com/users/chris-wood/repos",
+        "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 11,
+    "created_at": "2019-09-25T17:54:45Z",
+    "updated_at": "2019-09-30T07:48:59Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Tickets and ESNI interact in a weird way, i.e., they may leak size or contain the SNI, leading to potential issues. One might want to disable them if also offering ESNI as a service."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/181",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/181/labels{/name}",
@@ -143,9 +439,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 2,
     "created_at": "2019-07-25T16:00:18Z",
-    "updated_at": "2019-07-25T16:00:18Z",
+    "updated_at": "2019-08-15T22:19:19Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "This will let us adopt another delivery mechanism (HTTPSVC?) if needed later on."
@@ -480,17 +776,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-22T17:39:28Z",
-    "updated_at": "2019-07-22T17:39:28Z",
-    "closed_at": null,
+    "updated_at": "2019-08-15T22:20:15Z",
+    "closed_at": "2019-08-15T22:20:15Z",
     "author_association": "COLLABORATOR",
     "body": "From Stephen Farrell on the TLS WG list:\r\n\r\nJust spotted that:\r\n\r\n   opaque zeros[ESNIKeys.padded_length - length(sni)];\r\n\r\nshould I guess now be:\r\n\r\n   opaque zeros[ESNIKeys.padded_length - length(dns_name)];\r\n\r\nAnd maybe s/PaddedServerNameList/PaddedDNSName/ would also make sense."
   },
@@ -630,7 +926,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -639,8 +935,8 @@
     "milestone": null,
     "comments": 12,
     "created_at": "2019-07-05T04:33:31Z",
-    "updated_at": "2019-07-08T21:53:20Z",
-    "closed_at": null,
+    "updated_at": "2019-10-11T17:43:30Z",
+    "closed_at": "2019-10-11T17:43:30Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/170",
@@ -1383,7 +1679,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/157.patch"
     },
     "body": "The current text about anonymity sets for records is too restrictive. If I have 100000 names and 100 IPs and for all queries I randomly return four out of my 100 IPs chosen randomly, I still provide the same anonymity set but I violate the SHOULD. The proposed text fixes #133 "
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/156",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1641,10 +1940,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/152.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/151",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -2173,9 +2469,9 @@
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2019-03-05T02:31:59Z",
-    "updated_at": "2019-04-19T20:20:48Z",
+    "updated_at": "2019-09-24T10:55:09Z",
     "closed_at": "2019-03-06T00:54:53Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -2951,17 +3247,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 7,
     "created_at": "2019-01-19T01:14:24Z",
-    "updated_at": "2019-06-28T16:45:26Z",
-    "closed_at": null,
+    "updated_at": "2019-09-28T14:41:38Z",
+    "closed_at": "2019-09-28T14:41:38Z",
     "author_association": "COLLABORATOR",
     "body": "The mechanism to make split mode work in practice requires non-trivial changes to both the fronting server and origin. Moreover, as the main (mass user base) benefit for ESNI is shared mode, perhaps we should consider dropping split mode."
   },
@@ -3126,7 +3422,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/127.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/126",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3384,10 +3683,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/122.patch"
     },
     "body": "Also takes out the \"longest length\" part of the SHOULD since (as Viktor pointed out) a server might not always know that and it can change due to CA or other PKI changes that might lead to errors in some scenarios. (E.g. CA adds new extension thereby causing a cert to be longer than what the TLS server thinks is longest.)"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/121",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -4754,7 +5050,10 @@
     "closed_at": "2018-10-21T20:33:05Z",
     "author_association": "COLLABORATOR",
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/96",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5024,10 +5323,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/92.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/91",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6527,7 +6823,10 @@
     "closed_at": "2018-10-21T20:43:09Z",
     "author_association": "COLLABORATOR",
     "body": "Using the same key share looked like a good idea, but it's actually a real pain to implement because you need to get pretty involved with the TLS 1.3 key exchange.\r\n\r\nAnother approach would be to have separate keys but bind the ClientHello.KeyShare extension into the ESNI extension. I had thought of putting a hash in the extension plaintext but @martinthomson points out that if you use it as AAD, then the client-facing server will automatically detect mismatch\r\n\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/66",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6841,10 +7140,7 @@
     "closed_at": "2018-10-21T20:41:00Z",
     "author_association": "COLLABORATOR",
     "body": "Require that the server check that everything after ServerNameList is zero."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/61",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8220,7 +8516,10 @@
     "closed_at": "2018-07-02T14:18:59Z",
     "author_association": "NONE",
     "body": "In 3.1 Topologies, in Shared Mode topology the fronting and hidden servers are one and the same.\r\n\r\nFronting Mode Topology is described as \"... might not be the origin for any domains, but as a practical matter, it is probably the origin for a large set of innocuous domains\".\r\n\r\nWhy are some domains innocuous and others aren't?\r\nIs it ok for an attacker (adversary) to discover innocuous domains names?\r\n\r\nInnocuous domain names may provide cover when the threat model includes censorship.\r\nIs this what you are trying to solve here?\r\nIsn't that orthogonal to ESNI, i.e., architectures where there is a cover reason why a client is communicating with a server? (because it's a known CDN or sth)\r\n\r\n\r\nIn 5.2 Fronting Server Behavior the text says \"Upon determining the true SNI, the fronting server then either serves the connection directly (if in Shared Mode), in which case it executes the steps in the following section, or forwards the TLS connection to the hidden server (if in Fronting Mode).\"\r\n\r\n... or decrypts the TLS connections and forwards plain text traffic to the hidden server. (Bad idea I know)\r\nThe question is why should this document describe what happens after a TLS connection is established between a client and server? Seems to deviate from the problem this document is trying to address. (See below)\r\n\r\n\r\nIntroduction implicitly defines the problem as \"an on-path attacker to determine the domain name\"\r\nThis is always true with ESNI between the client and fronting server.\r\nAll domain names are hidden, innocuous, non-innocuous, hosted in the fronting or some other server.\r\n\r\nI would propose to drop any mention of hidden servers or deployment architectures, just say \"server\" and in Security Considerations mention that a server SHOULD be configured in a way that it does not leak the identities of domains it wants to protect. I.e., when the SNI / ESNI extension is missing the server SHOULD not return a certificate for a protected site. For example CDNs should just return a certificate for their own domain."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/36",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8466,10 +8765,7 @@
     "closed_at": "2018-07-02T14:18:08Z",
     "author_association": "COLLABORATOR",
     "body": "Others include those discussed in I-D.ietf-tls-sni-encryption and the H2-layer approach with secondary certs."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/31",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -9817,7 +10113,10 @@
     "closed_at": "2018-05-12T15:36:25Z",
     "author_association": "CONTRIBUTOR",
     "body": "In DNS, yes, but under what name?  \r\n\r\nI suggest at _esni.<domain>.  Usage of TXT and underscore names is now considered an acceptable way to deploy new features.  It also deploys more reliably than a new RRtype."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/6",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -10075,10 +10374,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/2.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/1",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
