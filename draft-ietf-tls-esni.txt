@@ -5,12 +5,12 @@
 tls                                                          E. Rescorla
 Internet-Draft                                                RTFM, Inc.
 Intended status: Experimental                                     K. Oku
-Expires: April 25, 2020                                           Fastly
+Expires: April 27, 2020                                           Fastly
                                                              N. Sullivan
                                                               Cloudflare
                                                                  C. Wood
                                                              Apple, Inc.
-                                                        October 23, 2019
+                                                        October 25, 2019
 
 
               Encrypted Server Name Indication for TLS 1.3
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 25, 2020.
+   This Internet-Draft will expire on April 27, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 1]
+Rescorla, et al.         Expires April 27, 2020                 [Page 1]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -77,7 +77,7 @@ Table of Contents
      5.1.  Client Behavior . . . . . . . . . . . . . . . . . . . . .  11
        5.1.1.  Sending an encrypted SNI  . . . . . . . . . . . . . .  11
        5.1.2.  Handling the server response  . . . . . . . . . . . .  14
-       5.1.3.  Authenticating for the public name  . . . . . . . . .  15
+       5.1.3.  Authenticating for the public name  . . . . . . . . .  16
        5.1.4.  GREASE extensions . . . . . . . . . . . . . . . . . .  16
      5.2.  Client-Facing Server Behavior . . . . . . . . . . . . . .  17
      5.3.  Shared Mode Server Behavior . . . . . . . . . . . . . . .  19
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 2]
+Rescorla, et al.         Expires April 27, 2020                 [Page 2]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -165,7 +165,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 3]
+Rescorla, et al.         Expires April 27, 2020                 [Page 3]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -221,7 +221,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 4]
+Rescorla, et al.         Expires April 27, 2020                 [Page 4]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -277,7 +277,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 5]
+Rescorla, et al.         Expires April 27, 2020                 [Page 5]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -333,7 +333,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 6]
+Rescorla, et al.         Expires April 27, 2020                 [Page 6]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -389,7 +389,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 7]
+Rescorla, et al.         Expires April 27, 2020                 [Page 7]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -445,7 +445,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 8]
+Rescorla, et al.         Expires April 27, 2020                 [Page 8]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -501,7 +501,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                 [Page 9]
+Rescorla, et al.         Expires April 27, 2020                 [Page 9]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -557,7 +557,7 @@ arrives in this time, clients SHOULD initiate TLS without ESNI to the available 
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 10]
+Rescorla, et al.         Expires April 27, 2020                [Page 10]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -613,7 +613,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 11]
+Rescorla, et al.         Expires April 27, 2020                [Page 11]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -651,6 +651,11 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    nonce re-use since the client's ESNI key share, and thus the value of
    Zx, does not change across ClientHello retries.)
 
+   Note that ESNIContents will not be directly transmitted to the server
+   in the ClientHello.  The server will instead reconstruct the same
+   object by obtaining its values from ClientEncryptedSNI and
+   ClientHello.
+
    [[TODO: label swapping fixes a bug in the spec, though this may not
    be the best way to deal with HRR.  See https://github.com/tlswg/
    draft-ietf-tls-esni/issues/121 and https://github.com/tlswg/draft-
@@ -662,17 +667,20 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
           Random client_hello_random;
       } ESNIContents;
 
-   The client then creates a ClientESNIInner structure:
 
 
-
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 12]
+Rescorla, et al.         Expires April 27, 2020                [Page 12]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
+
+   record_digest  Same value as ClientEncryptedSNI.record_digest.
+
+   esni_key_share  Same value as ClientEncryptedSNI.key_share.
+
+   client_hello_random  Same nonce as ClientHello.random.
+
+   The client then creates a ClientESNIInner structure:
 
       struct {
           opaque dns_name<1..2^16-1>;
@@ -715,6 +723,13 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    Encrypt binds the ClientEncryptedSNI value to the ClientHello and
    prevents cut-and-paste attacks.
 
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 13]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
    Note: future extensions may end up reusing the server's
    ESNIKeyShareEntry for other purposes within the same message (e.g.,
    encrypting other values).  Those usages MUST have their own HKDF
@@ -722,14 +737,6 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
    [[OPEN ISSUE: If in the future you were to reuse these keys for 0-RTT
    priming, then you would have to worry about potentially expanding
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 13]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
-
    twice of Z_extracted.  We should think about how to harmonize these
    to make sure that we maintain key separation.]]
 
@@ -771,21 +778,20 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
       using that value to encrypt the SNI.  The value may only be
       applied to the retry connection.  The client MUST continue to use
       the previously-advertised keys for subsequent connections.  This
+
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 14]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
       avoids introducing pinning concerns or a tracking vector, should a
       malicious server present client-specific retry keys to identify
       clients.
 
       If none of the values provided in "retry_keys" contains a
       supported version, the client can regard ESNI as securely disabled
-
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 14]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
-
       by the server.  As below, it SHOULD then retry the handshake with
       a new transport connection and ESNI disabled.
 
@@ -829,19 +835,18 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    extension information, as well as the inner extension plaintext, must
    be consistent between the first and second ClientHello messages.
 
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 15]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
 5.1.3.  Authenticating for the public name
 
    When the server cannot decrypt or does not process the
    "encrypted_server_name" extension, it continues with the handshake
    using the cleartext "server_name" extension instead (see
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 15]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
-
    Section 5.2).  Clients that offer ESNI then authenticate the
    connection with the public name, as follows:
 
@@ -884,19 +889,21 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
           configurations, but MAY be held constant for successive
           connections to the same server in the same session.
 
+
+
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 16]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
    o  Set the "key_share" field to a randomly-generated valid public key
       for the named group.
 
    o  Set the "record_digest" field to a randomly-generated string of
       hash_length bytes, where hash_length is the length of the hash
       function associated with the chosen cipher suite.
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 16]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
 
    o  Set the "encrypted_sni" field to a randomly-generated string of 16
       + padded_length + tag_length bytes, where tag_length is the tag
@@ -939,6 +946,14 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    application using (D)TLS or externally configured on both sides,
    implementations MUST use the first method.
 
+
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 17]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
    If the ClientEncryptedSNI value does not match any known ESNIKeys
    structure, it MUST ignore the extension and proceed with the
    connection, with the following added behavior:
@@ -946,14 +961,6 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    o  It MUST include the "encrypted_server_name" extension in
       EncryptedExtensions message with the "response_type" field set to
       "esni_retry_requested" and the "retry_keys" field set to one or
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 17]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
-
       more ESNIKeys structures with up-to-date keys.  Servers MAY supply
       multiple ESNIKeys values of different versions.  This allows a
       server to support multiple versions at once.
@@ -995,6 +1002,14 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    "illegal_parameter" alert.  Otherwise, the server uses the
    PaddedServerNameList.sni value as if it were the "server_name"
    extension.  Any actual "server_name" extension is ignored, which also
+
+
+
+Rescorla, et al.         Expires April 27, 2020                [Page 18]
+
+Internet-Draft           TLS 1.3 SNI Encryption             October 2019
+
+
    means the server MUST NOT send the "server_name" extension to the
    client.
 
@@ -1002,14 +1017,6 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    serves the connection directly (if in Shared Mode), in which case it
    executes the steps in the following section, or forwards the TLS
    connection to the backend server (if in Split Mode).  In the latter
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 18]
-
-Internet-Draft           TLS 1.3 SNI Encryption             October 2019
-
-
    case, it does not make any changes to the TLS messages, but just
    blindly forwards them.
 
@@ -1051,20 +1058,16 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
    As in Shared Mode, if the backend server sends a NewSessionTicket
    message, the corresponding ESNI PSK MUST be ignored by other servers
-   in the deployment when not negotiating ESNI, including servers which
-   do not implement this specification.
 
 
 
-
-
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 19]
+Rescorla, et al.         Expires April 27, 2020                [Page 19]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
+
+   in the deployment when not negotiating ESNI, including servers which
+   do not implement this specification.
 
 6.  Compatibility Issues
 
@@ -1110,17 +1113,17 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    A more serious problem is MITM proxies which do not support this
    extension.  [RFC8446]; Section 9.3 requires that such proxies remove
    any extensions they do not understand.  The handshake will then
-   present a certificate based on the public name, without echoing the
-   "encrypted_server_name" extension to the client.
 
 
 
 
-
-Rescorla, et al.         Expires April 25, 2020                [Page 20]
+Rescorla, et al.         Expires April 27, 2020                [Page 20]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
+
+   present a certificate based on the public name, without echoing the
+   "encrypted_server_name" extension to the client.
 
    Depending on whether the client is configured to accept the proxy's
    certificate as authoritative for the public name, this may trigger
@@ -1170,10 +1173,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-
-
-
-Rescorla, et al.         Expires April 25, 2020                [Page 21]
+Rescorla, et al.         Expires April 27, 2020                [Page 21]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1229,7 +1229,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 22]
+Rescorla, et al.         Expires April 27, 2020                [Page 22]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 23]
+Rescorla, et al.         Expires April 27, 2020                [Page 23]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 24]
+Rescorla, et al.         Expires April 27, 2020                [Page 24]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1397,7 +1397,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 25]
+Rescorla, et al.         Expires April 27, 2020                [Page 25]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1453,7 +1453,7 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 26]
+Rescorla, et al.         Expires April 27, 2020                [Page 26]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1509,7 +1509,7 @@ B.1.1.  TLS in Early Data
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 27]
+Rescorla, et al.         Expires April 27, 2020                [Page 27]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1565,7 +1565,7 @@ Appendix C.  Total Client Hello Encryption
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 28]
+Rescorla, et al.         Expires April 27, 2020                [Page 28]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1621,7 +1621,7 @@ Authors' Addresses
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 29]
+Rescorla, et al.         Expires April 27, 2020                [Page 29]
 
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
@@ -1677,4 +1677,4 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
 
-Rescorla, et al.         Expires April 25, 2020                [Page 30]
+Rescorla, et al.         Expires April 27, 2020                [Page 30]
