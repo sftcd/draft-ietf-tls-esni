@@ -239,14 +239,9 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
    In Split Mode, the provider is _not_ the origin server for private
    domains.  Rather the DNS records for private domains point to the
-   provider, but the provider's server just relays the connection back
-   to the backend server, which is the true origin server.  The provider
-   does not have access to the plaintext of the connection.  In
-   principle, the provider might not be the origin for any domains, but
-   as a practical matter, it is probably the origin for a large set of
-   innocuous domains, but is also providing protection for some private
-   domains.  Note that the backend server can be an unmodified TLS 1.3
-   server.
+   provider, and the provider's server relays the connection back to the
+   backend server, which is the true origin server.  The provider does
+   not have access to the plaintext of the connection.
 
 3.2.  SNI Encryption
 
@@ -274,6 +269,11 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    possible to obtain an ESNI record which does not match the A/AAAA
    records.  (That is, the host to which an A or AAAA record refers is
    not in possession of the ESNI keys.)  The design of the system must
+   therefore allow clients to detect and recover from this situation
+   (see Section 4.2 for more details).
+
+   Content providers SHOULD ensure that the A and AAAA records for ESNI-
+   enabled server names do not allow identifying the server name from
 
 
 
@@ -282,22 +282,17 @@ Rescorla, et al.         Expires April 27, 2020                 [Page 5]
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
-   therefore allow clients to detect and recover from this situation
-   (see Section 4.2 for more details).
-
-   Content providers operating in Split Mode SHOULD ensure that the A
-   and AAAA records for ESNI-enabled server names do not allow
-   identifying the server name from the IP address.  This can for
-   example be achieved by always returning the same records for all
-   ESNI-enabled names, or by having the function that picks addresses
-   from a pool not depend on the server name.  This yields an anonymity
-   set of cardinality equal to the number of ESNI-enabled server domains
-   supported by a given client-facing server.  Thus, even with SNI
-   encryption, an attacker which can enumerate the set of ESNI-enabled
-   domains supported by a client-facing server can guess the correct SNI
-   with probability at least 1/K, where K is the size of this ESNI-
-   enabled server anonymity set.  This probability may be increased via
-   traffic analysis or other mechanisms.
+   the IP address.  This can for example be achieved by always returning
+   the same records for all ESNI-enabled names, or by having the
+   function that picks addresses from a pool not depend on the server
+   name.  This yields an anonymity set of cardinality equal to the
+   number of ESNI-enabled server domains supported by a given client-
+   facing server.  Thus, even with SNI encryption, an attacker which can
+   enumerate the set of ESNI-enabled domains supported by a client-
+   facing server can guess the correct SNI with probability at least 1/
+   K, where K is the size of this ESNI-enabled server anonymity set.
+   This probability may be increased via traffic analysis or other
+   mechanisms.
 
    The following sections describe a DNS record format that achieve
    these goals.
@@ -329,7 +324,12 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
    The outermost ESNIRecord structure contains the following fields:
 
+   esni_keys  An ESNIKeys structure that contains the actual keys used
+      to encrypt the SNI as well as some metadata related to those keys.
 
+   dns_extensions  A list of extensions that the client can take into
+      consideration when resolving the target DNS name.  The format is
+      defined in [RFC8446]; Section 4.2.  The purpose of the field is to
 
 
 
@@ -338,12 +338,6 @@ Rescorla, et al.         Expires April 27, 2020                 [Page 6]
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
-   esni_keys  An ESNIKeys structure that contains the actual keys used
-      to encrypt the SNI as well as some metadata related to those keys.
-
-   dns_extensions  A list of extensions that the client can take into
-      consideration when resolving the target DNS name.  The format is
-      defined in [RFC8446]; Section 4.2.  The purpose of the field is to
       provide room for additional features in the future.  An extension
       may be tagged as mandatory by using an extension type codepoint
       with the high order bit set to 1.  A client which receives a
@@ -387,6 +381,12 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
    unsupported mandatory extensions.  If an unsupported mandatory
    extension is present, clients MUST reject the ESNIRecord value.
 
+   The ESNIRecord structure is placed in the RRData section of an ESNI
+   record as-is.  Servers MAY supply multiple ESNIRecord values, with
+   ESNIKeys either of the same or of different versions.  This allows a
+   server to support multiple versions at once.  If the server does not
+
+
 
 
 Rescorla, et al.         Expires April 27, 2020                 [Page 7]
@@ -394,10 +394,6 @@ Rescorla, et al.         Expires April 27, 2020                 [Page 7]
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
-   The ESNIRecord structure is placed in the RRData section of an ESNI
-   record as-is.  Servers MAY supply multiple ESNIRecord values, with
-   ESNIKeys either of the same or of different versions.  This allows a
-   server to support multiple versions at once.  If the server does not
    supply any ESNIRecord values with an ESNIKeys version known to the
    client, then the client MUST behave as if no ESNI records were found.
 
@@ -433,6 +429,10 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
        } ExtensionType;
 
    The body of this extension is encoded using the following structure.
+
+
+
+
 
 
 
@@ -1292,15 +1292,15 @@ Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 7.5.7.  Split server spoofing
 
-   Assuming ESNI records retrieved from DNS are validated, e.g., via
+   Assuming ESNI records retrieved from DNS are authenticated, e.g., via
    DNSSEC or fetched from a trusted Recursive Resolver, spoofing a
    server operating in Split Mode is not possible.  See Section 7.1 for
    more details regarding cleartext DNS.
 
-   Validating the ESNIKeys structure additionally validates the public
-   name.  This validates any retry signals from the server because the
-   client validates the server certificate against the public name
-   before retrying.
+   Authenticating the ESNIKeys structure naturally authenticates the
+   included public name.  This also authenticates any retry signals from
+   the server because the client validates the server certificate
+   against the public name before retrying.
 
 7.5.8.  Supporting multiple protocols
 
@@ -1482,9 +1482,6 @@ Appendix A.  Communicating SNI and Nonce to Backend Server
    ClientHello.  The backend server can then decrypt ESNI to recover the
    true SNI and nonce.
 
-   Another way for backend servers to access the true SNI and nonce is
-   by the client-facing server sharing the ESNI keys.
-
 Appendix B.  Alternative SNI Protection Designs
 
    Alternative approaches to encrypted SNI may be implemented at the TLS
@@ -1506,6 +1503,9 @@ B.1.1.  TLS in Early Data
    forwarded by the client-facing server - unmodified.  This avoids
    double encryption of TLS records.
 
+   Problems with this approach are: (1) servers may not always be able
+   to distinguish inner Client Hellos from legitimate application data,
+   (2) nested 0-RTT data may not function correctly, (3) 0-RTT data may
 
 
 
@@ -1514,9 +1514,6 @@ Rescorla, et al.         Expires April 27, 2020                [Page 27]
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
-   Problems with this approach are: (1) servers may not always be able
-   to distinguish inner Client Hellos from legitimate application data,
-   (2) nested 0-RTT data may not function correctly, (3) 0-RTT data may
    not be supported - especially under DoS - leading to availability
    concerns, and (4) clients must bootstrap tunnels (sessions), costing
    an additional round trip and potentially revealing the SNI during the
@@ -1562,6 +1559,9 @@ Appendix C.  Total Client Hello Encryption
 
    o  It protects all the extensions from ordinary eavesdroppers
 
+   o  If the encrypted block has its own KeyShare, it does not
+      necessarily require the client to use a single KeyShare, because
+
 
 
 
@@ -1570,8 +1570,6 @@ Rescorla, et al.         Expires April 27, 2020                [Page 28]
 Internet-Draft           TLS 1.3 SNI Encryption             October 2019
 
 
-   o  If the encrypted block has its own KeyShare, it does not
-      necessarily require the client to use a single KeyShare, because
       the client's share is bound to the SNI by the AEAD (analysis
       needed).
 
@@ -1618,6 +1616,8 @@ Authors' Addresses
    Cloudflare
 
    Email: nick@cloudflare.com
+
+
 
 
 
