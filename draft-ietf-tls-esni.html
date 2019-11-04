@@ -339,7 +339,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Rescorla, E., Oku, K., Sullivan, N., and C. Wood" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-tls-esni-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-11-02" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-11-04" />
   <meta name="dct.abstract" content="This document defines a simple mechanism for encrypting the Server Name Indication for TLS 1.3." />
   <meta name="description" content="This document defines a simple mechanism for encrypting the Server Name Indication for TLS 1.3." />
 
@@ -363,7 +363,7 @@ ul.toc li {
 <td class="right">K. Oku</td>
 </tr>
 <tr>
-<td class="left">Expires: May 5, 2020</td>
+<td class="left">Expires: May 7, 2020</td>
 <td class="right">Fastly</td>
 </tr>
 <tr>
@@ -384,7 +384,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">November 02, 2019</td>
+<td class="right">November 04, 2019</td>
 </tr>
 
     	
@@ -400,7 +400,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 5, 2020.</p>
+<p>This Internet-Draft will expire on May 7, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -733,7 +733,7 @@ Client &lt;------------------------------------&gt;|                     |
 <dd style="margin-left: 8">Zero padding whose length makes the serialized PaddedServerNameList struct have a length equal to ESNIConfig.padded_length.</dd>
 </dl>
 <p id="rfc.section.5.1.1.p.10">This value consists of the serialized ServerNameList from the &#8220;server_name&#8221; extension, padded with enough zeroes to make the total structure ESNIConfig.padded_length bytes long. The purpose of the padding is to prevent attackers from using the length of the &#8220;encrypted_server_name&#8221; extension to determine the true SNI. If the serialized ServerNameList is longer than ESNIConfig.padded_length, the client MUST NOT use the &#8220;encrypted_server_name&#8221; extension.</p>
-<p id="rfc.section.5.1.1.p.11">The ClientEncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
+<p id="rfc.section.5.1.1.p.11">The ClientEncryptedSNI.encrypted_sni value is then computed using AEAD-Encrypt (<a href="#RFC5116" class="xref">[RFC5116]</a>; Section 2.1) with the AEAD corresponding to ClientEncryptedSNI.suite as follows:</p>
 <pre>
     encrypted_sni = AEAD-Encrypt(key, iv, KeyShareClientHello, ClientESNIInner)
 </pre>
@@ -777,8 +777,7 @@ Client &lt;------------------------------------&gt;|                     |
 <p></p>
 
 <ul>
-<li>Select a supported cipher suite, named group, and padded_length value. The padded_length value SHOULD be 260 or a multiple of 16 less than <ol><li>Set the &#8220;suite&#8221; field  to the selected cipher suite. These selections SHOULD vary to exercise all supported configurations, but MAY be held constant for successive connections to the same server in the same session.</li></ol>
-</li>
+<li>Select a supported cipher suite, named group, and padded_length value. The padded_length value SHOULD be 260 (sum of the maximum DNS name length and TLS encoding overhead) or a multiple of 16 less than 260.  Set the &#8220;suite&#8221; field  to the selected cipher suite. These selections SHOULD vary to exercise all supported configurations, but MAY be held constant for successive connections to the same server in the same session.</li>
 <li>Set the &#8220;key_share&#8221; field to a randomly-generated valid public key for the named group.</li>
 <li>Set the &#8220;record_digest&#8221; field to a randomly-generated string of hash_length bytes, where hash_length is the length of the hash function associated with the chosen cipher suite.</li>
 <li>Set the &#8220;encrypted_sni&#8221; field to a randomly-generated string of 16 + padded_length + tag_length bytes, where tag_length is the tag length of the chosen cipher suite&#8217;s associated AEAD.</li>
@@ -838,6 +837,7 @@ Client &lt;------------------------------------&gt;|                     |
 <p id="rfc.section.6.1.p.1">It is possible for ESNI advertisements and servers to become inconsistent. This may occur, for instance, from DNS misconfiguration, caching issues, or an incomplete rollout in a multi-server deployment. This may also occur if a server loses its ESNI keys, or if a deployment of ESNI must be rolled back on the server.</p>
 <p id="rfc.section.6.1.p.2">The retry mechanism repairs inconsistencies, provided the server is authoritative for the public name. If server and advertised keys mismatch, the server will respond with esni_retry_requested. If the server does not understand the &#8220;encrypted_server_name&#8221; extension at all, it will ignore it as required by <a href="#RFC8446" class="xref">[RFC8446]</a>; Section 4.1.2. Provided the server can present a certificate valid for the public name, the client can safely retry with updated settings, as described in <a href="#handle-server-response" class="xref">Section 5.1.2</a>.</p>
 <p id="rfc.section.6.1.p.3">Unless ESNI is disabled as a result of successfully establishing a connection to the public name, the client MUST NOT fall back to cleartext SNI, as this allows a network attacker to disclose the SNI.  It MAY attempt to use another server from the DNS results, if one is provided.</p>
+<p id="rfc.section.6.1.p.4">Client-facing servers with non-uniform cryptographic configurations across backend origin servers segment the ESNI anonymity set based on these configurations. For example, if a client-facing server hosts k backend origin servers, and exactly one of those backend origin servers supports a different set of cryptographic algorithms than the other (k - 1) servers, it may be possible to identify this single server based on the contents of the ServerHello as this message is not encrypted.</p>
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#middleboxes" id="middleboxes">Middleboxes</a>
 </h1>
@@ -947,6 +947,11 @@ Client &lt;------------------------------------&gt;|                     |
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
 <td class="top">
 <a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5116">[RFC5116]</b></td>
+<td class="top">
+<a>McGrew, D.</a>, "<a href="https://tools.ietf.org/html/rfc5116">An Interface and Algorithms for Authenticated Encryption</a>", RFC 5116, DOI 10.17487/RFC5116, January 2008.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
