@@ -777,8 +777,7 @@ Client &lt;------------------------------------&gt;|                     |
 <p></p>
 
 <ul>
-<li>Select a supported cipher suite, named group, and padded_length value. The padded_length value SHOULD be 260 or a multiple of 16 less than <ol><li>Set the &#8220;suite&#8221; field  to the selected cipher suite. These selections SHOULD vary to exercise all supported configurations, but MAY be held constant for successive connections to the same server in the same session.</li></ol>
-</li>
+<li>Select a supported cipher suite, named group, and padded_length value. The padded_length value SHOULD be 260 (sum of the maximum DNS name length and TLS encoding overhead) or a multiple of 16 less than 260.  Set the &#8220;suite&#8221; field  to the selected cipher suite. These selections SHOULD vary to exercise all supported configurations, but MAY be held constant for successive connections to the same server in the same session.</li>
 <li>Set the &#8220;key_share&#8221; field to a randomly-generated valid public key for the named group.</li>
 <li>Set the &#8220;record_digest&#8221; field to a randomly-generated string of hash_length bytes, where hash_length is the length of the hash function associated with the chosen cipher suite.</li>
 <li>Set the &#8220;encrypted_sni&#8221; field to a randomly-generated string of 16 + padded_length + tag_length bytes, where tag_length is the tag length of the chosen cipher suite&#8217;s associated AEAD.</li>
