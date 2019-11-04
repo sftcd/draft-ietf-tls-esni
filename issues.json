@@ -1,6 +1,102 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/193",
+    "id": 516698919,
+    "node_id": "MDU6SXNzdWU1MTY2OTg5MTk=",
+    "number": 193,
+    "title": "Reasoning for 260",
+    "user": {
+      "login": "sayrer",
+      "id": 253473,
+      "node_id": "MDQ6VXNlcjI1MzQ3Mw==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/253473?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sayrer",
+      "html_url": "https://github.com/sayrer",
+      "followers_url": "https://api.github.com/users/sayrer/followers",
+      "following_url": "https://api.github.com/users/sayrer/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sayrer/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sayrer/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sayrer/subscriptions",
+      "organizations_url": "https://api.github.com/users/sayrer/orgs",
+      "repos_url": "https://api.github.com/users/sayrer/repos",
+      "events_url": "https://api.github.com/users/sayrer/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sayrer/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-02T19:39:45Z",
+    "updated_at": "2019-11-02T19:39:45Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "The initial commit for the padding in the spec gave the reason for the \"260\" figure (maximum domain + TLS struct overhead). There have been many comments mentioning slightly lower numbers (255, 253, etc). It's subtle enough that the spec should probably detail the reason."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/192",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/192/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/192/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/192/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/192",
+    "id": 516530206,
+    "node_id": "MDU6SXNzdWU1MTY1MzAyMDY=",
+    "number": 192,
+    "title": "How to parse esni_retry_request generically?",
+    "user": {
+      "login": "ocheron",
+      "id": 2415051,
+      "node_id": "MDQ6VXNlcjI0MTUwNTE=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2415051?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ocheron",
+      "html_url": "https://github.com/ocheron",
+      "followers_url": "https://api.github.com/users/ocheron/followers",
+      "following_url": "https://api.github.com/users/ocheron/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ocheron/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ocheron/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ocheron/subscriptions",
+      "organizations_url": "https://api.github.com/users/ocheron/orgs",
+      "repos_url": "https://api.github.com/users/ocheron/repos",
+      "events_url": "https://api.github.com/users/ocheron/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ocheron/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-02T08:27:46Z",
+    "updated_at": "2019-11-02T08:27:46Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "As of draft-ietf-tls-esni-04, when the server rejects ESNI with esni_retry_request, it includes one or more ESNIKeys for retry:\r\n```\r\n      struct {\r\n          ServerESNIResponseType response_type;\r\n          select (response_type) {\r\n              case esni_accept:        uint8 nonce[16];\r\n              case esni_retry_request: ESNIKeys retry_keys<1..2^16-1>;\r\n          }\r\n      } ServerEncryptedSNI;\r\n\r\n   retry_keys  One or more ESNIKeys structures containing the keys that\r\n      the client should use on subsequent connections to encrypt the\r\n      ClientESNIInner structure.\r\n```\r\n\r\nThe client behavior described in section 5.1.2 is to pick one of the ESNIKeys values from this vector:\r\n\r\n> If one of the values contains a version supported by the client,\r\n> it can regard the ESNI keys as securely replaced by the server.\r\n> It SHOULD retry the handshake with a new transport connection,\r\n> using that value to encrypt the SNI.\r\n\r\nEncoding of `retry_keys` contains the total size of the vector field but not the size of the individual ESNIKeys elements. This makes it difficult (impossible?) to parse a vector with unknown future versions, so this part is not really extensible."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/191",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/191/labels{/name}",
@@ -914,18 +1010,18 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-23T02:45:29Z",
-    "updated_at": "2019-07-23T02:45:29Z",
-    "closed_at": null,
-    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "updated_at": "2019-11-04T20:36:07Z",
+    "closed_at": "2019-11-04T20:36:06Z",
+    "author_association": "NONE",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/175",
       "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/175",
@@ -1515,7 +1611,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/164.patch"
     },
     "body": "Fixes #160."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/163",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1623,10 +1722,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/162.patch"
     },
     "body": "See discussion at https://github.com/tlswg/draft-ietf-tls-esni/issues/134"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/161",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3300,7 +3396,10 @@
     "closed_at": "2019-07-03T00:33:47Z",
     "author_association": "CONTRIBUTOR",
     "body": "Stephen Farrell pointed out on the list that 260 is rather a lot of waste to stick into the ClientHello.\r\nhttps://mailarchive.ietf.org/arch/msg/tls/kW_SWFamoj6IME4JzGseBKDyUV4\r\n\r\n260 characters is this large of a hostname:\r\n```\r\n>>> \"a\" * 260\r\n'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'`\r\n```\r\n\r\nIt's probably reasonable to recommend a smaller default value like 64 or 96 or 128. (Numbers pulled out of a hat. I have no data on how big it actually should be.)"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/133",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3396,10 +3495,7 @@
     "closed_at": "2019-03-08T21:24:28Z",
     "author_association": "CONTRIBUTOR",
     "body": "The draft currently states:\r\n\r\n> In cases where the domain of the A or AAAA records being resolved do not match the SNI Server Name, such as when {{!RFC7838}} is being used, the SNI domain should be used for querying the ESNI TXT record.\r\n\r\nI'm confused about what this means. From reading RFC 7838, I'm not sure the SNI and DNS names do not match when you're querying an alternate name. In particular, RFC 7838 states:\r\n\r\n> For example, if the origin's host is \"www.example.com\" and an alternative is offered on \"other.example.com\" with the \"h2\" protocol, and the certificate offered is valid for \"www.example.com\", the client can use the alternative.\r\n\r\nWhich means, if I understand it correctly, the client will send \"other.example.com\" in the SNI when trying to query resources from it - the requirement is only that the certificate for \"other.example.com\" also cover \"www.example.com\"."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/131",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -4202,9 +4298,9 @@
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 7,
     "created_at": "2018-11-05T13:46:41Z",
-    "updated_at": "2019-06-14T15:04:00Z",
+    "updated_at": "2019-11-04T16:33:15Z",
     "closed_at": "2019-06-02T15:08:29Z",
     "author_association": "NONE",
     "body": "We've recently developed a PoC for ESNI and we're having trouble pinning down what we're doing wrong since the test URL (https://cloudflare.com/cdn-cgi/trace) is still showing sni=off. \r\n\r\nI was wondering if CloudFlare is considering running a test/debug server to help us facilitate the development of various clients. "
@@ -4617,17 +4713,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2018-10-26T16:13:11Z",
-    "updated_at": "2019-07-08T20:22:26Z",
-    "closed_at": null,
+    "updated_at": "2019-11-02T01:02:56Z",
+    "closed_at": "2019-11-02T01:02:56Z",
     "author_association": "CONTRIBUTOR",
     "body": "issues #105 and #79 advocate for the removal of the _esni prefix.\r\n\r\nA significant side effect of that is that it becomes impossible to use a CNAME at the apex of a zone in order to refer to ESNIKeys of a server operated elsewhere. Inlining keys, as is often done with A/AAAA at the apex, is not plausible due to key rotation.\r\n\r\nThe issue can largely be mitigated with the introduction of an inclusion mechanism directly in the TXT/ESNI record.\r\n"
   },
@@ -4936,7 +5032,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/104.patch"
     },
     "body": "fixes #35 \r\n\r\nthis would be a bit cleaner if we got rid of the prefix.. which I think we ought to do as well but is separable."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/103",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5038,10 +5137,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/102.patch"
     },
     "body": "…f the ESNI Keys values were present"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/101",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6635,7 +6731,10 @@
     "closed_at": "2019-03-06T22:44:26Z",
     "author_association": "CONTRIBUTOR",
     "body": "dns records are 8 bit clean and rfc 6763 is an example of a TXT record carrying arbitrary data\r\n\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/73",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6743,10 +6842,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/72.patch"
     },
     "body": "The idea here is to have a new RR type which makes DNS people happier, but also be able to fallback to the plain TXT lookup to address @kazuho's concerns.\r\n\r\nThis should also fix #35 since the ESNI lookup will follow the CNAME, I _think_.\r\n\r\nThe ESNI RRData format is kind of dumb, so we probably need to make it better."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/71",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8346,7 +8442,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/44.patch"
     },
     "body": "Fixes #34\r\n\r\nAlso see https://github.com/ekr/draft-rescorla-tls-esni/pull/31#discussion_r188117285"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/43",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8448,10 +8547,7 @@
     "closed_at": "2018-07-02T14:20:43Z",
     "author_association": "CONTRIBUTOR",
     "body": "From the \"Fronting Server Behavior\" section:\r\n\r\n> the fronting server then [...] forwards the TLS connection to the hidden server\r\n\r\nThis is not very clearly defined. Does the fronting server not make any changes to the client hello? Doesn't it remove the encrypted SNI extension and/or possibly add a cleartext SNI as discussed in \"Communicating SNI to Hidden Server\"?"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/41",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -9999,7 +10095,10 @@
     "closed_at": "2018-05-13T03:18:44Z",
     "author_association": "CONTRIBUTOR",
     "body": "The proposed DNS publication method for the key is sketched in section 4, Publishing the SNI Encryption Key. The proposed structure is\r\n~~~\r\n    struct {\r\n        ESNIKeyShareEntry keys<4..2^16-1>;\r\n        CipherSuite cipher_suites<2..2^16-2>;\r\n        uint16 padded_length;\r\n    } ESNIKeys;\r\n~~~\r\nThis can be problematic, given the constraints on TXT records. The practical length of the record payload is at most 255 bytes. The payload content is supposed to be text, which would suggest a base64 encoding, further reducing the available payload size to 189 bytes.\r\n\r\nI would suggest encoding just one key & one ciphersuite per record using base64 encoding, and using multiple records if necessary."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/13",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -10107,10 +10206,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/12.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/11",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
