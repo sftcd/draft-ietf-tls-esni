@@ -118,7 +118,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
        B.1.2.  Combined Tickets  . . . . . . . . . . . . . . . . . .  25
      B.2.  Application-layer . . . . . . . . . . . . . . . . . . . .  25
        B.2.1.  HTTP/2 CERTIFICATE Frames . . . . . . . . . . . . . .  25
-   Appendix C.  Total Client Hello Encryption  . . . . . . . . . . .  25
+   Appendix C.  Total Client Hello Encryption  . . . . . . . . . . .  26
    Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  26
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  26
 
@@ -540,8 +540,9 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
    serialized ServerNameList is longer than ESNIConfig.padded_length,
    the client MUST NOT use the "encrypted_server_name" extension.
 
-   The ClientEncryptedSNI.encrypted_sni value is then computed using the
-   usual TLS 1.3 AEAD:
+   The ClientEncryptedSNI.encrypted_sni value is then computed using
+   AEAD-Encrypt ([RFC5116]; Section 2.1) with the AEAD corresponding to
+   ClientEncryptedSNI.suite as follows:
 
     encrypted_sni = AEAD-Encrypt(key, iv, KeyShareClientHello, ClientESNIInner)
 
@@ -553,7 +554,6 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
    Note: future extensions may end up reusing the server's
    ESNIKeyShareEntry for other purposes within the same message (e.g.,
-
 
 
 
@@ -1214,15 +1214,15 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
+              Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
+              <https://www.rfc-editor.org/info/rfc5116>.
+
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
               DOI 10.17487/RFC6066, January 2011,
               <https://www.rfc-editor.org/info/rfc6066>.
 
-   [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
-              (SHA and SHA-based HMAC and HKDF)", RFC 6234,
-              DOI 10.17487/RFC6234, May 2011,
-              <https://www.rfc-editor.org/info/rfc6234>.
 
 
 
@@ -1233,6 +1233,11 @@ Rescorla, et al.           Expires May 7, 2020                 [Page 22]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
+
+   [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
+              (SHA and SHA-based HMAC and HKDF)", RFC 6234,
+              DOI 10.17487/RFC6234, May 2011,
+              <https://www.rfc-editor.org/info/rfc6234>.
 
    [RFC6895]  Eastlake 3rd, D., "Domain Name System (DNS) IANA
               Considerations", BCP 42, RFC 6895, DOI 10.17487/RFC6895,
@@ -1277,11 +1282,6 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               SNI Encryption in TLS", draft-ietf-tls-sni-encryption-09
               (work in progress), October 2019.
 
-   [I-D.kazuho-protected-sni]
-              Oku, K., "TLS Extensions for Protecting SNI", draft-
-              kazuho-protected-sni-00 (work in progress), July 2017.
-
-
 
 
 
@@ -1289,6 +1289,10 @@ Rescorla, et al.           Expires May 7, 2020                 [Page 23]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
+
+   [I-D.kazuho-protected-sni]
+              Oku, K., "TLS Extensions for Protecting SNI", draft-
+              kazuho-protected-sni-00 (work in progress), July 2017.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
@@ -1334,10 +1338,6 @@ B.1.1.  TLS in Early Data
    payloads belonging to outer TLS connections established with the
    client-facing server.  This requires clients to have established a
    previous session --- and obtained PSKs --- with the server.  The
-   client-facing server decrypts early data payloads to uncover Client
-   Hellos destined for the backend server, and forwards them onwards as
-   necessary.  Afterwards, all records to and from backend servers are
-
 
 
 
@@ -1346,6 +1346,9 @@ Rescorla, et al.           Expires May 7, 2020                 [Page 24]
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
+   client-facing server decrypts early data payloads to uncover Client
+   Hellos destined for the backend server, and forwards them onwards as
+   necessary.  Afterwards, all records to and from backend servers are
    forwarded by the client-facing server - unmodified.  This avoids
    double encryption of TLS records.
 
@@ -1387,13 +1390,10 @@ B.2.1.  HTTP/2 CERTIFICATE Frames
    induces no additional round trip and operates below the application
    layer.
 
-Appendix C.  Total Client Hello Encryption
 
-   The design described here only provides encryption for the SNI, but
-   not for other extensions, such as ALPN.  Another potential design
-   would be to encrypt all of the extensions using the same basic
-   structure as we use here for ESNI.  That design has the following
-   advantages:
+
+
+
 
 
 
@@ -1401,6 +1401,14 @@ Rescorla, et al.           Expires May 7, 2020                 [Page 25]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
+
+Appendix C.  Total Client Hello Encryption
+
+   The design described here only provides encryption for the SNI, but
+   not for other extensions, such as ALPN.  Another potential design
+   would be to encrypt all of the extensions using the same basic
+   structure as we use here for ESNI.  That design has the following
+   advantages:
 
    o  It protects all the extensions from ordinary eavesdroppers
 
@@ -1442,20 +1450,18 @@ Authors' Addresses
    Email: ekr@rtfm.com
 
 
-   Kazuho Oku
-   Fastly
-
-   Email: kazuhooku@gmail.com
-
-
-
-
 
 
 
 Rescorla, et al.           Expires May 7, 2020                 [Page 26]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
+
+
+   Kazuho Oku
+   Fastly
+
+   Email: kazuhooku@gmail.com
 
 
    Nick Sullivan
@@ -1468,12 +1474,6 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
    Apple, Inc.
 
    Email: cawood@apple.com
-
-
-
-
-
-
 
 
 

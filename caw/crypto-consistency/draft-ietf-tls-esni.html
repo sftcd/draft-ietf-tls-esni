@@ -733,7 +733,7 @@ Client &lt;------------------------------------&gt;|                     |
 <dd style="margin-left: 8">Zero padding whose length makes the serialized PaddedServerNameList struct have a length equal to ESNIConfig.padded_length.</dd>
 </dl>
 <p id="rfc.section.5.1.1.p.10">This value consists of the serialized ServerNameList from the &#8220;server_name&#8221; extension, padded with enough zeroes to make the total structure ESNIConfig.padded_length bytes long. The purpose of the padding is to prevent attackers from using the length of the &#8220;encrypted_server_name&#8221; extension to determine the true SNI. If the serialized ServerNameList is longer than ESNIConfig.padded_length, the client MUST NOT use the &#8220;encrypted_server_name&#8221; extension.</p>
-<p id="rfc.section.5.1.1.p.11">The ClientEncryptedSNI.encrypted_sni value is then computed using the usual TLS 1.3 AEAD:</p>
+<p id="rfc.section.5.1.1.p.11">The ClientEncryptedSNI.encrypted_sni value is then computed using AEAD-Encrypt (<a href="#RFC5116" class="xref">[RFC5116]</a>; Section 2.1) with the AEAD corresponding to ClientEncryptedSNI.suite as follows:</p>
 <pre>
     encrypted_sni = AEAD-Encrypt(key, iv, KeyShareClientHello, ClientESNIInner)
 </pre>
@@ -948,6 +948,11 @@ Client &lt;------------------------------------&gt;|                     |
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
 <td class="top">
 <a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5116">[RFC5116]</b></td>
+<td class="top">
+<a>McGrew, D.</a>, "<a href="https://tools.ietf.org/html/rfc5116">An Interface and Algorithms for Authenticated Encryption</a>", RFC 5116, DOI 10.17487/RFC5116, January 2008.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
