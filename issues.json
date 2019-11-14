@@ -1,6 +1,540 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/203",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/203/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/203/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/203/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/203",
+    "id": 523003273,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzQxMDkzMTY5",
+    "number": 203,
+    "title": "Remove ESNI RRType Considerations",
+    "user": {
+      "login": "mrsylerpowers",
+      "id": 7625284,
+      "node_id": "MDQ6VXNlcjc2MjUyODQ=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7625284?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mrsylerpowers",
+      "html_url": "https://github.com/mrsylerpowers",
+      "followers_url": "https://api.github.com/users/mrsylerpowers/followers",
+      "following_url": "https://api.github.com/users/mrsylerpowers/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mrsylerpowers/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mrsylerpowers/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mrsylerpowers/subscriptions",
+      "organizations_url": "https://api.github.com/users/mrsylerpowers/orgs",
+      "repos_url": "https://api.github.com/users/mrsylerpowers/repos",
+      "events_url": "https://api.github.com/users/mrsylerpowers/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mrsylerpowers/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-14T17:31:37Z",
+    "updated_at": "2019-11-14T20:35:25Z",
+    "closed_at": "2019-11-14T20:35:25Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/203",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/203",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/203.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/203.patch"
+    },
+    "body": "Closes #202 "
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/202",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/202/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/202/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/202/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/issues/202",
+    "id": 523002953,
+    "node_id": "MDU6SXNzdWU1MjMwMDI5NTM=",
+    "number": 202,
+    "title": "Removing ESNI RRType Considerations",
+    "user": {
+      "login": "mrsylerpowers",
+      "id": 7625284,
+      "node_id": "MDQ6VXNlcjc2MjUyODQ=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7625284?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mrsylerpowers",
+      "html_url": "https://github.com/mrsylerpowers",
+      "followers_url": "https://api.github.com/users/mrsylerpowers/followers",
+      "following_url": "https://api.github.com/users/mrsylerpowers/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mrsylerpowers/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mrsylerpowers/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mrsylerpowers/subscriptions",
+      "organizations_url": "https://api.github.com/users/mrsylerpowers/orgs",
+      "repos_url": "https://api.github.com/users/mrsylerpowers/repos",
+      "events_url": "https://api.github.com/users/mrsylerpowers/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mrsylerpowers/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-14T17:30:58Z",
+    "updated_at": "2019-11-14T20:35:25Z",
+    "closed_at": "2019-11-14T20:35:25Z",
+    "author_association": "CONTRIBUTOR",
+    "body": "Because this document now delegates the way the keys are advertised from the RRType ESNI to HTTPSSVC shouldn't the RRType Considerations be removed from this document. "
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/201",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/201/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/201/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/201/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/201",
+    "id": 518556064,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM3NDI5NTUx",
+    "number": 201,
+    "title": "Flatten ESNI negotiation mechanisms",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-06T15:44:17Z",
+    "updated_at": "2019-11-06T15:44:17Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/201",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/201",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/201.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/201.patch"
+    },
+    "body": "[This was split out of #199 as the possibly more controversial idea. It's a simplification but does make configs larger. Also it sits on top of #198 and #200. Ignore the first two comments to look at it in isolation.]\r\n\r\nWe have two layers of parameter negotiation. Multiple KeyShareEntry values in an ESNIConfig, and multiple ESNIConfig values in an ESNIConfigs. We only need one mechanism, so store only one KeyShareEntry in an ESNIConfig.\r\n\r\nThis simplifies representing client and server configuration, which simplies implementation internals as well as interchange formats. Right now, on the server, configuration has two layers of lists, something like list(tuple(ESNIConfig, list(PrivateKey))). Now the server maintains list(tuple(ESNIConfig, PrivateKey)).\r\n\r\nNote also that draft-farrell-tls-pemesni-00 has this oddity around what to do if the ESNIKeys contains multiple keys. This is particularly a nuisance because a single standalone PRIVATE KEY / ESNIKEY pair is not usable because the server has committed to answering to *all* keys in the ESNIKeys. The server must consume multiple PEM files, match up the ESNIKeyses, and then assert that it has a complete set.\r\n\r\nThe downside is that, in the likely case that the server only supports one version and one set of extensions, the non-key ESNI config bits (notably the public name; the rest is small) are repeated for every named group. However, the public name should not be that large and servers should only need one or two groups (see https://www.imperialviolet.org/2016/05/16/agility.html)."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/200",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/200/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/200/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/200/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/200",
+    "id": 518555333,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM3NDI4OTE5",
+    "number": 200,
+    "title": "Advertise multiple ESNIConfigs as a unit",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2019-11-06T15:43:10Z",
+    "updated_at": "2019-11-06T17:02:26Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/200",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/200",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/200.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/200.patch"
+    },
+    "body": "[This was split out of #199 as the hopefully less controversial idea. Also it sits on top of #198. Ignore the first commit to look at it in isolation.]\r\n\r\nWe have two levels of mechanisms for servers to advertise parameters. Each ESNIConfig has multiple keys, so a server can suport multiple groups at once. These keys are stapled together so a single HTTPSSVC record delivers the entire configuration.\r\n\r\nThen we have a versions/extensions mechanism. A server supporting multiple versions of ESNI or multiple sets of mandatory extensions must advertise multiple ESNIConfigs. Unlike the group advertisement, these require separate HTTPSSVC records. This means the full ESNI config is not reliably available to logic across different layers of the client stack. In particular, the HTTPSSVC spec text in [0] does not work. (@bemasc FYI)\r\n\r\nCurrently, a single ESNIConfig, rather than a set of them, is correlated with an IP address or CNAME, by way of the HTTPSSVC record. A server which supports multiple ESNI versions or mandatory extension sets must advertise several HTTPSSVC records, potentially with different IPs. DNS and transport logic must know TLS capabilities to pick the right HTTPSSVC record.\r\n\r\nThis PR introduces an ESNIConfigs structure which advertises a list of ESNIConfig structures. The ESNIConfigs is the new unit of ESNI configuration. This should be paired with a change to draft-nygren-dnsop-svcb-httpssvc to carry an ESNIConfigs, not an ESNIConfig (formerly ESNIKeys).\r\n\r\nNow the server can include the full config at once, so the DNS and transport logic can reasonably pick an HTTPSSVC purely based on whether the TLS stack supports ESNI, rather than the full set of capabilities. This fixes the text in [0].\r\n\r\nThat ESNIConfigs and ESNIConfig are separate structures is slightly goofy naming. Alternate names if folks prefer:\r\n\r\n- ESNIConfig/ESNIConfigs => ESNIConfig/ESNIBundle\r\n\r\n- ESNIConfig/ESNIConfigs => ESNIKeys/ESNIConfig\r\n  (Nuisance: an ESNIConfig is a list of ESNIKeyses, which brings back the double plural.)\r\n\r\n(While I'm here, fix the remnants of ESNIKeyShares. I'll split that out if this PR is controversial, but GitHub is really bad at dependent PRs, so I've left it together for now.)\r\n\r\n[0] https://tools.ietf.org/html/draft-nygren-dnsop-svcb-httpssvc-00#section-8.1.1"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/199",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/199/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/199/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/199/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/199",
+    "id": 518115028,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM3MDY0ODcw",
+    "number": 199,
+    "title": "Unify version/extension and key share negotiation mechanisms",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2019-11-05T23:14:18Z",
+    "updated_at": "2019-11-06T15:44:28Z",
+    "closed_at": "2019-11-06T15:44:28Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/199",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/199",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/199.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/199.patch"
+    },
+    "body": "[This PR sits on top of #198. Ignore the first commit to look at it in isolation.]\r\n\r\nWe currently have two levels of mechanisms for servers to advertise multiple sets of parameters. First, each ESNIConfig has multiple keys in it, so a server can suport multiple groups at once. These keys are stapled together so a single HTTPSSVC record, etc., delivers the entire configuration.\r\n\r\nAt a layer above that, we have a version/extension-based mechanism. The server may advertise multiple ESNIConfigs to cover multiple versions of ESNI (hopefully we won't need this mechanism after standardization, but it's quite useful for draft versions) or multiple sets of mandatory extensions. Unlike the group advertisement, these are each in separate configuration units, so, e.g., they may be in multiple HTTPSSVC records.\r\n\r\nThis PR flattens the two mechanisms into one. Each ESNIConfig now has a single KeyShareEntry. Multiple groups and multiple versions are expressed in the same way: multiple ESNIConfig structures. It then introduces a wrapper ESNIConfigs structure which is the new unit of ESNI configuration delivered in HTTPSSVC, etc.\r\n\r\nThis should be paired with a change to draft-nygren-dnsop-svcb-httpssvc to carry an ESNIConfigs, not an ESNIConfig (formerly ESNIKeys). (@bemasc FYI)\r\n\r\nThis fixes a number of oddities:\r\n\r\n- Client and server need to maintain two levels of configuration. On the server, the structure has two layers of lists, something like list(tuple(ESNIConfig, list(PrivateKey))). Now the server maintains list(tuple(ESNIConfig, PrivateKey)). Conversely, the client needed two negotiation loops whereas now it only requires one.\r\n\r\n- Logic across different layers of the client stack now more reliably have the full ESNI configuration available in one unit.\r\n\r\n  In the old design, a single ESNIConfig, rather than a set of them, would be correlated with an IP address or CNAME, by way of the HTTPSSVC record. A server which supportsed multiple ESNI versions or mandatory extension sets would advertise several HTTPSSVC records, potentially with different IPs. That means the DNS and transport connection logic must know about TLS capabitilies to pick the right HTTPSSVC record.\r\n\r\n  In the new design, the server includes all its variations at once, so the DNS and transport logic can reasonably pick an HTTPSSVC purely based on whether the TLS stack supports ESNI, rather than the full set of capabilities. That is, the text in [0] does not work right now, and this PR fixes it.\r\n\r\nThe downside is that, in the likely case that the server only supports one version and one set of extensions, the non-key ESNI config bits (notably the public name; the rest is small) are repeated for every named group. However, the public name should not be that large and servers should only need one or two groups[1].\r\n\r\nThis also does make ESNIConfigs and ESNIConfig separate structures, which is slightly goofy. Alternate names if folks prefer:\r\n\r\n- ESNIConfig/ESNIConfigs => ESNIConfig/ESNIBundle\r\n- ESNIConfig/ESNIConfigs => ESNIKey/ESNIConfig\r\n\r\n[0] https://tools.ietf.org/html/draft-nygren-dnsop-svcb-httpssvc-00#section-8.1.1\r\n[1] https://www.imperialviolet.org/2016/05/16/agility.html"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/198",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/198/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/198/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/198/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/198",
+    "id": 518075039,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM3MDI5Nzgw",
+    "number": 198,
+    "title": "Add a length prefix to ESNIConfig contents.",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-05T22:03:51Z",
+    "updated_at": "2019-11-05T22:05:54Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/198",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/198",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/198.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/198.patch"
+    },
+    "body": "ESNIConfig has a version number in front for extensibility, but it is\r\nunclear what the version invariants are. Presumably we would like\r\nversions to change the contents of an ESNIConfig (indeed different\r\ndrafts have done so), but it is not obvious this is possible and it is\r\nimpossible to skip over an ESNIConfig with a version you do not\r\nunderstand.\r\n\r\nFix this by moving the body of an ESNIConfig into an ESNIConfigContents\r\nand adding a length prefix in front.\r\n\r\nFixes #192."
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/197",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/197/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/197/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/197/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/197",
+    "id": 517998239,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM2OTYyNzY5",
+    "number": 197,
+    "title": "Key schedule injection proposal.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-05T20:06:28Z",
+    "updated_at": "2019-11-05T20:06:28Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/197",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/197",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/197.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/197.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/196",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/196/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/196/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/196/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/196",
+    "id": 517951165,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM2OTIzOTM2",
+    "number": 196,
+    "title": "Tunnel version",
+    "user": {
+      "login": "ekr",
+      "id": 1111457,
+      "node_id": "MDQ6VXNlcjExMTE0NTc=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1111457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ekr",
+      "html_url": "https://github.com/ekr",
+      "followers_url": "https://api.github.com/users/ekr/followers",
+      "following_url": "https://api.github.com/users/ekr/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ekr/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ekr/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ekr/subscriptions",
+      "organizations_url": "https://api.github.com/users/ekr/orgs",
+      "repos_url": "https://api.github.com/users/ekr/repos",
+      "events_url": "https://api.github.com/users/ekr/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ekr/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2019-11-05T18:29:17Z",
+    "updated_at": "2019-11-06T20:43:34Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/196",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/196",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/196.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/196.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/195",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/195/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/195/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/195/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/195",
+    "id": 517444918,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM2NTEzNjg3",
+    "number": 195,
+    "title": "Clarify rules on order and repetition for ESNIConfig extensions",
+    "user": {
+      "login": "dmcardle",
+      "id": 183652,
+      "node_id": "MDQ6VXNlcjE4MzY1Mg==",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/183652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dmcardle",
+      "html_url": "https://github.com/dmcardle",
+      "followers_url": "https://api.github.com/users/dmcardle/followers",
+      "following_url": "https://api.github.com/users/dmcardle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dmcardle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dmcardle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dmcardle/subscriptions",
+      "organizations_url": "https://api.github.com/users/dmcardle/orgs",
+      "repos_url": "https://api.github.com/users/dmcardle/repos",
+      "events_url": "https://api.github.com/users/dmcardle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dmcardle/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-04T22:38:32Z",
+    "updated_at": "2019-11-04T22:38:32Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/195",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/195",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/195.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/195.patch"
+    },
+    "body": "Followup on #183.\r\n\r\nLooks like ESNIConfig is the only ESNI structure that has extensions, now that we've delegated the key delivery to HTTPSSVC.\r\n\r\nShould I avoid reflowing the text?"
+  },
+  {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/194",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/194/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/194/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/194/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/194",
+    "id": 517391014,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzM2NDY4NzMz",
+    "number": 194,
+    "title": "Add note about inconsistent cryptographic configurations.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-04T20:45:17Z",
+    "updated_at": "2019-11-04T21:40:59Z",
+    "closed_at": "2019-11-04T21:40:59Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/194",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/194",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/194.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/194.patch"
+    },
+    "body": "Addresses #178."
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/193/labels{/name}",
@@ -34,17 +568,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-11-02T19:39:45Z",
-    "updated_at": "2019-11-02T19:39:45Z",
-    "closed_at": null,
+    "updated_at": "2019-11-04T21:41:21Z",
+    "closed_at": "2019-11-04T21:41:21Z",
     "author_association": "NONE",
     "body": "The initial commit for the padding in the spec gave the reason for the \"260\" figure (maximum domain + TLS struct overhead). There have been many comments mentioning slightly lower numbers (255, 253, etc). It's subtle enough that the spec should probably detail the reason."
   },
@@ -89,9 +623,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 2,
     "created_at": "2019-11-02T08:27:46Z",
-    "updated_at": "2019-11-02T08:27:46Z",
+    "updated_at": "2019-11-09T08:33:37Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "As of draft-ietf-tls-esni-04, when the server rejects ESNI with esni_retry_request, it includes one or more ESNIKeys for retry:\r\n```\r\n      struct {\r\n          ServerESNIResponseType response_type;\r\n          select (response_type) {\r\n              case esni_accept:        uint8 nonce[16];\r\n              case esni_retry_request: ESNIKeys retry_keys<1..2^16-1>;\r\n          }\r\n      } ServerEncryptedSNI;\r\n\r\n   retry_keys  One or more ESNIKeys structures containing the keys that\r\n      the client should use on subsequent connections to encrypt the\r\n      ClientESNIInner structure.\r\n```\r\n\r\nThe client behavior described in section 5.1.2 is to pick one of the ESNIKeys values from this vector:\r\n\r\n> If one of the values contains a version supported by the client,\r\n> it can regard the ESNI keys as securely replaced by the server.\r\n> It SHOULD retry the handshake with a new transport connection,\r\n> using that value to encrypt the SNI.\r\n\r\nEncoding of `retry_keys` contains the total size of the vector field but not the size of the individual ESNIKeys elements. This makes it difficult (impossible?) to parse a vector with unknown future versions, so this part is not really extensible."
@@ -130,17 +664,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 11,
     "created_at": "2019-11-01T21:14:03Z",
-    "updated_at": "2019-11-01T21:14:55Z",
-    "closed_at": null,
+    "updated_at": "2019-11-05T08:13:05Z",
+    "closed_at": "2019-11-04T20:52:21Z",
     "author_association": "NONE",
     "body": "Couldn't these extra bytes be any value?"
   },
@@ -226,17 +760,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 10,
+    "comments": 11,
     "created_at": "2019-10-26T01:10:02Z",
-    "updated_at": "2019-10-28T19:13:51Z",
-    "closed_at": null,
+    "updated_at": "2019-11-04T21:41:29Z",
+    "closed_at": "2019-11-04T21:41:29Z",
     "author_association": "NONE",
     "body": "```\r\nThe ClientEncryptedSNI.encrypted_sni value is then computed using the\r\n   usual TLS 1.3 AEAD:\r\n\r\n    encrypted_sni = AEAD-Encrypt(key, iv, KeyShareClientHello, ClientESNIInner)\r\n```\r\n\r\nHowever, the TLS 1.3 definition is:\r\n\r\n```\r\nAEADEncrypted =\r\n          AEAD-Encrypt(write_key, nonce, additional_data, plaintext)\r\n```\r\n\r\nIn the ESNI text, it's not clear how `iv` maps to TLS 1.3's `per-record nonce` routine."
   },
@@ -281,9 +815,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-10-25T19:11:24Z",
-    "updated_at": "2019-10-25T19:17:57Z",
+    "updated_at": "2019-11-05T02:25:58Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "A second point in issue #155 wasn't addressed very clearly by #158. \r\n\r\n\"...HKDF-Extract(0, Z) should probably become HKDF-Extract(\"\", Z) or be explicit about the salt as is done in https://tools.ietf.org/html/rfc8446#section-7.1 (or https://tools.ietf.org/html/rfc5869#section-2.2).\"\r\n\r\nThe current draft does clarify this in the text below, but I initially missed that. The reader has to know that the first argument to HKDF-Extract is named \"salt\" to put it together.\r\n\r\nI did end up getting it right, figuring this was intended to mean a buffer of zeros. I think it would be clearer to say:\r\n\r\n```\r\nsalt = uint8[Hash.length]\r\nZx = HKDF-Extract(salt, Z)\r\n```"
@@ -545,9 +1079,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-10-01T15:34:05Z",
-    "updated_at": "2019-10-01T15:34:05Z",
+    "updated_at": "2019-11-04T20:51:08Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "[RFC8446 section 4.2](https://tools.ietf.org/html/rfc8446#section-4.2) states:\r\n\r\n> There MUST NOT be more than one extension of the\r\n   same type in a given extension block.\r\n\r\nThe ESNI draft should probably explicitly restate this for both `ESNIRecord.dns_extensions` and `ESNIKeys.extensions`.  I'd be happy to make a PR if need be. Thanks!"
@@ -822,7 +1356,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "chris-wood",
@@ -869,8 +1403,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-07-25T14:18:36Z",
-    "updated_at": "2019-07-25T15:17:04Z",
-    "closed_at": null,
+    "updated_at": "2019-11-04T21:41:08Z",
+    "closed_at": "2019-11-04T21:41:08Z",
     "author_association": "CONTRIBUTOR",
     "body": "There is an unstated constraint on deployments.  All servers in the same anonymity set need to have the same cryptographic configuration.\r\n\r\nThis means that they choose the same key exchange groups/cipher/etc.. when presented with the same ClientHello.  Concretely, servers need to produce the same profile for the ServerHello, because the ServerHello is not encrypted and the form of a ServerHello could be used to split the anonymity set if different servers make different choices."
   },
@@ -1083,7 +1617,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/174.patch"
     },
     "body": "#173 "
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/173",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1611,10 +2148,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/164.patch"
     },
     "body": "Fixes #160."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/163",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -2471,9 +3005,9 @@
       }
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": "2019-03-11T19:45:33Z",
-    "updated_at": "2019-07-03T00:51:56Z",
+    "updated_at": "2019-11-04T20:47:28Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "Attackers cannot successfully replay a ClientHello and ESNI extension and establish a connection with the server. However, they can replay a ClientHello and examine whether it triggers a positive response. This can be used to check whether a server is still present. This is a particular concern when using ESNI in local discovery mode, where merely eliciting a response would be enough to give away a server's presence.\r\n\r\nTo protect against such attacks, I consider adding two elements in the ESNI:\r\n\r\n1) A 64 bit timestamp, set to the date at which the client sent the message.\r\n2) The IPv6 address from which the client is sending the message.\r\n\r\nThe timestamp prevents repeat of a message over time. The IPv6 address prevents repeat of the message from a different location. I mention IPv6 here because of NAT, of course.\r\n\r\nWhat do you think? Should that be encoded as part of `ClientEncryptedSNI` or `ClientESNIInner`? Or should it just be encoded as a separate ClientHello extension?"
@@ -2823,7 +3357,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/144.patch"
     },
     "body": "Subsumes #73 and #108."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/143",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3396,10 +3933,7 @@
     "closed_at": "2019-07-03T00:33:47Z",
     "author_association": "CONTRIBUTOR",
     "body": "Stephen Farrell pointed out on the list that 260 is rather a lot of waste to stick into the ClientHello.\r\nhttps://mailarchive.ietf.org/arch/msg/tls/kW_SWFamoj6IME4JzGseBKDyUV4\r\n\r\n260 characters is this large of a hostname:\r\n```\r\n>>> \"a\" * 260\r\n'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'`\r\n```\r\n\r\nIt's probably reasonable to recommend a smaller default value like 64 or 96 or 128. (Numbers pulled out of a hat. I have no data on how big it actually should be.)"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/133",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -4298,9 +4832,9 @@
 
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 9,
     "created_at": "2018-11-05T13:46:41Z",
-    "updated_at": "2019-11-04T16:33:15Z",
+    "updated_at": "2019-11-06T22:02:21Z",
     "closed_at": "2019-06-02T15:08:29Z",
     "author_association": "NONE",
     "body": "We've recently developed a PoC for ESNI and we're having trouble pinning down what we're doing wrong since the test URL (https://cloudflare.com/cdn-cgi/trace) is still showing sni=off. \r\n\r\nI was wondering if CloudFlare is considering running a test/debug server to help us facilitate the development of various clients. "
@@ -4394,17 +4928,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 6,
     "created_at": "2018-11-04T09:13:59Z",
-    "updated_at": "2019-06-25T20:40:44Z",
-    "closed_at": null,
+    "updated_at": "2019-11-05T20:10:41Z",
+    "closed_at": "2019-11-05T20:10:41Z",
     "author_association": "COLLABORATOR",
     "body": "In a large-scale server deployment that benefits the most from ESNI (due to the size of the umbrella under which you would hide the domain names), it is often the case that the largest length of the server name to be supported is *unknown*. That leads such server deployments to use a padded_length of 260 because the longest valid DNS name is 253 characters, bloating the ClientHello.\r\n\r\nIt is beneficial to apply a lightweight compression algorithm to the server name to reduce the overhead.\r\n\r\nSome points to consider:\r\n* We cannot use a pre-learnt dictionary, because what we care is the longest possible length. Compression algorithm using a pre-learnt dictionary assigns longer symbols for rarely used patterns, which means that the worst case is longer than the non-compressed string.\r\n* We can use an adaptive compression algorithm (e.g. lz77, brotli), however they also would not compress well if the server-name is a random-looking string."
   },
@@ -4515,7 +5049,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/114.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/113",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5032,10 +5569,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/104.patch"
     },
     "body": "fixes #35 \r\n\r\nthis would be a bit cleaner if we got rid of the prefix.. which I think we ought to do as well but is separable."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/103",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6159,7 +6693,10 @@
     "closed_at": "2019-07-03T00:15:11Z",
     "author_association": "COLLABORATOR",
     "body": "Replace \r\n\r\n\"It only affects connection routing, server certificate selection, and client certificate verification.\" \r\n\r\nwith \r\n\r\n\"It may affect connection routing, server certificate selection, and client certificate verification.\" "
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/83",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6731,10 +7268,7 @@
     "closed_at": "2019-03-06T22:44:26Z",
     "author_association": "CONTRIBUTOR",
     "body": "dns records are 8 bit clean and rfc 6763 is an example of a TXT record carrying arbitrary data\r\n\r\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/73",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -7908,7 +8442,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/54.patch"
     },
     "body": "Because the longest name is 255 octets (see RFC 1035), and there is 5-octet overhead in the ServerNameList structure (defined in RFC 6066 as shown below).\r\n\r\n```\r\n      struct {\r\n          NameType name_type;\r\n          select (name_type) {\r\n              case host_name: HostName;\r\n          } name;\r\n      } ServerName;\r\n\r\n      enum {\r\n          host_name(0), (255)\r\n      } NameType;\r\n\r\n      opaque HostName<1..2^16-1>;\r\n\r\n      struct {\r\n          ServerName server_name_list<1..2^16-1>\r\n      } ServerNameList;\r\n```\r\n\r\namends #48 "
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/53",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8442,10 +8979,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/44.patch"
     },
     "body": "Fixes #34\r\n\r\nAlso see https://github.com/ekr/draft-rescorla-tls-esni/pull/31#discussion_r188117285"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/43",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -9547,7 +10081,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/24.patch"
     },
     "body": "In ESNI, the server offers a list of ECDH keys and the client selects one of them. However, there seems to be nothing that prevents a downgrade attack.\r\n\r\nThis PR adds the protection, by sending the list of the Named Groups being offered by ESNIKeys in the EncryptedSNI extension.\r\n\r\nThe bonus is that the size of ESNIKeys becomes smaller when more than one keys are offered (because we now only send one label per the entire key set)."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/23",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -10095,10 +10632,7 @@
     "closed_at": "2018-05-13T03:18:44Z",
     "author_association": "CONTRIBUTOR",
     "body": "The proposed DNS publication method for the key is sketched in section 4, Publishing the SNI Encryption Key. The proposed structure is\r\n~~~\r\n    struct {\r\n        ESNIKeyShareEntry keys<4..2^16-1>;\r\n        CipherSuite cipher_suites<2..2^16-2>;\r\n        uint16 padded_length;\r\n    } ESNIKeys;\r\n~~~\r\nThis can be problematic, given the constraints on TXT records. The practical length of the record payload is at most 255 bytes. The payload content is supposed to be text, which would suggest a base64 encoding, further reducing the available payload size to 189 bytes.\r\n\r\nI would suggest encoding just one key & one ciphersuite per record using base64 encoding, and using multiple records if necessary."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/13",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
