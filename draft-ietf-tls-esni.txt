@@ -5,12 +5,12 @@
 tls                                                          E. Rescorla
 Internet-Draft                                                RTFM, Inc.
 Intended status: Experimental                                     K. Oku
-Expires: May 7, 2020                                              Fastly
+Expires: May 17, 2020                                             Fastly
                                                              N. Sullivan
                                                               Cloudflare
                                                                  C. Wood
                                                              Apple, Inc.
-                                                       November 04, 2019
+                                                       November 14, 2019
 
 
               Encrypted Server Name Indication for TLS 1.3
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 7, 2020.
+   This Internet-Draft will expire on May 17, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 1]
+Rescorla, et al.          Expires May 17, 2020                  [Page 1]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -99,27 +99,26 @@ Table of Contents
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
      8.1.  Update of the TLS ExtensionType Registry  . . . . . . . .  21
      8.2.  Update of the TLS Alert Registry  . . . . . . . . . . . .  22
-     8.3.  Update of the Resource Record (RR) TYPEs Registry . . . .  22
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  22
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  23
-   Appendix A.  Communicating SNI and Nonce to Backend Server  . . .  24
-   Appendix B.  Alternative SNI Protection Designs . . . . . . . . .  24
-     B.1.  TLS-layer . . . . . . . . . . . . . . . . . . . . . . . .  24
+   9.  Communicating SNI and Nonce to Backend Server . . . . . . . .  22
+   10. Alternative SNI Protection Designs  . . . . . . . . . . . . .  22
+     10.1.  TLS-layer  . . . . . . . . . . . . . . . . . . . . . . .  22
+       10.1.1.  TLS in Early Data  . . . . . . . . . . . . . . . . .  22
+       10.1.2.  Combined Tickets . . . . . . . . . . . . . . . . . .  23
+     10.2.  Application-layer  . . . . . . . . . . . . . . . . . . .  23
+       10.2.1.  HTTP/2 CERTIFICATE Frames  . . . . . . . . . . . . .  23
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 2]
+Rescorla, et al.          Expires May 17, 2020                  [Page 2]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
-       B.1.1.  TLS in Early Data . . . . . . . . . . . . . . . . . .  24
-       B.1.2.  Combined Tickets  . . . . . . . . . . . . . . . . . .  25
-     B.2.  Application-layer . . . . . . . . . . . . . . . . . . . .  25
-       B.2.1.  HTTP/2 CERTIFICATE Frames . . . . . . . . . . . . . .  25
-   Appendix C.  Total Client Hello Encryption  . . . . . . . . . . .  26
-   Appendix D.  Acknowledgements . . . . . . . . . . . . . . . . . .  26
+   11. Total Client Hello Encryption . . . . . . . . . . . . . . . .  23
+   12. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  24
+   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     13.1.  Normative References . . . . . . . . . . . . . . . . . .  24
+     13.2.  Informative References . . . . . . . . . . . . . . . . .  25
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  26
 
 1.  Introduction
@@ -162,15 +161,15 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
    The design in this document takes a different approach: it assumes
    that private origins will co-locate with or hide behind a provider
+   (CDN, app server, etc.) which is able to activate encrypted SNI
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 3]
+Rescorla, et al.          Expires May 17, 2020                  [Page 3]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
-   (CDN, app server, etc.) which is able to activate encrypted SNI
    (ESNI) for all of the domains it hosts.  Thus, the use of encrypted
    SNI does not indicate that the client is attempting to reach a
    private origin, but only that it is going to a particular service
@@ -221,7 +220,8 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 4]
+
+Rescorla, et al.          Expires May 17, 2020                  [Page 4]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -277,7 +277,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 5]
+Rescorla, et al.          Expires May 17, 2020                  [Page 5]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -333,7 +333,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 6]
+Rescorla, et al.          Expires May 17, 2020                  [Page 6]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -389,7 +389,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 7]
+Rescorla, et al.          Expires May 17, 2020                  [Page 7]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -445,7 +445,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 8]
+Rescorla, et al.          Expires May 17, 2020                  [Page 8]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -501,7 +501,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                  [Page 9]
+Rescorla, et al.          Expires May 17, 2020                  [Page 9]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -557,7 +557,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 10]
+Rescorla, et al.          Expires May 17, 2020                 [Page 10]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -613,7 +613,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 11]
+Rescorla, et al.          Expires May 17, 2020                 [Page 11]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -669,7 +669,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 12]
+Rescorla, et al.          Expires May 17, 2020                 [Page 12]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -725,7 +725,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 13]
+Rescorla, et al.          Expires May 17, 2020                 [Page 13]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -781,7 +781,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 14]
+Rescorla, et al.          Expires May 17, 2020                 [Page 14]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -837,7 +837,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 15]
+Rescorla, et al.          Expires May 17, 2020                 [Page 15]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -883,7 +883,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
    In Split Mode, the backend server must know
    PaddedServerNameList.nonce to echo it back in EncryptedExtensions and
-   complete the handshake.  Appendix A describes one mechanism for
+   complete the handshake.  Section 9 describes one mechanism for
    sending both PaddedServerNameList.sni and ClientESNIInner.nonce to
    the backend server.  Thus, backend servers function the same as
    servers operating in Shared Mode.
@@ -893,7 +893,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 16]
+Rescorla, et al.          Expires May 17, 2020                 [Page 16]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -949,7 +949,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 17]
+Rescorla, et al.          Expires May 17, 2020                 [Page 17]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 18]
+Rescorla, et al.          Expires May 17, 2020                 [Page 18]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 19]
+Rescorla, et al.          Expires May 17, 2020                 [Page 19]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -1117,7 +1117,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 20]
+Rescorla, et al.          Expires May 17, 2020                 [Page 20]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -1173,7 +1173,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-Rescorla, et al.           Expires May 7, 2020                 [Page 21]
+Rescorla, et al.          Expires May 17, 2020                 [Page 21]
 
 Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
@@ -1184,15 +1184,138 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
    existing registry for Alerts (defined in [RFC8446]), with the "DTLS-
    OK" column being set to "Y".
 
-8.3.  Update of the Resource Record (RR) TYPEs Registry
+9.  Communicating SNI and Nonce to Backend Server
 
-   IANA is requested to create an entry, ESNI(0xff9f), in the existing
-   registry for Resource Record (RR) TYPEs (defined in [RFC6895]) with
-   "Meaning" column value being set to "Encrypted SNI".
+   When operating in Split Mode, backend servers will not have access to
+   PaddedServerNameList.sni or ClientESNIInner.nonce without access to
+   the ESNI keys or a way to decrypt ClientEncryptedSNI.encrypted_sni.
 
-9.  References
+   One way to address this for a single connection, at the cost of
+   having communication not be unmodified TLS 1.3, is as follows.
+   Assume there is a shared (symmetric) key between the client-facing
+   server and the backend server and use it to AEAD-encrypt Z and send
+   the encrypted blob at the beginning of the connection before the
+   ClientHello.  The backend server can then decrypt ESNI to recover the
+   true SNI and nonce.
 
-9.1.  Normative References
+10.  Alternative SNI Protection Designs
+
+   Alternative approaches to encrypted SNI may be implemented at the TLS
+   or application layer.  In this section we describe several
+   alternatives and discuss drawbacks in comparison to the design in
+   this document.
+
+10.1.  TLS-layer
+
+10.1.1.  TLS in Early Data
+
+   In this variant, TLS Client Hellos are tunneled within early data
+   payloads belonging to outer TLS connections established with the
+   client-facing server.  This requires clients to have established a
+   previous session --- and obtained PSKs --- with the server.  The
+   client-facing server decrypts early data payloads to uncover Client
+   Hellos destined for the backend server, and forwards them onwards as
+   necessary.  Afterwards, all records to and from backend servers are
+   forwarded by the client-facing server - unmodified.  This avoids
+   double encryption of TLS records.
+
+   Problems with this approach are: (1) servers may not always be able
+   to distinguish inner Client Hellos from legitimate application data,
+   (2) nested 0-RTT data may not function correctly, (3) 0-RTT data may
+   not be supported - especially under DoS - leading to availability
+   concerns, and (4) clients must bootstrap tunnels (sessions), costing
+   an additional round trip and potentially revealing the SNI during the
+   initial connection.  In contrast, encrypted SNI protects the SNI in a
+
+
+
+Rescorla, et al.          Expires May 17, 2020                 [Page 22]
+
+Internet-Draft           TLS 1.3 SNI Encryption            November 2019
+
+
+   distinct Client Hello extension and neither abuses early data nor
+   requires a bootstrapping connection.
+
+10.1.2.  Combined Tickets
+
+   In this variant, client-facing and backend servers coordinate to
+   produce "combined tickets" that are consumable by both.  Clients
+   offer combined tickets to client-facing servers.  The latter parse
+   them to determine the correct backend server to which the Client
+   Hello should be forwarded.  This approach is problematic due to non-
+   trivial coordination between client-facing and backend servers for
+   ticket construction and consumption.  Moreover, it requires a
+   bootstrapping step similar to that of the previous variant.  In
+   contrast, encrypted SNI requires no such coordination.
+
+10.2.  Application-layer
+
+10.2.1.  HTTP/2 CERTIFICATE Frames
+
+   In this variant, clients request secondary certificates with
+   CERTIFICATE_REQUEST HTTP/2 frames after TLS connection completion.
+   In response, servers supply certificates via TLS exported
+   authenticators [I-D.ietf-tls-exported-authenticator] in CERTIFICATE
+   frames.  Clients use a generic SNI for the underlying client-facing
+   server TLS connection.  Problems with this approach include: (1) one
+   additional round trip before peer authentication, (2) non-trivial
+   application-layer dependencies and interaction, and (3) obtaining the
+   generic SNI to bootstrap the connection.  In contrast, encrypted SNI
+   induces no additional round trip and operates below the application
+   layer.
+
+11.  Total Client Hello Encryption
+
+   The design described here only provides encryption for the SNI, but
+   not for other extensions, such as ALPN.  Another potential design
+   would be to encrypt all of the extensions using the same basic
+   structure as we use here for ESNI.  That design has the following
+   advantages:
+
+   o  It protects all the extensions from ordinary eavesdroppers
+
+   o  If the encrypted block has its own KeyShare, it does not
+      necessarily require the client to use a single KeyShare, because
+      the client's share is bound to the SNI by the AEAD (analysis
+      needed).
+
+   It also has the following disadvantages:
+
+
+
+
+Rescorla, et al.          Expires May 17, 2020                 [Page 23]
+
+Internet-Draft           TLS 1.3 SNI Encryption            November 2019
+
+
+   o  The client-facing server can still see the other extensions.  By
+      contrast we could introduce another EncryptedExtensions block that
+      was encrypted to the backend server and not the client-facing
+      server.
+
+   o  It requires a mechanism for the client-facing server to provide
+      the extension-encryption key to the backend server (as in
+      Section 9 and thus cannot be used with an unmodified backend
+      server.
+
+   o  A conformant middlebox will strip every extension, which might
+      result in a ClientHello which is just unacceptable to the server
+      (more analysis needed).
+
+12.  Acknowledgements
+
+   This document draws extensively from ideas in
+   [I-D.kazuho-protected-sni], but is a much more limited mechanism
+   because it depends on the DNS for the protection of the ESNI key.
+   Richard Barnes, Christian Huitema, Patrick McManus, Matthew Prince,
+   Nick Sullivan, Martin Thomson, and David Benjamin also provided
+   important ideas and contributions.
+
+13.  References
+
+13.1.  Normative References
 
    [HTTPSSVC]
               Schwartz, B., Bishop, M., and E. Nygren, "Service binding
@@ -1214,6 +1337,15 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+Rescorla, et al.          Expires May 17, 2020                 [Page 24]
+
+Internet-Draft           TLS 1.3 SNI Encryption            November 2019
+
+
    [RFC5116]  McGrew, D., "An Interface and Algorithms for Authenticated
               Encryption", RFC 5116, DOI 10.17487/RFC5116, January 2008,
               <https://www.rfc-editor.org/info/rfc5116>.
@@ -1223,25 +1355,10 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               DOI 10.17487/RFC6066, January 2011,
               <https://www.rfc-editor.org/info/rfc6066>.
 
-
-
-
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 22]
-
-Internet-Draft           TLS 1.3 SNI Encryption            November 2019
-
-
    [RFC6234]  Eastlake 3rd, D. and T. Hansen, "US Secure Hash Algorithms
               (SHA and SHA-based HMAC and HKDF)", RFC 6234,
               DOI 10.17487/RFC6234, May 2011,
               <https://www.rfc-editor.org/info/rfc6234>.
-
-   [RFC6895]  Eastlake 3rd, D., "Domain Name System (DNS) IANA
-              Considerations", BCP 42, RFC 6895, DOI 10.17487/RFC6895,
-              April 2013, <https://www.rfc-editor.org/info/rfc6895>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -1266,7 +1383,7 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/info/rfc8446>.
 
-9.2.  Informative References
+13.2.  Informative References
 
    [I-D.ietf-doh-dns-over-https]
               Hoffman, P. and P. McManus, "DNS Queries over HTTPS
@@ -1277,18 +1394,18 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               Benjamin, D., "Applying GREASE to TLS Extensibility",
               draft-ietf-tls-grease-04 (work in progress), August 2019.
 
+
+
+
+Rescorla, et al.          Expires May 17, 2020                 [Page 25]
+
+Internet-Draft           TLS 1.3 SNI Encryption            November 2019
+
+
    [I-D.ietf-tls-sni-encryption]
               Huitema, C. and E. Rescorla, "Issues and Requirements for
               SNI Encryption in TLS", draft-ietf-tls-sni-encryption-09
               (work in progress), October 2019.
-
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 23]
-
-Internet-Draft           TLS 1.3 SNI Encryption            November 2019
-
 
    [I-D.kazuho-protected-sni]
               Oku, K., "TLS Extensions for Protecting SNI", draft-
@@ -1309,153 +1426,12 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
               n.d., <https://mailarchive.ietf.org/arch/msg/
               tls/1t79gzNItZd71DwwoaqcQQ_4Yxc>.
 
-Appendix A.  Communicating SNI and Nonce to Backend Server
-
-   When operating in Split Mode, backend servers will not have access to
-   PaddedServerNameList.sni or ClientESNIInner.nonce without access to
-   the ESNI keys or a way to decrypt ClientEncryptedSNI.encrypted_sni.
-
-   One way to address this for a single connection, at the cost of
-   having communication not be unmodified TLS 1.3, is as follows.
-   Assume there is a shared (symmetric) key between the client-facing
-   server and the backend server and use it to AEAD-encrypt Z and send
-   the encrypted blob at the beginning of the connection before the
-   ClientHello.  The backend server can then decrypt ESNI to recover the
-   true SNI and nonce.
-
-Appendix B.  Alternative SNI Protection Designs
-
-   Alternative approaches to encrypted SNI may be implemented at the TLS
-   or application layer.  In this section we describe several
-   alternatives and discuss drawbacks in comparison to the design in
-   this document.
-
-B.1.  TLS-layer
-
-B.1.1.  TLS in Early Data
-
-   In this variant, TLS Client Hellos are tunneled within early data
-   payloads belonging to outer TLS connections established with the
-   client-facing server.  This requires clients to have established a
-   previous session --- and obtained PSKs --- with the server.  The
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 24]
-
-Internet-Draft           TLS 1.3 SNI Encryption            November 2019
-
-
-   client-facing server decrypts early data payloads to uncover Client
-   Hellos destined for the backend server, and forwards them onwards as
-   necessary.  Afterwards, all records to and from backend servers are
-   forwarded by the client-facing server - unmodified.  This avoids
-   double encryption of TLS records.
-
-   Problems with this approach are: (1) servers may not always be able
-   to distinguish inner Client Hellos from legitimate application data,
-   (2) nested 0-RTT data may not function correctly, (3) 0-RTT data may
-   not be supported - especially under DoS - leading to availability
-   concerns, and (4) clients must bootstrap tunnels (sessions), costing
-   an additional round trip and potentially revealing the SNI during the
-   initial connection.  In contrast, encrypted SNI protects the SNI in a
-   distinct Client Hello extension and neither abuses early data nor
-   requires a bootstrapping connection.
-
-B.1.2.  Combined Tickets
-
-   In this variant, client-facing and backend servers coordinate to
-   produce "combined tickets" that are consumable by both.  Clients
-   offer combined tickets to client-facing servers.  The latter parse
-   them to determine the correct backend server to which the Client
-   Hello should be forwarded.  This approach is problematic due to non-
-   trivial coordination between client-facing and backend servers for
-   ticket construction and consumption.  Moreover, it requires a
-   bootstrapping step similar to that of the previous variant.  In
-   contrast, encrypted SNI requires no such coordination.
-
-B.2.  Application-layer
-
-B.2.1.  HTTP/2 CERTIFICATE Frames
-
-   In this variant, clients request secondary certificates with
-   CERTIFICATE_REQUEST HTTP/2 frames after TLS connection completion.
-   In response, servers supply certificates via TLS exported
-   authenticators [I-D.ietf-tls-exported-authenticator] in CERTIFICATE
-   frames.  Clients use a generic SNI for the underlying client-facing
-   server TLS connection.  Problems with this approach include: (1) one
-   additional round trip before peer authentication, (2) non-trivial
-   application-layer dependencies and interaction, and (3) obtaining the
-   generic SNI to bootstrap the connection.  In contrast, encrypted SNI
-   induces no additional round trip and operates below the application
-   layer.
-
-
-
-
-
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 25]
-
-Internet-Draft           TLS 1.3 SNI Encryption            November 2019
-
-
-Appendix C.  Total Client Hello Encryption
-
-   The design described here only provides encryption for the SNI, but
-   not for other extensions, such as ALPN.  Another potential design
-   would be to encrypt all of the extensions using the same basic
-   structure as we use here for ESNI.  That design has the following
-   advantages:
-
-   o  It protects all the extensions from ordinary eavesdroppers
-
-   o  If the encrypted block has its own KeyShare, it does not
-      necessarily require the client to use a single KeyShare, because
-      the client's share is bound to the SNI by the AEAD (analysis
-      needed).
-
-   It also has the following disadvantages:
-
-   o  The client-facing server can still see the other extensions.  By
-      contrast we could introduce another EncryptedExtensions block that
-      was encrypted to the backend server and not the client-facing
-      server.
-
-   o  It requires a mechanism for the client-facing server to provide
-      the extension-encryption key to the backend server (as in
-      Appendix A and thus cannot be used with an unmodified backend
-      server.
-
-   o  A conformant middlebox will strip every extension, which might
-      result in a ClientHello which is just unacceptable to the server
-      (more analysis needed).
-
-Appendix D.  Acknowledgements
-
-   This document draws extensively from ideas in
-   [I-D.kazuho-protected-sni], but is a much more limited mechanism
-   because it depends on the DNS for the protection of the ESNI key.
-   Richard Barnes, Christian Huitema, Patrick McManus, Matthew Prince,
-   Nick Sullivan, Martin Thomson, and David Benjamin also provided
-   important ideas and contributions.
-
 Authors' Addresses
 
    Eric Rescorla
    RTFM, Inc.
 
    Email: ekr@rtfm.com
-
-
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 26]
-
-Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
    Kazuho Oku
@@ -1477,36 +1453,4 @@ Internet-Draft           TLS 1.3 SNI Encryption            November 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Rescorla, et al.           Expires May 7, 2020                 [Page 27]
+Rescorla, et al.          Expires May 17, 2020                 [Page 26]
