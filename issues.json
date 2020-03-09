@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/207",
+    "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
+    "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/207/labels{/name}",
+    "comments_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/207/comments",
+    "events_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/207/events",
+    "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/207",
+    "id": 577422503,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzg1MjA5NDIy",
+    "number": 207,
+    "title": "ESNI -> ECHO",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-03-08T00:30:29Z",
+    "updated_at": "2020-03-09T21:57:43Z",
+    "closed_at": "2020-03-09T21:57:43Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/207",
+      "html_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/207",
+      "diff_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/207.diff",
+      "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/207.patch"
+    },
+    "body": "This change implements the ESNI -> ECHO design discussed in Singapore. There a couple pending TODOs, particularly around cross-CH HRR binding, but the meat is what's currently being analyzed. \r\n\r\ncc @davidben, @grittygrease, @martinthomson, @karthikbhargavan "
+  },
+  {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/206",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
     "labels_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/206/labels{/name}",
@@ -550,17 +604,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 9,
+    "comments": 10,
     "created_at": "2019-11-05T18:29:17Z",
-    "updated_at": "2020-02-07T16:20:51Z",
-    "closed_at": null,
+    "updated_at": "2020-03-08T00:32:23Z",
+    "closed_at": "2020-03-08T00:32:22Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/196",
@@ -1216,17 +1270,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-10-01T15:34:05Z",
-    "updated_at": "2019-11-04T20:51:08Z",
-    "closed_at": null,
+    "updated_at": "2020-03-08T00:32:55Z",
+    "closed_at": "2020-03-08T00:32:54Z",
     "author_association": "CONTRIBUTOR",
     "body": "[RFC8446 section 4.2](https://tools.ietf.org/html/rfc8446#section-4.2) states:\r\n\r\n> There MUST NOT be more than one extension of the\r\n   same type in a given extension block.\r\n\r\nThe ESNI draft should probably explicitly restate this for both `ESNIRecord.dns_extensions` and `ESNIKeys.extensions`.  I'd be happy to make a PR if need be. Thanks!"
   },
@@ -1551,7 +1605,10 @@
     "closed_at": "2019-11-04T21:41:08Z",
     "author_association": "CONTRIBUTOR",
     "body": "There is an unstated constraint on deployments.  All servers in the same anonymity set need to have the same cryptographic configuration.\r\n\r\nThis means that they choose the same key exchange groups/cipher/etc.. when presented with the same ClientHello.  Concretely, servers need to produce the same profile for the ServerHello, because the ServerHello is not encrypted and the form of a ServerHello could be used to split the anonymity set if different servers make different choices."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/177",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -1599,10 +1656,7 @@
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The draft has provisions for GREASE ESNI extensions, per \"Do not stick out\". However, this is not very effective if an attacker can distinguish a GREASE ESNI extension from a real one.\r\n\r\n#154 tried to address this, but it doesn't work if the (public) ESNI record is known. There's also a simpler attack: replay the ClientHello with one byte of ciphertext corrupted. ESNI currently distinguishes key mismatch from decrypt failure, with the latter resulting in an alert. We can fix that by saying decrypt failure should behave like key mismatch. This still leaves record_digest.\r\n\r\nThe natural fix is to drop record_digest in favor of trial decryption. The cost is the server must perform a DH operation per known key. The number of keys the server needs depends on its DNS TTLs and key rotation. (I think it's 1 + ceil(dns_ttl / time_between_rotation), plus some leeway[*].)\r\n\r\nInstead, we can keep a key name, but make the space dense. Suppose we replace it with a B-bit \"key phase\". The server picks a random starting key phase. Then, each time it rotates the keys, it increments the phase, with wraparound. The server then gets 2<sup>B</sup> keys for free. If it needs more, it still needs trial decryption but gains a 2<sup>B</sup> multiplicative factor in the cost. On the flip side, an individual GREASE extension with a random key phase has a 1/2<sup>B</sup> chance of colliding with a particular ESNI key.\r\n\r\nI'm not sure we actually need that many live keys, so B = 2 is probably plenty. Or even B = 1 if we say you should just rotate slower than your DNS TTL.\r\n\r\n[*] Note the robustness mechanism means that server doesn't need to cover _all_ clients with stale keys. The retry is expensive, so the server still needs to cover _almost all_ of them, but it can cut off the long tail."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/176",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -2575,17 +2629,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 2,
     "created_at": "2019-06-03T01:00:58Z",
-    "updated_at": "2019-06-03T01:00:58Z",
-    "closed_at": null,
+    "updated_at": "2020-03-09T21:58:20Z",
+    "closed_at": "2020-03-09T21:58:20Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/pulls/159",
@@ -3210,7 +3264,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/148.patch"
     },
     "body": "closes #132"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/147",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3264,10 +3321,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/147.patch"
     },
     "body": "Third party secret sharing solutions might be developed in future.  This PR enables sharing of the true SNI  while at the same time preventing the third party from impersonating the server.  The client encrypts the nonce with a key derived from Z, and only a server with access to Z will be able to acknowledge the decrypted nonce."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/146",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -3383,11 +3437,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -3440,17 +3494,17 @@
         "description": ""
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 5,
     "created_at": "2019-03-05T03:03:26Z",
-    "updated_at": "2019-06-25T20:40:45Z",
-    "closed_at": null,
+    "updated_at": "2020-03-09T21:58:07Z",
+    "closed_at": "2020-03-09T21:58:07Z",
     "author_association": "COLLABORATOR",
     "body": "See https://datatracker.ietf.org/doc/draft-barnes-cfrg-hpke/ for more info. "
   },
@@ -3863,11 +3917,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -4697,9 +4751,9 @@
 
     ],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2018-12-13T19:00:33Z",
-    "updated_at": "2019-06-19T20:47:22Z",
+    "updated_at": "2020-03-08T00:34:45Z",
     "closed_at": null,
     "author_association": "FIRST_TIME_CONTRIBUTOR",
     "pull_request": {
@@ -4752,7 +4806,7 @@
         "description": ""
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "chris-wood",
@@ -4825,18 +4879,18 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
-    "comments": 3,
+    "comments": 5,
     "created_at": "2018-12-10T16:28:25Z",
-    "updated_at": "2019-07-08T21:56:01Z",
-    "closed_at": null,
+    "updated_at": "2020-03-09T21:58:12Z",
+    "closed_at": "2020-03-09T21:58:12Z",
     "author_association": "COLLABORATOR",
     "body": "RFC 8446 requires us to specify if the contents of ESNI can change upon a HRR.\r\n\r\nIn case of ESNI, the payload of the extension obviously can change, because the AAD (i.e. ClientHello.KeyShareClientHello) can change. However, we haven't specified if other values (e.g., ClientESNIInner.nonce) can.\r\n\r\nIMO, we should prohibit needless changes.\r\n\r\nTo clarify, all the non-encrypted portion and the encrypted payload of ESNI MUST be consistent between the first ClientHello and the second one."
   },
@@ -4989,7 +5043,10 @@
     "closed_at": "2019-06-02T15:08:29Z",
     "author_association": "NONE",
     "body": "We've recently developed a PoC for ESNI and we're having trouble pinning down what we're doing wrong since the test URL (https://cloudflare.com/cdn-cgi/trace) is still showing sni=off. \r\n\r\nI was wondering if CloudFlare is considering running a test/debug server to help us facilitate the development of various clients. "
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/117",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -5037,10 +5094,7 @@
     "closed_at": "2019-06-17T18:17:54Z",
     "author_association": "CONTRIBUTOR",
     "body": "@hardie notes that the not_before and not_after fields are there and described, but not really part of the operational notes.  Having something there that talks about these, particularly as it relates to clock skew, would be valuable."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/116",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6562,7 +6616,10 @@
     "closed_at": "2018-10-21T20:44:31Z",
     "author_association": "NONE",
     "body": "I don't know that I can give out my advice here before, so I had written an e-mail to draft-rescorla-tls-esni@ietf.org and that's my first time to send an email to IETF. I don't know whether sending an e-mail is the right thing, so I would paste it here again.\r\n\r\nI'm not a native English speaker, I would apologize for my poor English first.\r\n\r\n\r\n### DNS record disadvantage\r\n\r\n#### 1.Impossible for wildcard A or AAAA record\r\n\r\nIt isn't possible for us to set a txt record for wildcard A or AAAA record (_esni.*.example.com. 60S IN TXT \"...\" \"...\"). \r\nThe same problem as https://github.com/ekr/draft-rescorla-tls-esni/issues/79 mentioned.\r\n\r\n#### 2.Publishing a public key using DNS is very inconvenient and insecure. \r\n\r\nIn general, we can't change the DNS record very conveniently (except some DNS which provide API), so that most domain owners won't change the key very often. \r\n\r\nAnd in some cases, domain owners host their site at host service providers (I don't know how to explain that in English. Host service provider use one physical or virtual server to host many sites) once the provider want to change the ESNI public key, all owners on this server need to change their txt record on time, which is very inconvenient and nearly impossible.\r\n\r\nThe lack of frequently changing public key and the lack of Perfect Forward Security only provide us little security.\r\n\r\n#### 3.DNS record limited only exist domains can enable ESNI\r\n\r\nAs DNS record is needed to be set, only the owner of a exist and valid domain can enable ESNI.\r\n\r\nHowever, sometimes we want to use encrypted-sni as a private entry. For example, I configured my server that client hello with the sni \"vps.panel\" would lead to the vps control panel ( I issued a cert for \"vps.panel\" from my own PKI ). Though I configured that the server must verify my identity using a client certificate, I don't want this private sni to be known to the public. But your draft's method won't allow this use case as \"vps.panel\" isn't a valid domain name, so that I won't be able to own this domain and set a DNS record for it.\r\n\r\n#### 4.Local DNS (hosts) won't work\r\n\r\nThe hosts file can only take the place of A and AAAA record and won't be able to set public key in hosts in the near future.\r\n\r\n#### 5.Requirements to the server is too high\r\n\r\nThis ESNI draft requires that the server can the decrypt the sni which is encrypted by any public key. This means that the server has to take hold all ESNI private keys. However, I think that it's not proper.  \r\nTo CDN service provider like Cloudflare, it means that one Cloudflare server has to storage all private ESNI keys of the websites hosted on it.  \r\nIn my opinion, the browser should encrypt the sni using all public keys found in the DNS record and add a few invalid ESNI along with those, to prevent the attacker identify the real sni from the number of public keys.\r\n\r\n\r\n### Purpose Enhancement - Wall-resistent\r\n\r\nIn some countries (e.g. China, North Korea, Iran) , people may want to use ESNI to break the government's GreatFireWall, which blocks people from visiting some website.\r\n\r\nThe wall isn't just a wall, but a very complicated system which can modify DNS resolve result ( DNSSEC isn't common ). They can simply block all _esni txt record, so that all browsers can' get the public key and downgrade to cleartext-sni.\r\n\r\nIf ESNI can be used with SNI Proxy, it would be a good solution to break the wall. However the DNS record limited only the owner can enable ESNI ( Another disadvantage of DNS :D )\r\n\r\n\r\n### My suggestions\r\n\r\nI think some ideas of https://datatracker.ietf.org/doc/draft-ietf-tls-sni-encryption/ is quite good. One good idea is to use a certificate to authenticate the Client-Facing Server instead of publishing a public key. My main idea is to introduce a series of HTTP headers like HSTS and HPKP. I will give an example below:\r\n\r\nFirstly, I would introduce these headers\r\n( These names may be not proper due to my poor English )\r\n\r\n```\r\nESNI:(preload);(includeSubdomains);max-age=??\r\nIf ESNI header presents in the response, it means this domain enables ESNI. Otherwise, the browser MUST ignore other ESNI-* headers.\r\ne.g.\r\nESNI:preload;includeSubdomains;max-age=31536000\r\n\r\nESNI-Resolve:{address};max-age=??\r\n{address} can be either FQDN or IP(s) the purpose is to hide the real domain during DNS resolve. The server MUST keep this header up-to-date. This header just like a cacheable CNAME record.\r\ne.g. \r\nESNI-Resolve: server233.domain-cdn.com;max-age=31536000\r\nESNI-Resolve: 0.0.0.0/16;max-age=2592000\r\nESNI-Resolve: 1.1.1.1;max-age=2592000\r\n\r\nESNI-Trust:{address or pin-hash};max-age=??\r\n{address} is the same as above. The only difference is that the FQDN can contain wildcard.\r\n{pin-hash} is similar to HPKP's pin-hash.\r\nCan have more than one this header in the HTTP Response. (Explain later)\r\ne.g.\r\nESNI-Trust:fqdn{ *.domain-cdn.com};max-age=31536000\r\nESNI-Trust:ip{0.0.0.0/16};max-age=31536000\r\nESNI-Trust:pin-hash{X523zEOQCuEJeU6PzewOGkKCRX+YLvfAsCYJbQubCuE=};max-age=31536000\r\n\r\n\r\nESNI-Policy:{policy};max-age=??\r\n{policy} can be \"force-encrypted-sni\", \"retry-clear-sni\", \"allow-dns-re-resolve\", \"disallow-dns-re-resolve\" defines the action if error happens using ESNI. \r\nCan have more than one this header in the Response. (Explain below)\r\n```\r\n\r\nIt's impossible to have more than one header with the same name, but we may construct these in to a structure and encode (e.g.base64) into one header. The header may be very big, but don't worry, only the first response contains it, HTTP2 will automatically compress them into a few bits in the later response.\r\n\r\nWhen the first time I visit https://www.example.com , I just do the normal tls1.3 hand shake with clear-text sni. The server just do what it should do, but the response MUST contain those ESNI headers if ESNI is enabled. The browser MUST remember these headers ( unless in incognito mode )\r\n\r\nWhen the second time I visit https://www.example.com , the browser SHOULD NOT query DNS resolve for www.example.com, instead, it should visit the FQDN/IP mentioned in the ESNI-Resolve header. And the browser MUST NOT send clear-text sni in the ClientHello, instead, send a CH without sni or a special CH indicates using ESNI.  The Client-Facing Server  send back certificate, the browser validates the certificate and makes sure the certificate contains at least one FQDN/IP mentioned in the ESNI-Trust header. If mismatch, check the ESNI-Policy and determine whether to retry or not. \r\nAnd then re-handshake with the server with encrypted-ClientHello in the 0RTT data or another CH extension. \r\n( similar to draft-ietf-tls-sni-encryption method )\r\n\r\nMy suggestions' advantages and disadvantages are nearly the same as draft-ietf-tls-sni-encryption method. It provides PFS, don't need to change the Split-Mode Server and solved some part of DNS sniffing. But the disadvantage is obvious too, the first hand shake can't be encrypted and the ESNI-Resolve may become incorrect over time. It needs to handshake twice, however, it provided PFS and I think it worth it. And if multiple sites are hosted on the same server (e.g.CDN, Host Service Provider), we just need to do the second handshake, which eliminate the risk of DoS attack in some level.... And I think 0RTT symmetric decryption is better than asymmetric decryption.\r\nSetting max-age too big or too small both have some risks, and I don't know how to solve it.\r\n\r\n**If you don't like the idea of authenticating the Client-Facing Server, you can simply replace the ESNI-Trust header's content into a public key and use your method. But I don' think set a static public key is a good idea ( explained in some part of DNS disadvantage ).**\r\n\r\nAll in all, we can't have both efficiency, performance and security,  reliability. You should make up your mind and choose whether to provide perfect security or perfect performance. I prefer the former.\r\n\r\nI know that my idea is similar to draft-ietf-tls-sni-encryption than yours. However, you are the candidate for TLS WG, so I hope you can think it over. But I do agree with your idea that \"no need to don't stick out\" or simply \"we can stick out\" :D"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/87",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6616,10 +6673,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/87.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/86",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -6835,11 +6889,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -7101,11 +7155,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -7793,11 +7847,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -8059,11 +8113,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -8379,7 +8433,10 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/58.patch"
     },
     "body": "I decided \"hidden\" was bad.\r\n\r\n@mcmanus"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/57",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -8433,10 +8490,7 @@
       "patch_url": "https://github.com/tlswg/draft-ietf-tls-esni/pull/57.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/56",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -9342,11 +9396,11 @@
         "type": "User",
         "site_admin": false
       },
-      "open_issues": 2,
-      "closed_issues": 6,
+      "open_issues": 1,
+      "closed_issues": 7,
       "state": "open",
       "created_at": "2019-06-25T20:33:32Z",
-      "updated_at": "2019-07-08T17:26:24Z",
+      "updated_at": "2020-03-09T21:58:12Z",
       "due_on": "2019-07-05T07:00:00Z",
       "closed_at": null
     },
@@ -10030,7 +10084,10 @@
     "closed_at": "2018-05-22T14:18:55Z",
     "author_association": "COLLABORATOR",
     "body": "Domain fronting already has a bad rap. Perhaps we should give this a new name to avoid pushback?"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/27",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
@@ -10078,10 +10135,7 @@
     "closed_at": "2018-07-02T14:17:59Z",
     "author_association": "COLLABORATOR",
     "body": "Doing so doesn't allow a server to gracefully generate new ESNI keys and retire old ones. We should mandate that clients always choose the first ESNI key for which they have group support. If we adopt #24, where servers lookup keys with a (label, group) -> key mapping, should we also require that each label have the same groups? "
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni/issues/26",
     "repository_url": "https://api.github.com/repos/tlswg/draft-ietf-tls-esni",
